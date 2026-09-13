@@ -6,23 +6,24 @@
    ═══════════════════════════════════════ */
 
 :root {
-    /* Palette (placeholders — replace per brand) */
-    --midnight:      #0D1B2A;
-    --midnight-light:#112240;
-    --deep-blue:     #1B4965;
-    --soft-blue:     #7C98B3;
-    --light-blue:    #ACCBE1;
-    --accent:        #F9DC5C;
-    --off-white:     #FAFAFA;
-    --cream:         #FDF8E8;
+    /* Palette — BIMpact, direction "Bleu technique / blueprint" */
+    --midnight:      #0B2545;
+    --midnight-light:#123A6E;
+    --deep-blue:     #1D4E89;
+    --soft-blue:     #7A93AC;
+    --light-blue:    #C7D4E0;
+    --accent:        #E8622C;
+    --off-white:     #F5F3EE;
+    --cream:         #ECE7D8;
 
     /* Palette with opacity variants */
-    --accent-dim:    rgba(249, 220, 92, 0.12);
-    --accent-glow:   rgba(249, 220, 92, 0.25);
+    --accent-dim:    rgba(232, 98, 44, 0.12);
+    --accent-glow:   rgba(232, 98, 44, 0.25);
 
     /* Typography */
-    --font-display:  'YourDisplayFont', cursive;
-    --font-body:     'Plus Jakarta Sans', system-ui, sans-serif;
+    --font-display:  'IBM Plex Sans', system-ui, sans-serif;
+    --font-body:     'IBM Plex Sans', system-ui, sans-serif;
+    --font-mono:     'IBM Plex Mono', 'SFMono-Regular', monospace;
 
     --fs-xs:         0.75rem;
     --fs-sm:         0.875rem;

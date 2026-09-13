@@ -2,26 +2,24 @@
 
 ## Audience
 
-<Describe who you're talking to. Role, context, goals, pain.>
+Bureaux d'études et entreprises du BTP susceptibles de sous-traiter des missions BIM CFO-CFA, ainsi que des maîtrises d'ouvrage directes cherchant un prestataire BIM indépendant. Interlocuteurs techniques pour la plupart, mais pas systématiquement — certains éléments doivent rester compréhensibles sans jargon BIM préalable.
 
 ## Pronouns
 
-- Author: `je` / `I` / `we` — pick one, stay consistent.
-- Reader: `vous` / `you`.
+- Author: `je` — site freelance à la première personne.
+- Reader: `vous`.
 
 ## Tone adjectives
 
-Pick 3 to 5 and commit:
-1. <adjective>
-2. <adjective>
-3. <adjective>
+1. Direct / sans fioritures — phrases courtes, pas de superlatifs marketing, factuel.
+2. Rigoureux / précis — vocabulaire technique assumé, exactitude sur les normes et process CFO-CFA/BIM.
 
 ## Rules
 
-- **Forbidden:** <e.g., emojis, em-dashes, anglicisms, corporate buzzwords>.
-- **Required:** <e.g., statistics are always sourced with a link to the exact page, prices in euros, GDPR mention if AI is involved>.
+- **Forbidden:** emojis, tirets cadratins (—), superlatifs marketing ("le meilleur", "révolutionnaire", "unique").
+- **Required:** aucune règle de contenu obligatoire définie pour l'instant (pas de stats à sourcer, pas de mention RGPD spécifique identifiée) — à compléter si besoin lors de l'écriture des pages.
 
 ## Do / Don't examples
 
-- **Do:** "I help marketing teams integrate AI in 8 weeks."
-- **Don't:** "We leverage cutting-edge AI to revolutionize your marketing stack 🚀"
+- **Do:** "J'interviens en modélisation BIM sur vos lots CFO-CFA, de l'esquisse à la maquette de synthèse."
+- **Don't:** "Je révolutionne le BIM avec une expertise inégalée — contactez-moi vite ! 🚀"
