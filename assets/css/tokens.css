@@ -6,19 +6,20 @@
    ═══════════════════════════════════════ */
 
 :root {
-    /* Palette — BIMpact, direction "Bleu technique / blueprint" */
-    --midnight:      #0B2545;
-    --midnight-light:#123A6E;
-    --deep-blue:     #1D4E89;
-    --soft-blue:     #7A93AC;
-    --light-blue:    #C7D4E0;
-    --accent:        #E8622C;
-    --off-white:     #F5F3EE;
-    --cream:         #ECE7D8;
+    /* Palette — BIMpact, sourced from the real logo (logo-principal.svg) */
+    --midnight:      #16283E;
+    --midnight-light:#1F3853;
+    --deep-blue:     #2F5679;
+    --soft-blue:     #7B94AB;
+    --light-blue:    #BECBD7;
+    --accent:        #FF6A39;
+    --off-white:     #EEF2F6;
+    --cream:         #DFE6EC;
 
     /* Palette with opacity variants */
-    --accent-dim:    rgba(232, 98, 44, 0.12);
-    --accent-glow:   rgba(232, 98, 44, 0.25);
+    --accent-dim:    rgba(255, 106, 57, 0.12);
+    --accent-glow:   rgba(255, 106, 57, 0.25);
+    --soft-blue-dim: rgba(123, 148, 171, 0.12);
 
     /* Typography */
     --font-display:  'IBM Plex Sans', system-ui, sans-serif;

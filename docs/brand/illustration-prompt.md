@@ -18,13 +18,13 @@
 ## BIMpact settings
 
 - Base style adjective: **flat technical line-art, blueprint schematic** — thin consistent stroke weight, no shading, evokes a technical drawing rather than a decorative illustration.
-- Background: `--midnight` (`#0B2545`).
-- Accent stroke: `--accent` (`#E8622C`).
-- Secondary stroke: `--deep-blue` (`#1D4E89`).
+- Background: `--midnight` (`#16283E`).
+- Accent stroke: `--accent` (`#FF6A39`).
+- Secondary stroke: `--deep-blue` (`#2F5679`).
 - Temperature: cool overall (blueprint blues), warm accent only (orange).
 
 ## Example (filled, for reference only)
 
 ```
-Flat technical line-art, blueprint schematic style illustration on a flat dark background color #0B2545. Thin cool strokes in #1D4E89, one warm accent stroke in #E8622C. A technical drawing of an electrical distribution panel with BIM model wireframe overlay. Editorial illustration feel. No text, no words. Wide 16:9. Minimal composition.
+Flat technical line-art, blueprint schematic style illustration on a flat dark background color #16283E. Thin cool strokes in #2F5679, one warm accent stroke in #FF6A39. A technical drawing of an electrical distribution panel with BIM model wireframe overlay. Editorial illustration feel. No text, no words. Wide 16:9. Minimal composition.
 ```

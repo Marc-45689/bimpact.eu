@@ -10,20 +10,20 @@
 
 ## Palette
 
-Direction: "Bleu technique / blueprint" — dominante bleu-marine technique, accent orange sécurité électrique, fond clair façon papier calque.
+Direction: "Bleu technique / blueprint" — **palette officielle sourcée directement du logo réel** (`logo-principal.svg`, dessiné par l'utilisateur — lockup complet dans `docs/inspirations/LOGO BIMpact.svg`). Les 4 couleurs du logo sont prises littéralement ; les 4 autres tokens sont dérivés par interpolation linéaire entre elles (formule documentée pour rester auditable).
 
-| Token | Hex | Role |
-|---|---|---|
-| `--midnight` | `#0B2545` | Background primary (bleu blueprint sombre) |
-| `--midnight-light` | `#123A6E` | Background dark hover/panels |
-| `--deep-blue` | `#1D4E89` | Alt background, structure |
-| `--soft-blue` | `#7A93AC` | Secondary text |
-| `--light-blue` | `#C7D4E0` | Borders, dividers |
-| `--accent` | `#E8622C` | Accent / CTAs / highlights (orange sécurité électrique, écho CFO) |
-| `--off-white` | `#F5F3EE` | Text on dark / background papier |
-| `--cream` | `#ECE7D8` | Card background, subtle highlight surface |
+| Token | Hex | Role | Source |
+|---|---|---|---|
+| `--midnight` | `#16283E` | Background primary (bleu marine du logo) | Logo (fond) |
+| `--deep-blue` | `#2F5679` | Alt background, structure | Logo (facette) |
+| `--accent` | `#FF6A39` | Accent / CTAs / highlights | Logo (facette) |
+| `--off-white` | `#EEF2F6` | Text on dark / background clair | Logo (facette) |
+| `--midnight-light` | `#1F3853` | Background dark hover/panels | Dérivé : mix(midnight, deep-blue, 35%) |
+| `--soft-blue` | `#7B94AB` | Secondary text | Dérivé : mix(deep-blue, off-white, 40%) |
+| `--light-blue` | `#BECBD7` | Borders, dividers | Dérivé : mix(deep-blue, off-white, 75%) |
+| `--cream` | `#DFE6EC` | Card background, subtle highlight surface | Dérivé : mix(off-white, deep-blue, 8%) |
 
-Keep the palette small (5-7 tokens). Every hex in the site should map to a token. No ad-hoc colors.
+Keep the palette small (5-7 tokens). Every hex in the site should map to a token. No ad-hoc colors. Palette précédente (avant le logo réel) archivée dans `docs/inspirations/design.md`.
 
 ## Typography
 
@@ -37,7 +37,9 @@ Where to get them:
 
 ## Logo
 
-- Full logo: `logo-principal.svg` — **placeholder actuel**, pas de logo réel fourni. Recolorisé aux tokens de la marque en attendant. À remplacer dès qu'un logo définitif existe.
+- Icon mark: `logo-principal.svg` — recadrage carré (120×120) de la marque "Tower", sans le texte, pour les emplacements 40px (nav, favicon, `site.webmanifest`).
+- Lockup complet (icône + wordmark "BIMpact"): `docs/inspirations/LOGO BIMpact.svg` — à utiliser pour les grands formats (footer, hero, documents) où le texte reste lisible ; pas encore intégré ailleurs sur le site.
+- Wordmark typeface (dans le lockup): Space Grotesk — distinct de la police du site (IBM Plex Sans/Mono), traité comme un élément de logo figé, pas une police d'interface.
 - Minimum size: 40px.
 - Clear space: equivalent to the height of the "o" around the mark.
 

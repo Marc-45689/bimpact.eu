@@ -3,8 +3,8 @@
     "short_name": "Your site",
     "start_url": "/",
     "display": "standalone",
-    "background_color": "#0B2545",
-    "theme_color": "#0B2545",
+    "background_color": "#16283E",
+    "theme_color": "#16283E",
     "icons": [
         { "src": "/logo-principal.svg", "sizes": "any", "type": "image/svg+xml" }
     ]
