@@ -13,6 +13,25 @@ Before producing or modifying any site content, read in order:
 
 If any of those files still contains placeholders (`<Your brand name>`, `<describe ...>`, `<adjective>`), surface this to the user before producing content and offer to run `/brand-setup`.
 
+**Current state of this checkout:** brand is defined (`docs/brand/brand.md`, `tone-of-voice.md`, `assets/css/tokens.css` carry real values, sourced from the user's logo) and the site is bilingual FR/EN (see Languages below). Still not done: `docs/brand/toolbelt.md` has no tools installed, no hosting/staging secrets are configured, and every module (booking/CRM/analytics/cookie-consent/podcast/illustrations) is off — run the remaining `/start-new-site` steps or `/setup-integration <module>` before relying on any of that.
+
+## Commands
+
+No build, lint, or test tooling — this is a static HTML/CSS/JS site with no package.json. Common operations run as standalone scripts, usually via their slash command:
+
+- Regenerate `sitemap.xml`: `python3 scripts/sitemap-update.py` (reads `SITE_URL` env var; walks both locale roots — French at the site root, English under `/en/` — discovering each category's `index.html` plus one level of sub-pages; see Languages below).
+- Rotate staging credentials: `bash scripts/htpasswd-gen.sh` (piloted by `/setup-staging-auth`).
+- Optimize an image: `bash scripts/optimize-image.sh`.
+- Generate a blog illustration or podcast: `python3 scripts/generate-image.py` / `python3 scripts/generate-podcast.py` — both call paid Gemini APIs; confirm approximate cost with the user first.
+- There is no local dev server convention in this repo; deploys are not run locally. Pushing to `staging` or `main` triggers `.github/workflows/deploy-staging.yml` / `deploy-production.yml`, which strip dev-only files (`.claude/`, `.github/`, `CLAUDE.md`, `SETUP.md`, non-PDF `docs/*`, etc.), inline the staging noindex/htpasswd/robots swaps, and `lftp mirror` the result over SFTP.
+
+## Repository layout (big picture)
+
+- `docs/brand/` is the single source of brand truth. `.claude/skills/starter-setup/SKILL.md` — not the individual command files in `.claude/commands/` — is where the actual shared logic lives (brand-loading order, the module registry, the CSP-mutation table per module, sitemap priority rules). Read the skill to understand what a slash command really does.
+- `assets/css/tokens.css` defines every design token; `docs/components.md` is the living catalog of reusable classes built on those tokens — check it before inventing new CSS, and add a row when you introduce a new reusable class.
+- Module state (booking / CRM / analytics / cookie-consent / blog / podcast / illustrations) is tracked in `docs/brand/toolbelt.md`; each active module must have a matching `Content-Security-Policy` allowance in both `.htaccess` and `.htaccess-staging`.
+- `api/*.php` are SFTP-deployed PHP proxies that load secrets via `require_once __DIR__ . '/_env.php'` from a server-side `.env` (never committed, created manually on the host); `.env.example` documents expected keys.
+
 ## Non-negotiable rules
 
 **Tokens.** Every hex color, font family, spacing, radius, and motion value in HTML/CSS **must** reference a token from `assets/css/tokens.css`. Never hardcode `#F9DC5C` in HTML — use `var(--accent)`. Never inline `font-family: 'Plus Jakarta Sans'` — use `var(--font-body)`.
