@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[Project title] — Your site</title>
+    <meta name="description" content="[Project short description]">
+    <link rel="canonical" href="https://example.com/projects/[slug]/">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://example.com/projects/[slug]/">
+    <meta property="og:title" content="[Project title]">
+    <meta property="og:image" content="https://example.com/assets/photos/[slug]-cover.webp">
+    <link rel="icon" type="image/svg+xml" href="/logo-principal.svg">
+    <meta name="theme-color" content="#0D1B2A">
+    <link rel="stylesheet" href="/assets/css/tokens.css">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/projects.css">
+</head>
+<body>
+
+<nav>
+    <div class="container">
+        <a href="/" class="nav-logo"><img src="/logo-principal.svg" alt="Logo" width="40" height="40"></a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="/about/">About</a></li>
+            <li><a href="/projects/">Projects</a></li>
+            <li><a href="/blog/">Blog</a></li>
+        </ul>
+        <button class="nav-hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+</nav>
+
+<main>
+    <article style="padding: 8rem 0 var(--space-xl);">
+        <div class="container" style="max-width: 900px;">
+            <p class="section-number">[Client / Category]</p>
+            <h1 class="section-title">[Project title]</h1>
+            <p style="color: var(--soft-blue); margin-top: var(--space-sm);">[One-line summary / date]</p>
+            <img src="/assets/photos/[slug]-cover.webp" alt="[Project cover]" width="1200" height="750" loading="eager" style="width:100%; margin: var(--space-md) 0; border-radius: var(--radius-lg);">
+            <p>[Project body. Replace with real content via /new-page "project detail" or manually.]</p>
+        </div>
+    </article>
+</main>
+
+<footer>
+    <div class="container">
+        <p>© <span id="year">2026</span> Your site</p>
+        <ul class="footer-links">
+            <li><a href="/legal/privacy/">Privacy</a></li>
+            <li><a href="/legal/terms/">Terms</a></li>
+            <li><a href="/legal/cookies/">Cookies</a></li>
+        </ul>
+    </div>
+</footer>
+
+<script src="/assets/js/shared.js" defer></script>
+</body>
+</html>

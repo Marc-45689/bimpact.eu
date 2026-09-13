@@ -1,0 +1,31 @@
+/* ═══════════════════════════════════════
+   HOME PAGE
+   Styles specific to index.html.
+   Keep shared patterns in main.css.
+   ═══════════════════════════════════════ */
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-top: 6rem;
+}
+.hero-title {
+    font-size: var(--fs-hero);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    max-width: 14ch;
+}
+.hero-desc {
+    margin-top: var(--space-sm);
+    color: var(--soft-blue);
+    max-width: 46ch;
+    font-size: var(--fs-md);
+}
+.hero-actions {
+    margin-top: var(--space-md);
+    display: flex;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+}

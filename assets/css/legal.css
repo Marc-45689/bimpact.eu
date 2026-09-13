@@ -1,0 +1,23 @@
+/* ═══════════════════════════════════════
+   LEGAL PAGES
+   Privacy, Terms, Cookies.
+   ═══════════════════════════════════════ */
+
+.legal-content {
+    max-width: 72ch;
+    margin: 0 auto;
+    padding: 8rem var(--container-pad) var(--space-xl);
+}
+.legal-content h1 {
+    font-size: var(--fs-2xl);
+    font-weight: 800;
+    margin-bottom: var(--space-md);
+}
+.legal-content h2 {
+    font-size: var(--fs-lg);
+    font-weight: 700;
+    margin: var(--space-md) 0 var(--space-sm);
+}
+.legal-content p { margin-bottom: var(--space-sm); }
+.legal-content ul { margin-bottom: var(--space-sm); padding-left: 1.5rem; }
+.legal-content a { color: var(--accent); border-bottom: 1px solid var(--accent-dim); }

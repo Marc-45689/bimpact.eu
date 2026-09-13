@@ -1,0 +1,11 @@
+{
+    "name": "Your site",
+    "short_name": "Your site",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#0D1B2A",
+    "theme_color": "#0D1B2A",
+    "icons": [
+        { "src": "/logo-principal.svg", "sizes": "any", "type": "image/svg+xml" }
+    ]
+}

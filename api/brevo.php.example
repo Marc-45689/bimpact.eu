@@ -1,0 +1,113 @@
+<?php
+/**
+ * ═══════════════════════════════════════
+ * BREVO API PROXY
+ * Receives form submissions and creates/updates contacts in Brevo.
+ * API key stays server-side via .env + _env.php loader.
+ *
+ * To activate:
+ *   1. Copy this file to api/brevo.php.
+ *   2. Ensure BREVO_API_KEY and BREVO_LIST_DEFAULT are set in .env on the host.
+ *   3. Customize $LISTS as needed for your forms.
+ *   4. Point your form JS to POST to /api/brevo.php with JSON body:
+ *      { email, source, name?, ...customAttrs }
+ * ═══════════════════════════════════════
+ */
+
+require_once __DIR__ . '/_env.php';
+
+header('Content-Type: application/json');
+header('Access-Control-Allow-Origin: ' . (getenv('SITE_URL') ?: 'https://example.com'));
+header('Access-Control-Allow-Methods: POST, OPTIONS');
+header('Access-Control-Allow-Headers: Content-Type');
+
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') { http_response_code(204); exit; }
+if ($_SERVER['REQUEST_METHOD'] !== 'POST')     { http_response_code(405); echo json_encode(['error' => 'method not allowed']); exit; }
+
+$BREVO_API_KEY = getenv('BREVO_API_KEY') ?: '';
+if ($BREVO_API_KEY === '') {
+    http_response_code(500);
+    echo json_encode(['error' => 'server misconfigured']);
+    exit;
+}
+
+$DEFAULT_LIST = (int) (getenv('BREVO_LIST_DEFAULT') ?: 0);
+
+/**
+ * Map of "source" to Brevo list ID. Customize per your Brevo setup.
+ * Example:
+ *   'newsletter' => 4,
+ *   'contact'    => 5,
+ */
+$LISTS = [
+    'default' => $DEFAULT_LIST,
+];
+
+$input = json_decode(file_get_contents('php://input'), true);
+if (!is_array($input) || empty($input['email'])) {
+    http_response_code(400);
+    echo json_encode(['error' => 'email is required']);
+    exit;
+}
+
+// Naive email validation (server still trusts nothing — Brevo validates too)
+if (!filter_var($input['email'], FILTER_VALIDATE_EMAIL)) {
+    http_response_code(400);
+    echo json_encode(['error' => 'invalid email']);
+    exit;
+}
+
+$source = $input['source'] ?? 'default';
+if (!isset($LISTS[$source]) || $LISTS[$source] <= 0) {
+    http_response_code(400);
+    echo json_encode(['error' => 'invalid or unconfigured source']);
+    exit;
+}
+
+// Build attributes payload — extend as needed
+$attributes = [
+    'SOURCE'      => $source,
+    'OPT_IN'      => true,
+    'DATE_OPT_IN' => gmdate('Y-m-d\TH:i:s\Z'),
+];
+if (!empty($input['name']))  $attributes['PRENOM']  = $input['name'];
+if (!empty($input['nom']))   $attributes['NOM']     = $input['nom'];
+
+$payload = [
+    'email'         => $input['email'],
+    'attributes'    => $attributes,
+    'listIds'       => [$LISTS[$source]],
+    'updateEnabled' => true,
+];
+
+$ch = curl_init('https://api.brevo.com/v3/contacts');
+curl_setopt_array($ch, [
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_POST           => true,
+    CURLOPT_POSTFIELDS     => json_encode($payload),
+    CURLOPT_HTTPHEADER     => [
+        'api-key: ' . $BREVO_API_KEY,
+        'Content-Type: application/json',
+        'Accept: application/json',
+    ],
+    CURLOPT_TIMEOUT        => 10,
+]);
+$response = curl_exec($ch);
+$httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+$curlErr  = curl_error($ch);
+curl_close($ch);
+
+if ($response === false) {
+    http_response_code(502);
+    echo json_encode(['error' => 'upstream error']);
+    exit;
+}
+
+if ($httpCode >= 200 && $httpCode < 300) {
+    echo json_encode(['success' => true]);
+} elseif ($httpCode === 204) {
+    echo json_encode(['success' => true, 'updated' => true]);
+} else {
+    http_response_code(502);
+    echo json_encode(['error' => 'brevo error', 'status' => $httpCode]);
+}

@@ -1,0 +1,42 @@
+name: Deploy to Production
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check if deploy secrets are configured
+        id: check
+        run: |
+          if [ -z "${{ secrets.OVH_HOST }}" ] || [ -z "${{ secrets.OVH_PROD_DIR }}" ]; then
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+            echo "::notice::Deploy secrets not set (OVH_HOST / OVH_PROD_DIR). This is expected on the unconfigured template repo. Configure them in your forked repo to enable production deploys. See SETUP.md."
+          else
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Clean non-production files
+        if: steps.check.outputs.skip != 'true'
+        run: |
+          rm -rf .git .claude .github .superpowers \
+                 .htaccess-staging robots-staging.txt \
+                 .env.example SETUP.md CLAUDE.md
+          find docs -type f ! -name "*.pdf" -delete 2>/dev/null || true
+          find docs -type d -empty -delete 2>/dev/null || true
+
+      - name: Deploy via SFTP
+        if: steps.check.outputs.skip != 'true'
+        env:
+          LFTP_PASSWORD: ${{ secrets.OVH_PASSWORD }}
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq lftp > /dev/null 2>&1
+          lftp -u "${{ secrets.OVH_USERNAME }}","$LFTP_PASSWORD" \
+            -e "set sftp:auto-confirm yes; set net:timeout 30; set net:max-retries 2; mirror -R --verbose . ${{ secrets.OVH_PROD_DIR }}; quit" \
+            sftp://${{ secrets.OVH_HOST }}

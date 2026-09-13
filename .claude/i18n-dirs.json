@@ -1,0 +1,48 @@
+{
+  "_doc": "Directory name translations used by /start-new-site when the user picks a non-English language. Keys are the English defaults (as shipped), values are per-language replacements. Only add a language here if you want to offer automatic renaming.",
+  "fr": {
+    "about":           "a-propos",
+    "projects":        "projets",
+    "blog":            "blog",
+    "legal":           "mentions-legales",
+    "legal/privacy":   "mentions-legales/confidentialite",
+    "legal/terms":     "mentions-legales/cgu",
+    "legal/cookies":   "mentions-legales/cookies"
+  },
+  "es": {
+    "about":           "acerca",
+    "projects":        "proyectos",
+    "blog":            "blog",
+    "legal":           "legal",
+    "legal/privacy":   "legal/privacidad",
+    "legal/terms":     "legal/terminos",
+    "legal/cookies":   "legal/cookies"
+  },
+  "de": {
+    "about":           "ueber",
+    "projects":        "projekte",
+    "blog":            "blog",
+    "legal":           "rechtliches",
+    "legal/privacy":   "rechtliches/datenschutz",
+    "legal/terms":     "rechtliches/nutzungsbedingungen",
+    "legal/cookies":   "rechtliches/cookies"
+  },
+  "it": {
+    "about":           "chi-sono",
+    "projects":        "progetti",
+    "blog":            "blog",
+    "legal":           "legale",
+    "legal/privacy":   "legale/privacy",
+    "legal/terms":     "legale/termini",
+    "legal/cookies":   "legale/cookie"
+  },
+  "pt": {
+    "about":           "sobre",
+    "projects":        "projetos",
+    "blog":            "blog",
+    "legal":           "legal",
+    "legal/privacy":   "legal/privacidade",
+    "legal/terms":     "legal/termos",
+    "legal/cookies":   "legal/cookies"
+  }
+}

@@ -1,0 +1,67 @@
+name: Deploy to Staging
+
+on:
+  push:
+    branches: [staging]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check if deploy secrets are configured
+        id: check
+        run: |
+          if [ -z "${{ secrets.OVH_HOST }}" ] || [ -z "${{ secrets.STAGING_HTPASSWD_USER }}" ] || [ -z "${{ secrets.OVH_STAGING_HTPASSWD_PATH }}" ]; then
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+            echo "::notice::Deploy secrets not set (OVH_HOST / STAGING_HTPASSWD_USER / OVH_STAGING_HTPASSWD_PATH). This is expected on the unconfigured template repo. Configure them in your forked repo to enable staging deploys. See SETUP.md."
+          else
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Generate .htpasswd from secrets
+        if: steps.check.outputs.skip != 'true'
+        env:
+          USER: ${{ secrets.STAGING_HTPASSWD_USER }}
+          PASS: ${{ secrets.STAGING_HTPASSWD_PASS }}
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq apache2-utils > /dev/null 2>&1
+          htpasswd -cbB .htpasswd "$USER" "$PASS" >/dev/null
+
+      - name: Substitute AuthUserFile path in .htaccess-staging
+        if: steps.check.outputs.skip != 'true'
+        env:
+          HTPASSWD_PATH: ${{ secrets.OVH_STAGING_HTPASSWD_PATH }}
+        run: |
+          python3 -c "
+          import pathlib, os
+          p = pathlib.Path('.htaccess-staging')
+          p.write_text(p.read_text().replace('__HTPASSWD_ABS_PATH__', os.environ['HTPASSWD_PATH']))
+          "
+
+      - name: Prepare staging payload
+        if: steps.check.outputs.skip != 'true'
+        run: |
+          cp robots-staging.txt robots.txt
+          find . -name "*.html" -not -path "./.git/*" -exec sed -i 's/<head>/<head><meta name="robots" content="noindex, nofollow">/' {} \;
+          rm -f sitemap.xml
+          find . -name "*.html" -not -path "./.git/*" -exec sed -i '/<!-- GA_START -->/,/<!-- GA_END -->/d' {} \;
+          cp .htaccess-staging .htaccess
+          rm -rf .git .claude .github .superpowers \
+                 .htaccess-staging robots-staging.txt \
+                 .env.example SETUP.md CLAUDE.md
+          find docs -type f ! -name "*.pdf" -delete 2>/dev/null || true
+          find docs -type d -empty -delete 2>/dev/null || true
+
+      - name: Deploy via SFTP
+        if: steps.check.outputs.skip != 'true'
+        env:
+          LFTP_PASSWORD: ${{ secrets.OVH_PASSWORD }}
+        run: |
+          sudo apt-get install -y -qq lftp > /dev/null 2>&1
+          lftp -u "${{ secrets.OVH_USERNAME }}","$LFTP_PASSWORD" \
+            -e "set sftp:auto-confirm yes; set net:timeout 30; set net:max-retries 2; mirror -R --verbose . ${{ secrets.OVH_STAGING_DIR }}; quit" \
+            sftp://${{ secrets.OVH_HOST }}

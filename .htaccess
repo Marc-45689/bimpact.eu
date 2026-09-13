@@ -1,0 +1,95 @@
+# ═══════════════════════════════════════
+# DIRECTORY LISTING & ERROR PAGES
+# ═══════════════════════════════════════
+Options -Indexes
+ErrorDocument 403 /404.html
+ErrorDocument 404 /404.html
+
+# Noindex for docs/media files (PDFs, etc.)
+<IfModule mod_headers.c>
+    <FilesMatch "\.(pdf)$">
+        Header set X-Robots-Tag "noindex, nofollow"
+    </FilesMatch>
+</IfModule>
+
+# Deny access to sensitive dotfiles (.env, .git, etc.)
+<FilesMatch "^\.">
+    Require all denied
+</FilesMatch>
+
+# ═══════════════════════════════════════
+# CLEAN URLs
+# ═══════════════════════════════════════
+RewriteEngine On
+
+# Force HTTPS
+RewriteCond %{HTTPS} !on
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+# Force non-www canonical (edit for your domain, then uncomment)
+# RewriteCond %{HTTP_HOST} ^www\.example\.com$ [NC]
+# RewriteRule ^ https://example.com%{REQUEST_URI} [R=301,L]
+
+# Redirect .html to clean URLs
+RewriteCond %{THE_REQUEST} \s/(.+)\.html[\s?] [NC]
+RewriteRule ^ /%1 [R=301,L]
+
+# Internal rewrite to serve .html for clean URL
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.+)$ $1.html [L]
+
+# ═══════════════════════════════════════
+# SECURITY HEADERS
+# ═══════════════════════════════════════
+<IfModule mod_headers.c>
+    Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains" env=HTTPS
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=()"
+    Header always set Cross-Origin-Opener-Policy "same-origin-allow-popups"
+
+    # CSP: baseline — modules extend this via /setup-integration.
+    # script-src has no 'unsafe-inline' by default. If you add an inline
+    # <script>, either move it to assets/js/ or add a nonce / hash.
+    # style-src keeps 'unsafe-inline' for inline style="" attributes
+    # used in the starter templates.
+    # CSP:module:baseline
+    Header always set Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self'; frame-src 'self';"
+</IfModule>
+
+# ═══════════════════════════════════════
+# CACHE CONTROL
+# ═══════════════════════════════════════
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/x-icon "access plus 1 year"
+    ExpiresByType font/woff2 "access plus 1 year"
+    ExpiresByType font/woff "access plus 1 year"
+    ExpiresByType application/font-woff2 "access plus 1 year"
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    ExpiresByType text/javascript "access plus 1 month"
+    ExpiresByType text/html "access plus 1 hour"
+</IfModule>
+
+# ═══════════════════════════════════════
+# COMPRESSION
+# ═══════════════════════════════════════
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/css application/javascript text/javascript application/json image/svg+xml
+</IfModule>
+
+# ═══════════════════════════════════════
+# MIME
+# ═══════════════════════════════════════
+<IfModule mod_mime.c>
+    AddType image/webp .webp
+    AddType application/javascript .js
+</IfModule>

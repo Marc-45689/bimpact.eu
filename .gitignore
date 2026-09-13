@@ -1,0 +1,32 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Env
+.env
+.env.local
+.env.*.local
+
+# Node (optional tooling)
+node_modules/
+
+# Internal docs folders — contents gitignored, folder READMEs kept in git.
+docs/inspirations/*
+!docs/inspirations/README.md
+docs/content/*
+!docs/content/README.md
+docs/drafts/*
+!docs/drafts/README.md
+docs/migration/*
+!docs/migration/README.md
+
+# Superpowers ephemeral brainstorm state
+.superpowers/
+
+# Staging artifacts generated locally
+.htpasswd
+.staging-credentials.txt

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[Page title] — Your site</title>
+    <meta name="description" content="[Page 150-char description]">
+    <link rel="canonical" href="https://example.com/[slug]/">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://example.com/[slug]/">
+    <meta property="og:title" content="[Page title]">
+    <meta property="og:description" content="[Page 150-char description]">
+    <meta property="og:image" content="https://example.com/assets/photos/[slug]-cover.webp">
+    <meta property="og:site_name" content="Your site">
+    <meta property="og:locale" content="en_US">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!--
+      Optional: add schema.org JSON-LD per page type, e.g.
+      { "@type": "AboutPage" | "ContactPage" | "Service" | "FAQPage" | … }
+    -->
+
+    <link rel="icon" type="image/svg+xml" href="/logo-principal.svg">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" content="#0D1B2A">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"></noscript>
+
+    <link rel="stylesheet" href="/assets/css/tokens.css">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <!-- Add a page-specific stylesheet here if needed, e.g. /assets/css/[slug].css -->
+</head>
+<body>
+
+<nav>
+    <div class="container">
+        <a href="/" class="nav-logo" aria-label="Home">
+            <img src="/logo-principal.svg" alt="Logo" width="40" height="40">
+        </a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="/about/">About</a></li>
+            <li><a href="/projects/">Projects</a></li>
+            <li><a href="/blog/">Blog</a></li>
+        </ul>
+        <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<main>
+
+    <!-- ═══════════ HERO / HEADER SECTION ═══════════ -->
+    <section style="padding-top: 8rem;">
+        <div class="container">
+            <p class="section-number">[Category]</p>
+            <h1 class="section-title">[Page headline] <em>[highlighted bit]</em></h1>
+            <p style="margin-top: var(--space-sm); color: var(--soft-blue); max-width: 60ch; font-size: var(--fs-md);">
+                [Page intro — one or two sentences.]
+            </p>
+        </div>
+    </section>
+
+    <!-- ═══════════ CONTENT SECTIONS ═══════════
+         Add sections per the outline from /new-page.
+         Prefer existing components from docs/components.md.
+         Any new reusable pattern → add a row to docs/components.md.
+    -->
+
+    <section>
+        <div class="container">
+            <!-- content -->
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <div class="container">
+        <p>© <span id="year">2026</span> Your site</p>
+        <ul class="footer-links">
+            <li><a href="/legal/privacy/">Privacy</a></li>
+            <li><a href="/legal/terms/">Terms</a></li>
+            <li><a href="/legal/cookies/">Cookies</a></li>
+        </ul>
+    </div>
+</footer>
+
+<script src="/assets/js/shared.js" defer></script>
+</body>
+</html>

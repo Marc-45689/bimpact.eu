@@ -1,0 +1,26 @@
+/* ═══════════════════════════════════════
+   PROJECTS
+   projects/index.html and projects/_template-project.html
+   ═══════════════════════════════════════ */
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: var(--space-md);
+    margin-top: var(--space-md);
+}
+
+.project-card {
+    background: var(--midnight-light);
+    border: 1px solid rgba(124, 152, 179, 0.12);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: transform var(--transition);
+}
+.project-card:hover { transform: translateY(-4px); }
+.project-card img {
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    width: 100%;
+}
+.project-card-body { padding: var(--space-sm); }

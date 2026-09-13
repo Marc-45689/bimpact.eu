@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[Article title] — Your site</title>
+    <meta name="description" content="[Article 150-char description]">
+    <link rel="canonical" href="https://example.com/blog/[slug]/">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://example.com/blog/[slug]/">
+    <meta property="og:title" content="[Article title]">
+    <meta property="og:image" content="https://example.com/assets/illustrations-blog/[slug].webp">
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"Article","headline":"[Article title]","datePublished":"[YYYY-MM-DD]","author":{"@type":"Person","name":"[Author]"},"image":"https://example.com/assets/illustrations-blog/[slug].webp","mainEntityOfPage":"https://example.com/blog/[slug]/"}
+    </script>
+    <link rel="icon" type="image/svg+xml" href="/logo-principal.svg">
+    <meta name="theme-color" content="#0D1B2A">
+    <link rel="stylesheet" href="/assets/css/tokens.css">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/blog.css">
+</head>
+<body>
+
+<nav>
+    <div class="container">
+        <a href="/" class="nav-logo"><img src="/logo-principal.svg" alt="Logo" width="40" height="40"></a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="/about/">About</a></li>
+            <li><a href="/projects/">Projects</a></li>
+            <li><a href="/blog/">Blog</a></li>
+        </ul>
+        <button class="nav-hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+</nav>
+
+<main>
+    <article style="padding: 8rem 0 var(--space-xl);">
+        <div class="container" style="max-width: 760px;">
+            <nav class="article-breadcrumb" aria-label="Breadcrumb">
+                <a href="/">Home</a> / <a href="/blog/">Blog</a> / <span>[Article title]</span>
+            </nav>
+            <p class="section-number">[Category]</p>
+            <h1 class="section-title">[Article title]</h1>
+            <p style="color: var(--soft-blue); margin-top: var(--space-sm);">[YYYY-MM-DD] · [N] min read</p>
+            <img src="/assets/illustrations-blog/[slug].webp" alt="[Cover alt text]" width="1200" height="675" loading="eager" style="width:100%; border-radius: var(--radius-lg); margin: var(--space-md) 0;">
+            <p>[Article body. Plan 3 adds component blocks: blockquote, article-callout, code-block, table-wrapper, article-img-*, article-cta-inline, article-faq, podcast player.]</p>
+        </div>
+    </article>
+</main>
+
+<footer>
+    <div class="container">
+        <p>© <span id="year">2026</span> Your site</p>
+        <ul class="footer-links">
+            <li><a href="/legal/privacy/">Privacy</a></li>
+            <li><a href="/legal/terms/">Terms</a></li>
+            <li><a href="/legal/cookies/">Cookies</a></li>
+        </ul>
+    </div>
+</footer>
+
+<script src="/assets/js/shared.js" defer></script>
+</body>
+</html>
