@@ -6,12 +6,12 @@
         <changefreq>weekly</changefreq>
     </url>
     <url>
-        <loc>https://example.com/about/</loc>
+        <loc>https://example.com/a-propos/</loc>
         <priority>0.8</priority>
         <changefreq>monthly</changefreq>
     </url>
     <url>
-        <loc>https://example.com/projects/</loc>
+        <loc>https://example.com/projets/</loc>
         <priority>0.8</priority>
         <changefreq>monthly</changefreq>
     </url>
@@ -21,17 +21,52 @@
         <changefreq>weekly</changefreq>
     </url>
     <url>
-        <loc>https://example.com/legal/privacy/</loc>
+        <loc>https://example.com/mentions-legales/confidentialite/</loc>
         <priority>0.3</priority>
         <changefreq>yearly</changefreq>
     </url>
     <url>
-        <loc>https://example.com/legal/terms/</loc>
+        <loc>https://example.com/mentions-legales/cgu/</loc>
         <priority>0.3</priority>
         <changefreq>yearly</changefreq>
     </url>
     <url>
-        <loc>https://example.com/legal/cookies/</loc>
+        <loc>https://example.com/mentions-legales/cookies/</loc>
+        <priority>0.3</priority>
+        <changefreq>yearly</changefreq>
+    </url>
+    <url>
+        <loc>https://example.com/en/</loc>
+        <priority>0.7</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>https://example.com/en/about/</loc>
+        <priority>0.8</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>https://example.com/en/projects/</loc>
+        <priority>0.8</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>https://example.com/en/blog/</loc>
+        <priority>0.8</priority>
+        <changefreq>weekly</changefreq>
+    </url>
+    <url>
+        <loc>https://example.com/en/legal/privacy/</loc>
+        <priority>0.3</priority>
+        <changefreq>yearly</changefreq>
+    </url>
+    <url>
+        <loc>https://example.com/en/legal/terms/</loc>
+        <priority>0.3</priority>
+        <changefreq>yearly</changefreq>
+    </url>
+    <url>
+        <loc>https://example.com/en/legal/cookies/</loc>
         <priority>0.3</priority>
         <changefreq>yearly</changefreq>
     </url>

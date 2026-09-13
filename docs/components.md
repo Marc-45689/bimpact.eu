@@ -15,6 +15,7 @@ Reusable HTML/CSS patterns. `/new-page` and `/new-section` read this to pick exi
 |---|---|---|
 | Fixed nav | `nav` / `nav.scrolled` | Header with scroll-triggered glass blur |
 | Mobile drawer | `.nav-links.open` | Hamburger-triggered side drawer under 860px |
+| Language switcher | `.nav-lang` | FR/EN links pointing at the current page's exact counterpart (see `CLAUDE.md` — Languages); `.active` marks the current language |
 
 ## CTAs
 

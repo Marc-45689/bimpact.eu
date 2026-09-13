@@ -1,13 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects — Your site</title>
     <meta name="description" content="Selected projects.">
-    <link rel="canonical" href="https://example.com/projects/">
+    <link rel="canonical" href="https://example.com/projets/">
+    <link rel="alternate" hreflang="fr" href="https://example.com/projets/">
+    <link rel="alternate" hreflang="en" href="https://example.com/en/projects/">
+    <link rel="alternate" hreflang="x-default" href="https://example.com/projets/">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://example.com/projects/">
+    <meta property="og:url" content="https://example.com/projets/">
     <meta property="og:title" content="Projects — Your site">
     <link rel="icon" type="image/svg+xml" href="/logo-principal.svg">
     <meta name="theme-color" content="#0B2545">
@@ -21,10 +24,14 @@
     <div class="container">
         <a href="/" class="nav-logo"><img src="/logo-principal.svg" alt="Logo" width="40" height="40"></a>
         <ul class="nav-links" id="navLinks">
-            <li><a href="/about/">About</a></li>
-            <li><a href="/projects/">Projects</a></li>
+            <li><a href="/a-propos/">À propos</a></li>
+            <li><a href="/projets/">Projets</a></li>
             <li><a href="/blog/">Blog</a></li>
         </ul>
+        <div class="nav-lang">
+            <a href="/projets/" hreflang="fr" lang="fr" class="active">FR</a>
+            <a href="/en/projects/" hreflang="en" lang="en">EN</a>
+        </div>
         <button class="nav-hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
 </nav>
@@ -35,7 +42,7 @@
             <p class="section-number">Projects</p>
             <h1 class="section-title">Selected <em>work</em></h1>
             <div class="projects-grid">
-                <a href="/projects/example/" class="project-card">
+                <a href="/projets/example/" class="project-card">
                     <div class="project-card-body">
                         <h2 class="blog-card-title">Example project</h2>
                         <p class="blog-card-meta">One-line summary. Use /new-page "project detail" to add your own.</p>
@@ -50,9 +57,9 @@
     <div class="container">
         <p>© <span id="year">2026</span> Your site</p>
         <ul class="footer-links">
-            <li><a href="/legal/privacy/">Privacy</a></li>
-            <li><a href="/legal/terms/">Terms</a></li>
-            <li><a href="/legal/cookies/">Cookies</a></li>
+            <li><a href="/mentions-legales/confidentialite/">Confidentialité</a></li>
+            <li><a href="/mentions-legales/cgu/">CGU</a></li>
+            <li><a href="/mentions-legales/cookies/">Cookies</a></li>
         </ul>
     </div>
 </footer>

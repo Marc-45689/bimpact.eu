@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cookie policy — Your site</title>
     <meta name="description" content="Cookie policy.">
-    <link rel="canonical" href="https://example.com/legal/cookies/">
+    <link rel="canonical" href="https://example.com/en/legal/cookies/">
+    <link rel="alternate" hreflang="fr" href="https://example.com/mentions-legales/cookies/">
+    <link rel="alternate" hreflang="en" href="https://example.com/en/legal/cookies/">
+    <link rel="alternate" hreflang="x-default" href="https://example.com/mentions-legales/cookies/">
     <meta name="robots" content="index, follow">
     <link rel="icon" type="image/svg+xml" href="/logo-principal.svg">
     <meta name="theme-color" content="#0B2545">
@@ -17,12 +20,16 @@
 
 <nav>
     <div class="container">
-        <a href="/" class="nav-logo"><img src="/logo-principal.svg" alt="Logo" width="40" height="40"></a>
+        <a href="/en/" class="nav-logo"><img src="/logo-principal.svg" alt="Logo" width="40" height="40"></a>
         <ul class="nav-links" id="navLinks">
-            <li><a href="/about/">About</a></li>
-            <li><a href="/projects/">Projects</a></li>
-            <li><a href="/blog/">Blog</a></li>
+            <li><a href="/en/about/">About</a></li>
+            <li><a href="/en/projects/">Projects</a></li>
+            <li><a href="/en/blog/">Blog</a></li>
         </ul>
+        <div class="nav-lang">
+            <a href="/mentions-legales/cookies/" hreflang="fr" lang="fr">FR</a>
+            <a href="/en/legal/cookies/" hreflang="en" lang="en" class="active">EN</a>
+        </div>
         <button class="nav-hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
 </nav>
@@ -52,9 +59,9 @@
     <div class="container">
         <p>© <span id="year">2026</span> Your site</p>
         <ul class="footer-links">
-            <li><a href="/legal/privacy/">Privacy</a></li>
-            <li><a href="/legal/terms/">Terms</a></li>
-            <li><a href="/legal/cookies/">Cookies</a></li>
+            <li><a href="/en/legal/privacy/">Privacy</a></li>
+            <li><a href="/en/legal/terms/">Terms</a></li>
+            <li><a href="/en/legal/cookies/">Cookies</a></li>
         </ul>
     </div>
 </footer>

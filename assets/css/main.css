@@ -124,6 +124,21 @@ nav.scrolled .container {
     border-radius: var(--radius-full);
     font-weight: 600;
 }
+.nav-lang {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    font-family: var(--font-mono);
+    font-size: var(--fs-xs);
+}
+.nav-lang a {
+    color: var(--soft-blue);
+    letter-spacing: 0.04em;
+}
+.nav-lang a.active,
+.nav-lang a:hover {
+    color: var(--accent);
+}
 .nav-hamburger {
     display: none;
     flex-direction: column;

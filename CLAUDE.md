@@ -69,7 +69,10 @@ All commands live in `.claude/commands/`. They load the shared `starter-setup` s
 ## Languages
 
 - Repo, code, comments, docs: English.
-- Generated site content: the language the user chose during `/start-new-site` (see `docs/brand/brand.md` — "Identity" section may state it, or the `lang` attribute in `index.html`). French dir names come from `.claude/i18n-dirs.json`.
+- Site content is bilingual: French at the root (canonical/default, `x-default`), English mirrored under `/en/`. FR directory names come from `.claude/i18n-dirs.json` (`a-propos`, `projets`, `blog`, `mentions-legales/confidentialite|cgu|cookies`); the EN tree mirrors them under `/en/about/`, `/en/projects/`, `/en/blog/`, `/en/legal/privacy|terms|cookies/`.
+- Every page carries reciprocal `<link rel="alternate" hreflang="...">` tags (`fr`, `en`, `x-default`=fr) pointing at its exact counterpart — never just the two homepages. The nav's `.nav-lang` switcher (see `docs/components.md`) links to that same counterpart.
+- New pages: create the FR version, then its `/en/` twin, wire the switcher hrefs both ways, and add the page to `scripts/sitemap-update.py`'s `LOCALES` maps if it introduces a whole new top-level category (not needed for an ordinary page/article/project under an existing category).
+- 404.html is shared and not localized.
 
 ## If asked to do something risky
 
