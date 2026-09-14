@@ -133,7 +133,7 @@ nav .container {
 .nav-wordmark {
     font-family: var(--font-display);
     font-weight: 700;
-    font-size: var(--fs-md);
+    font-size: var(--fs-3xl);
     letter-spacing: -0.01em;
     color: var(--off-white);
 }
@@ -198,7 +198,7 @@ nav .container {
 
 @media (max-width: 420px) {
     .nav-logo img { width: 60px; height: 60px; }
-    .nav-wordmark { font-size: var(--fs-base); }
+    .nav-wordmark { font-size: var(--fs-xl); }
 }
 
 /* ═══════════════════════════════════════
