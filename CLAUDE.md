@@ -83,7 +83,7 @@ All commands live in `.claude/commands/`. They load the shared `starter-setup` s
 - **PHP endpoints** (`api/*.php`) — PHP 8+, load env with `api/_env.php`, restrict CORS to `SITE_URL`, OPTIONS preflight returns 204, POST only, input validated.
 - **Python scripts** (`scripts/*.py`) — Python 3.10+, read secrets from shell env, fail fast if missing, never write secrets to disk.
 - **Shell scripts** (`scripts/*.sh`) — `set -euo pipefail`, quote paths, check required binaries before running.
-- **GitHub Actions** (`.github/workflows/*.yml`) — secrets named `OVH_*` and `STAGING_*`, never echo secret values, never `set -x` inside steps that use secrets.
+- **GitHub Actions** (`.github/workflows/*.yml`) — secrets named `O2SWITCH_*` and `STAGING_*`, never echo secret values, never `set -x` inside steps that use secrets.
 
 ## Languages
 

@@ -8,7 +8,7 @@
 AuthType Basic
 AuthName "Staging — restricted"
 # The absolute path is injected at deploy time by .github/workflows/deploy-staging.yml
-# from the OVH_STAGING_HTPASSWD_PATH secret. Do not edit manually.
+# from the O2SWITCH_STAGING_HTPASSWD_PATH secret. Do not edit manually.
 AuthUserFile __HTPASSWD_ABS_PATH__
 Require valid-user
 

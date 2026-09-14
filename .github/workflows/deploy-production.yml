@@ -14,9 +14,9 @@ jobs:
       - name: Check if deploy secrets are configured
         id: check
         run: |
-          if [ -z "${{ secrets.OVH_HOST }}" ] || [ -z "${{ secrets.OVH_PROD_DIR }}" ]; then
+          if [ -z "${{ secrets.O2SWITCH_HOST }}" ] || [ -z "${{ secrets.O2SWITCH_PROD_DIR }}" ]; then
             echo "skip=true" >> "$GITHUB_OUTPUT"
-            echo "::notice::Deploy secrets not set (OVH_HOST / OVH_PROD_DIR). This is expected on the unconfigured template repo. Configure them in your forked repo to enable production deploys. See SETUP.md."
+            echo "::notice::Deploy secrets not set (O2SWITCH_HOST / O2SWITCH_PROD_DIR). This is expected on the unconfigured template repo. Configure them in your forked repo to enable production deploys. See SETUP.md."
           else
             echo "skip=false" >> "$GITHUB_OUTPUT"
           fi
@@ -33,10 +33,10 @@ jobs:
       - name: Deploy via SFTP
         if: steps.check.outputs.skip != 'true'
         env:
-          LFTP_PASSWORD: ${{ secrets.OVH_PASSWORD }}
+          LFTP_PASSWORD: ${{ secrets.O2SWITCH_PASSWORD }}
         run: |
           sudo apt-get update -qq
           sudo apt-get install -y -qq lftp > /dev/null 2>&1
-          lftp -u "${{ secrets.OVH_USERNAME }}","$LFTP_PASSWORD" \
-            -e "set sftp:auto-confirm yes; set net:timeout 30; set net:max-retries 2; mirror -R --verbose . ${{ secrets.OVH_PROD_DIR }}; quit" \
-            sftp://${{ secrets.OVH_HOST }}
+          lftp -u "${{ secrets.O2SWITCH_USERNAME }}","$LFTP_PASSWORD" \
+            -e "set sftp:auto-confirm yes; set net:timeout 30; set net:max-retries 2; mirror -R --verbose . ${{ secrets.O2SWITCH_PROD_DIR }}; quit" \
+            sftp://${{ secrets.O2SWITCH_HOST }}

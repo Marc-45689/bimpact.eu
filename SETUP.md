@@ -24,11 +24,11 @@ Mirrors what `/start-new-site` does, for users who prefer manual setup or want t
 
 ## Step 3 — SFTP secrets
 
-    gh secret set OVH_HOST --body "sftp.host.example"
-    gh secret set OVH_USERNAME --body "..."
-    gh secret set OVH_PASSWORD --body "..."
-    gh secret set OVH_PROD_DIR --body "/www/"
-    gh secret set OVH_STAGING_DIR --body "/staging/"
+    gh secret set O2SWITCH_HOST --body "sftp.host.example"
+    gh secret set O2SWITCH_USERNAME --body "..."
+    gh secret set O2SWITCH_PASSWORD --body "..."
+    gh secret set O2SWITCH_PROD_DIR --body "/www/"
+    gh secret set O2SWITCH_STAGING_DIR --body "/staging/"
 
 ## Step 4 — Staging auth
 

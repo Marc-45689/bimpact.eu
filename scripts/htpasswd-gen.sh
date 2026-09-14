@@ -12,7 +12,7 @@
 #   3. Configure GitHub Actions secrets:
 #        gh secret set STAGING_HTPASSWD_USER --body "<user>"
 #        gh secret set STAGING_HTPASSWD_PASS      # reads stdin, paste the password
-#        gh secret set OVH_STAGING_HTPASSWD_PATH --body "/absolute/path/to/staging/.htpasswd"
+#        gh secret set O2SWITCH_STAGING_HTPASSWD_PATH --body "/absolute/path/to/staging/.htpasswd"
 #   4. Push to staging — the workflow will generate .htpasswd on the server.
 # ═══════════════════════════════════════
 
@@ -40,7 +40,7 @@ NEXT STEPS
   3. Set the GitHub Actions secrets:
        gh secret set STAGING_HTPASSWD_USER --body "$USER"
        gh secret set STAGING_HTPASSWD_PASS     # paste the password when prompted (no --body flag)
-       gh secret set OVH_STAGING_HTPASSWD_PATH --body "/absolute/server/path/to/staging/.htpasswd"
+       gh secret set O2SWITCH_STAGING_HTPASSWD_PATH --body "/absolute/server/path/to/staging/.htpasswd"
   4. Push to staging. The workflow generates .htpasswd on the server automatically.
 
 The password was intentionally NOT printed here to keep it out of shell history
