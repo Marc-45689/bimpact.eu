@@ -6,7 +6,8 @@ Log of Claude Code tools installed on this project. Updated by the setup wizard 
 
 | Tool | Type | Installed | Status | Notes |
 |---|---|---|---|---|
-| _none yet_ | | | | |
+| UI/UX Pro Max | Skill | 2026-09-14 | active | Sparse-cloned `.claude/skills/ui-ux-pro-max/` (data + scripts + SKILL.md only) from `nextlevelbuilder/ui-ux-pro-max-skill` — no nested `.git`, no bundled `cli/`/`gallery`/fonts/extra skills. |
+| Magnific (claude.ai connector) | MCP | 2026-09-14 | active | Account-level MCP (`mcp.magnific.com`), authenticated via `/mcp`. Not project-scoped — available in any Claude Code session on this account. Image/video/audio/3D generation. |
 
 ## Reference
 
