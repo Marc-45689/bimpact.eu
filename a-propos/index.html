@@ -3,25 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About — Your site</title>
-    <meta name="description" content="About page placeholder.">
-    <link rel="canonical" href="https://example.com/a-propos/">
-    <link rel="alternate" hreflang="fr" href="https://example.com/a-propos/">
-    <link rel="alternate" hreflang="en" href="https://example.com/en/about/">
-    <link rel="alternate" hreflang="x-default" href="https://example.com/a-propos/">
+    <title>BIMpact : chargé d'études technique CFO-CFA</title>
+    <meta name="description" content="Chargé d'études technique en CFO-CFA, plus de 4 ans d'expérience en bureau d'études. BIMpact met son expertise BIM au service de vos projets Revit et AutoCAD.">
+    <link rel="canonical" href="https://bimpact.eu/a-propos/">
+    <link rel="alternate" hreflang="fr" href="https://bimpact.eu/a-propos/">
+    <link rel="alternate" hreflang="en" href="https://bimpact.eu/en/about/">
+    <link rel="alternate" hreflang="x-default" href="https://bimpact.eu/a-propos/">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://example.com/a-propos/">
-    <meta property="og:title" content="About — Your site">
+    <meta property="og:url" content="https://bimpact.eu/a-propos/">
+    <meta property="og:title" content="BIMpact : chargé d'études technique CFO-CFA">
+    <meta property="og:description" content="Chargé d'études technique en CFO-CFA, plus de 4 ans d'expérience en bureau d'études. BIMpact met son expertise BIM au service de vos projets Revit et AutoCAD.">
+    <meta property="og:site_name" content="BIMpact">
+    <meta property="og:locale" content="fr_FR">
     <link rel="icon" type="image/svg+xml" href="/logo-principal.svg">
     <meta name="theme-color" content="#16283E">
+    <!-- GA_START -->
+    <script src="/assets/js/analytics.js" defer></script>
+    <!-- GA_END -->
     <link rel="stylesheet" href="/assets/css/tokens.css">
     <link rel="stylesheet" href="/assets/css/main.css">
 </head>
 <body>
+<div class="cookie-banner" id="cookieBanner" hidden>
+    <div class="container cookie-banner-inner">
+        <p>Ce site utilise Google Analytics pour mesurer l'audience, avec votre accord. <a href="/mentions-legales/cookies/">En savoir plus</a>.</p>
+        <div class="cookie-banner-actions">
+            <button type="button" id="cookieRefuse" class="btn-secondary">Refuser</button>
+            <button type="button" id="cookieAccept" class="btn-primary">Accepter</button>
+        </div>
+    </div>
+</div>
 
 <nav>
     <div class="container">
-        <a href="/" class="nav-logo"><img src="/logo-principal.svg" alt="Logo" width="60" height="60" loading="eager"><span class="nav-wordmark">BIM<em>pact</em></span></a>
+        <a href="/" class="nav-logo"><img src="/logo-principal.svg" alt="Logo" width="90" height="90" loading="eager"><span class="nav-wordmark">BIM<em>pact</em></span></a>
         <ul class="nav-links" id="navLinks">
             <li><a href="/a-propos/">À propos</a></li>
             <li><a href="/projets/">Projets</a></li>
@@ -38,24 +53,35 @@
 <main>
     <section style="padding-top: 8rem;">
         <div class="container">
-            <p class="section-number">About</p>
-            <h1 class="section-title">Your story <em>goes here</em></h1>
-            <p style="margin-top: var(--space-sm); color: var(--soft-blue); max-width: 60ch;">Replace this placeholder with your about copy.</p>
+            <p class="section-number">À propos</p>
+            <h1 class="section-title">Chargé d'études technique en <em>CFO-CFA</em></h1>
+            <p class="lead">Je mets mon expertise du BIM au service de vos projets, de l'esquisse à la maquette de synthèse.</p>
+            <p style="margin-top: var(--space-sm); max-width: 60ch;">Fort de plus de 4 ans d'expérience en bureau d'études, je maîtrise la conception de plans et maquettes techniques précis et détaillés. BIMpact vous accompagne dans la phase d'exécution de votre projet.</p>
+            <div class="tag-row">
+                <span class="tag">Revit</span>
+                <span class="tag">AutoCAD</span>
+            </div>
+            <div style="display: flex; gap: var(--space-sm); flex-wrap: wrap; margin-top: var(--space-md);">
+                <a href="/projets/" class="btn-primary">Voir les projets</a>
+                <a href="/#contact" class="btn-secondary">Me contacter</a>
+            </div>
         </div>
     </section>
 </main>
 
 <footer>
     <div class="container">
-        <p>© <span id="year">2026</span> Your site</p>
+        <p>© <span id="year">2026</span> BIMpact</p>
         <ul class="footer-links">
             <li><a href="/mentions-legales/confidentialite/">Confidentialité</a></li>
             <li><a href="/mentions-legales/cgu/">CGU</a></li>
             <li><a href="/mentions-legales/cookies/">Cookies</a></li>
+            <li><button type="button" class="footer-cookie-link" id="cookieManage">Gérer les cookies</button></li>
         </ul>
     </div>
 </footer>
 
+<script src="/assets/js/cookie-consent.js" defer></script>
 <script src="/assets/js/shared.js" defer></script>
 </body>
 </html>

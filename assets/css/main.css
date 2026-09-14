@@ -44,6 +44,30 @@ button { font-family: inherit; border: none; background: none; color: inherit; c
 .accent { color: var(--accent); }
 .soft   { color: var(--soft-blue); }
 
+.lead {
+    font-size: var(--fs-md);
+    color: var(--soft-blue);
+    max-width: 60ch;
+    margin-top: var(--space-sm);
+}
+
+.tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+    margin-top: var(--space-sm);
+}
+.tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.3rem 0.8rem;
+    border: 1px solid var(--light-blue);
+    border-radius: var(--radius-full);
+    font-family: var(--font-mono);
+    font-size: var(--fs-xs);
+    color: var(--deep-blue);
+}
+
 .reveal {
     opacity: 0;
     transform: translateY(30px);
@@ -173,7 +197,7 @@ nav .container {
 }
 
 @media (max-width: 420px) {
-    .nav-logo img { width: 40px; height: 40px; }
+    .nav-logo img { width: 60px; height: 60px; }
     .nav-wordmark { font-size: var(--fs-base); }
 }
 
@@ -220,6 +244,37 @@ footer .container {
 }
 footer a:hover { color: var(--accent); }
 .footer-links { display: flex; gap: var(--space-sm); list-style: none; flex-wrap: wrap; }
+.footer-cookie-link { font-size: var(--fs-sm); color: inherit; }
+.footer-cookie-link:hover { color: var(--accent); }
+
+/* ═══════════════════════════════════════
+   COOKIE CONSENT BANNER
+   ═══════════════════════════════════════ */
+.cookie-banner {
+    position: fixed;
+    left: 0; right: 0; bottom: 0;
+    z-index: 200;
+    background: var(--midnight);
+    border-top: 1px solid var(--soft-blue-dim);
+    padding: var(--space-sm) 0;
+}
+.cookie-banner-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+}
+.cookie-banner p {
+    margin: 0;
+    max-width: 60ch;
+    font-size: var(--fs-sm);
+    color: var(--light-blue);
+}
+.cookie-banner p a { color: var(--accent); }
+.cookie-banner-actions { display: flex; gap: var(--space-xs); flex-shrink: 0; }
+.cookie-banner .btn-secondary { color: var(--off-white); border-color: var(--soft-blue); }
+.cookie-banner .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
 
 /* ═══════════════════════════════════════
    REDUCED MOTION

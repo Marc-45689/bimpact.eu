@@ -18,15 +18,27 @@
     </script>
     <link rel="icon" type="image/svg+xml" href="/logo-principal.svg">
     <meta name="theme-color" content="#16283E">
+    <!-- GA_START -->
+    <script src="/assets/js/analytics.js" defer></script>
+    <!-- GA_END -->
     <link rel="stylesheet" href="/assets/css/tokens.css">
     <link rel="stylesheet" href="/assets/css/main.css">
     <link rel="stylesheet" href="/assets/css/blog.css">
 </head>
 <body>
+<div class="cookie-banner" id="cookieBanner" hidden>
+    <div class="container cookie-banner-inner">
+        <p>This site uses Google Analytics to measure audience, with your consent. <a href="/en/legal/cookies/">Learn more</a>.</p>
+        <div class="cookie-banner-actions">
+            <button type="button" id="cookieRefuse" class="btn-secondary">Refuse</button>
+            <button type="button" id="cookieAccept" class="btn-primary">Accept</button>
+        </div>
+    </div>
+</div>
 
 <nav>
     <div class="container">
-        <a href="/en/" class="nav-logo"><img src="/logo-principal.svg" alt="Logo" width="60" height="60" loading="eager"><span class="nav-wordmark">BIM<em>pact</em></span></a>
+        <a href="/en/" class="nav-logo"><img src="/logo-principal.svg" alt="Logo" width="90" height="90" loading="eager"><span class="nav-wordmark">BIM<em>pact</em></span></a>
         <ul class="nav-links" id="navLinks">
             <li><a href="/en/about/">About</a></li>
             <li><a href="/en/projects/">Projects</a></li>
@@ -62,10 +74,12 @@
             <li><a href="/en/legal/privacy/">Privacy</a></li>
             <li><a href="/en/legal/terms/">Terms</a></li>
             <li><a href="/en/legal/cookies/">Cookies</a></li>
+            <li><button type="button" class="footer-cookie-link" id="cookieManage">Manage cookies</button></li>
         </ul>
     </div>
 </footer>
 
+<script src="/assets/js/cookie-consent.js" defer></script>
 <script src="/assets/js/shared.js" defer></script>
 </body>
 </html>

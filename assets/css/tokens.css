@@ -33,7 +33,7 @@
     --fs-lg:         1.5rem;
     --fs-xl:         2rem;
     --fs-2xl:        clamp(2rem, 4vw, 3.2rem);
-    --fs-hero:       clamp(2.5rem, 6vw, 5rem);
+    --fs-hero:       clamp(2.25rem, 5vw, 4.25rem);
 
     /* Spacing scale */
     --space-xs:      0.5rem;

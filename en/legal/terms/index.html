@@ -3,24 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Terms of use — Your site</title>
-    <meta name="description" content="Terms of use.">
-    <link rel="canonical" href="https://example.com/en/legal/terms/">
-    <link rel="alternate" hreflang="fr" href="https://example.com/mentions-legales/cgu/">
-    <link rel="alternate" hreflang="en" href="https://example.com/en/legal/terms/">
-    <link rel="alternate" hreflang="x-default" href="https://example.com/mentions-legales/cgu/">
+    <title>BIMpact: legal notice and terms of use</title>
+    <meta name="description" content="Legal notice, publisher identification and terms of use for the BIMpact website.">
+    <link rel="canonical" href="https://bimpact.eu/en/legal/terms/">
+    <link rel="alternate" hreflang="fr" href="https://bimpact.eu/mentions-legales/cgu/">
+    <link rel="alternate" hreflang="en" href="https://bimpact.eu/en/legal/terms/">
+    <link rel="alternate" hreflang="x-default" href="https://bimpact.eu/mentions-legales/cgu/">
     <meta name="robots" content="index, follow">
     <link rel="icon" type="image/svg+xml" href="/logo-principal.svg">
     <meta name="theme-color" content="#16283E">
+    <!-- GA_START -->
+    <script src="/assets/js/analytics.js" defer></script>
+    <!-- GA_END -->
     <link rel="stylesheet" href="/assets/css/tokens.css">
     <link rel="stylesheet" href="/assets/css/main.css">
     <link rel="stylesheet" href="/assets/css/legal.css">
 </head>
 <body>
+<div class="cookie-banner" id="cookieBanner" hidden>
+    <div class="container cookie-banner-inner">
+        <p>This site uses Google Analytics to measure audience, with your consent. <a href="/en/legal/cookies/">Learn more</a>.</p>
+        <div class="cookie-banner-actions">
+            <button type="button" id="cookieRefuse" class="btn-secondary">Refuse</button>
+            <button type="button" id="cookieAccept" class="btn-primary">Accept</button>
+        </div>
+    </div>
+</div>
 
 <nav>
     <div class="container">
-        <a href="/en/" class="nav-logo"><img src="/logo-principal.svg" alt="Logo" width="60" height="60" loading="eager"><span class="nav-wordmark">BIM<em>pact</em></span></a>
+        <a href="/en/" class="nav-logo"><img src="/logo-principal.svg" alt="Logo" width="90" height="90" loading="eager"><span class="nav-wordmark">BIM<em>pact</em></span></a>
         <ul class="nav-links" id="navLinks">
             <li><a href="/en/about/">About</a></li>
             <li><a href="/en/projects/">Projects</a></li>
@@ -35,39 +47,56 @@
 </nav>
 
 <main class="legal-content">
-    <h1>Terms of use</h1>
-    <p>Last updated: [YYYY-MM-DD]</p>
+    <h1>Legal notice &amp; terms of use</h1>
+    <p>Last updated: September 14, 2026</p>
+
+    <h2>Website publisher</h2>
+    <p>BIMpact is the professional activity of Marc Forner, sole trader (micro-entreprise).</p>
+    <ul>
+        <li>Address: 106 avenue Saint-Laurent, 06520 Grasse, France</li>
+        <li>SIRET: 880 200 423 00031</li>
+        <li>APE code: 71.12B (Engineering, technical studies)</li>
+        <li>VAT not applicable, article 293 B of the French General Tax Code</li>
+        <li>Email: <a href="mailto:xxxxxx@bimpact.eu">xxxxxx@bimpact.eu</a></li>
+        <li>Publication director: Marc Forner</li>
+    </ul>
+
+    <h2>Hosting</h2>
+    <p>OVH SAS, 2 rue Kellermann, 59100 Roubaix, France.</p>
 
     <h2>1. Acceptance</h2>
-    <p>By using this site, you agree to these terms.</p>
+    <p>Using this site implies full acceptance of these terms of use.</p>
 
-    <h2>2. Use of content</h2>
-    <p>Describe permitted and prohibited uses.</p>
+    <h2>2. Purpose of the site</h2>
+    <p>This site presents the BIM modeling services for electrical lots offered by BIMpact. It is not an online contracting offer: any engagement is subject to a quote and a prior agreement between the parties.</p>
 
     <h2>3. Intellectual property</h2>
-    <p>Describe ownership of content, logos, trademarks.</p>
+    <p>The content of this site (text, illustrations, logo) belongs to BIMpact, unless stated otherwise, and may not be reproduced without permission.</p>
+    <p>Drawings, models and deliverables produced as part of an engagement remain governed by the terms agreed with each client; this site does not alter them.</p>
 
     <h2>4. Liability</h2>
-    <p>Describe limits of liability.</p>
+    <p>BIMpact takes care to keep the information on this site accurate, without guaranteeing the absence of errors or interruptions. Use of the site is at the user's own risk.</p>
 
     <h2>5. Governing law</h2>
-    <p>Describe the governing jurisdiction.</p>
+    <p>These terms are governed by French law. Any dispute falls under the jurisdiction of the competent courts of Grasse, failing an amicable agreement.</p>
 
     <h2>6. Contact</h2>
-    <p>Email: [contact@example.com]</p>
+    <p>Email: <a href="mailto:xxxxxx@bimpact.eu">xxxxxx@bimpact.eu</a></p>
 </main>
 
 <footer>
     <div class="container">
-        <p>© <span id="year">2026</span> Your site</p>
+        <p>© <span id="year">2026</span> BIMpact</p>
         <ul class="footer-links">
             <li><a href="/en/legal/privacy/">Privacy</a></li>
             <li><a href="/en/legal/terms/">Terms</a></li>
             <li><a href="/en/legal/cookies/">Cookies</a></li>
+            <li><button type="button" class="footer-cookie-link" id="cookieManage">Manage cookies</button></li>
         </ul>
     </div>
 </footer>
 
+<script src="/assets/js/cookie-consent.js" defer></script>
 <script src="/assets/js/shared.js" defer></script>
 </body>
 </html>

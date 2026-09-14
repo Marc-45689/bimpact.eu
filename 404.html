@@ -7,16 +7,29 @@
     <meta name="robots" content="noindex">
     <link rel="icon" type="image/svg+xml" href="/logo-principal.svg">
     <meta name="theme-color" content="#16283E">
+    <!-- GA_START -->
+    <script src="/assets/js/analytics.js" defer></script>
+    <!-- GA_END -->
     <link rel="stylesheet" href="/assets/css/tokens.css">
     <link rel="stylesheet" href="/assets/css/main.css">
     <link rel="stylesheet" href="/assets/css/404.css">
 </head>
 <body>
+<div class="cookie-banner" id="cookieBanner" hidden>
+    <div class="container cookie-banner-inner">
+        <p>Ce site utilise Google Analytics pour mesurer l'audience, avec votre accord. <a href="/mentions-legales/cookies/">En savoir plus</a>.</p>
+        <div class="cookie-banner-actions">
+            <button type="button" id="cookieRefuse" class="btn-secondary">Refuser</button>
+            <button type="button" id="cookieAccept" class="btn-primary">Accepter</button>
+        </div>
+    </div>
+</div>
     <main class="error-wrap">
         <p class="error-code">404</p>
         <h1 class="error-title">Page not found</h1>
         <p class="error-desc">The page you're looking for doesn't exist or has been moved.</p>
         <a href="/" class="btn-primary">Back to home</a>
     </main>
+<script src="/assets/js/cookie-consent.js" defer></script>
 </body>
 </html>

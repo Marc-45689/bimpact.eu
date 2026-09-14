@@ -3,24 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cookie policy — Your site</title>
-    <meta name="description" content="Cookie policy.">
-    <link rel="canonical" href="https://example.com/en/legal/cookies/">
-    <link rel="alternate" hreflang="fr" href="https://example.com/mentions-legales/cookies/">
-    <link rel="alternate" hreflang="en" href="https://example.com/en/legal/cookies/">
-    <link rel="alternate" hreflang="x-default" href="https://example.com/mentions-legales/cookies/">
+    <title>BIMpact: cookie policy</title>
+    <meta name="description" content="The BIMpact website uses Google Analytics (GA4), only with your prior consent. Details of the cookies set.">
+    <link rel="canonical" href="https://bimpact.eu/en/legal/cookies/">
+    <link rel="alternate" hreflang="fr" href="https://bimpact.eu/mentions-legales/cookies/">
+    <link rel="alternate" hreflang="en" href="https://bimpact.eu/en/legal/cookies/">
+    <link rel="alternate" hreflang="x-default" href="https://bimpact.eu/mentions-legales/cookies/">
     <meta name="robots" content="index, follow">
     <link rel="icon" type="image/svg+xml" href="/logo-principal.svg">
     <meta name="theme-color" content="#16283E">
+    <!-- GA_START -->
+    <script src="/assets/js/analytics.js" defer></script>
+    <!-- GA_END -->
     <link rel="stylesheet" href="/assets/css/tokens.css">
     <link rel="stylesheet" href="/assets/css/main.css">
     <link rel="stylesheet" href="/assets/css/legal.css">
 </head>
 <body>
+<div class="cookie-banner" id="cookieBanner" hidden>
+    <div class="container cookie-banner-inner">
+        <p>This site uses Google Analytics to measure audience, with your consent. <a href="/en/legal/cookies/">Learn more</a>.</p>
+        <div class="cookie-banner-actions">
+            <button type="button" id="cookieRefuse" class="btn-secondary">Refuse</button>
+            <button type="button" id="cookieAccept" class="btn-primary">Accept</button>
+        </div>
+    </div>
+</div>
 
 <nav>
     <div class="container">
-        <a href="/en/" class="nav-logo"><img src="/logo-principal.svg" alt="Logo" width="60" height="60" loading="eager"><span class="nav-wordmark">BIM<em>pact</em></span></a>
+        <a href="/en/" class="nav-logo"><img src="/logo-principal.svg" alt="Logo" width="90" height="90" loading="eager"><span class="nav-wordmark">BIM<em>pact</em></span></a>
         <ul class="nav-links" id="navLinks">
             <li><a href="/en/about/">About</a></li>
             <li><a href="/en/projects/">Projects</a></li>
@@ -36,36 +48,39 @@
 
 <main class="legal-content">
     <h1>Cookie policy</h1>
-    <p>Last updated: [YYYY-MM-DD]</p>
+    <p>Last updated: September 14, 2026</p>
 
-    <h2>1. What are cookies</h2>
-    <p>Small text files stored in your browser by websites you visit.</p>
+    <h2>1. What is a cookie</h2>
+    <p>A cookie is a small text file placed by a website in your browser, used for example to measure how the site is used.</p>
 
-    <h2>2. Cookies we use</h2>
+    <h2>2. Cookies used on this site</h2>
+    <p>This site only uses Google Analytics (GA4), to measure audience (pages viewed, visit sources). These cookies are only set after you consent:</p>
     <ul>
-        <li><strong>Strictly necessary:</strong> required for the site to function.</li>
-        <li><strong>Analytics:</strong> placed only after your consent.</li>
-        <li><strong>Marketing:</strong> placed only after your consent.</li>
+        <li><strong>_ga</strong>: distinguishes visitors, kept for 13 months, set by Google.</li>
+        <li><strong>_ga_&lt;id&gt;</strong>: persists session state, kept for 13 months, set by Google.</li>
     </ul>
+    <p>This site sets no other cookies (no advertising, no social media).</p>
 
-    <h2>3. How to opt out</h2>
-    <p>You can withdraw consent anytime through the cookie banner or your browser settings.</p>
+    <h2>3. Your choice</h2>
+    <p>A banner offers to accept or refuse these cookies on your first visit. You can change your mind at any time via the "Manage cookies" button in the footer.</p>
 
     <h2>4. Contact</h2>
-    <p>Email: [contact@example.com]</p>
+    <p>Email: <a href="mailto:xxxxxx@bimpact.eu">xxxxxx@bimpact.eu</a></p>
 </main>
 
 <footer>
     <div class="container">
-        <p>© <span id="year">2026</span> Your site</p>
+        <p>© <span id="year">2026</span> BIMpact</p>
         <ul class="footer-links">
             <li><a href="/en/legal/privacy/">Privacy</a></li>
             <li><a href="/en/legal/terms/">Terms</a></li>
             <li><a href="/en/legal/cookies/">Cookies</a></li>
+            <li><button type="button" class="footer-cookie-link" id="cookieManage">Manage cookies</button></li>
         </ul>
     </div>
 </footer>
 
+<script src="/assets/js/cookie-consent.js" defer></script>
 <script src="/assets/js/shared.js" defer></script>
 </body>
 </html>

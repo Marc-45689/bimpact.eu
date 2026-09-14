@@ -3,24 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy policy — Your site</title>
-    <meta name="description" content="Privacy policy.">
-    <link rel="canonical" href="https://example.com/en/legal/privacy/">
-    <link rel="alternate" hreflang="fr" href="https://example.com/mentions-legales/confidentialite/">
-    <link rel="alternate" hreflang="en" href="https://example.com/en/legal/privacy/">
-    <link rel="alternate" hreflang="x-default" href="https://example.com/mentions-legales/confidentialite/">
+    <title>BIMpact: privacy policy</title>
+    <meta name="description" content="Privacy policy for the BIMpact website: data collected, legal basis, GDPR rights and contact.">
+    <link rel="canonical" href="https://bimpact.eu/en/legal/privacy/">
+    <link rel="alternate" hreflang="fr" href="https://bimpact.eu/mentions-legales/confidentialite/">
+    <link rel="alternate" hreflang="en" href="https://bimpact.eu/en/legal/privacy/">
+    <link rel="alternate" hreflang="x-default" href="https://bimpact.eu/mentions-legales/confidentialite/">
     <meta name="robots" content="index, follow">
     <link rel="icon" type="image/svg+xml" href="/logo-principal.svg">
     <meta name="theme-color" content="#16283E">
+    <!-- GA_START -->
+    <script src="/assets/js/analytics.js" defer></script>
+    <!-- GA_END -->
     <link rel="stylesheet" href="/assets/css/tokens.css">
     <link rel="stylesheet" href="/assets/css/main.css">
     <link rel="stylesheet" href="/assets/css/legal.css">
 </head>
 <body>
+<div class="cookie-banner" id="cookieBanner" hidden>
+    <div class="container cookie-banner-inner">
+        <p>This site uses Google Analytics to measure audience, with your consent. <a href="/en/legal/cookies/">Learn more</a>.</p>
+        <div class="cookie-banner-actions">
+            <button type="button" id="cookieRefuse" class="btn-secondary">Refuse</button>
+            <button type="button" id="cookieAccept" class="btn-primary">Accept</button>
+        </div>
+    </div>
+</div>
 
 <nav>
     <div class="container">
-        <a href="/en/" class="nav-logo"><img src="/logo-principal.svg" alt="Logo" width="60" height="60" loading="eager"><span class="nav-wordmark">BIM<em>pact</em></span></a>
+        <a href="/en/" class="nav-logo"><img src="/logo-principal.svg" alt="Logo" width="90" height="90" loading="eager"><span class="nav-wordmark">BIM<em>pact</em></span></a>
         <ul class="nav-links" id="navLinks">
             <li><a href="/en/about/">About</a></li>
             <li><a href="/en/projects/">Projects</a></li>
@@ -36,38 +48,41 @@
 
 <main class="legal-content">
     <h1>Privacy policy</h1>
-    <p>Last updated: [YYYY-MM-DD]</p>
+    <p>Last updated: September 14, 2026</p>
 
-    <h2>1. Data we collect</h2>
-    <p>Replace with a plain-language description of what you collect, how, and why.</p>
+    <h2>1. Data controller</h2>
+    <p>Marc Forner (BIMpact), 106 avenue Saint-Laurent, 06520 Grasse, France. Contact: <a href="mailto:xxxxxx@bimpact.eu">xxxxxx@bimpact.eu</a>.</p>
 
-    <h2>2. Cookies</h2>
-    <p>See our <a href="/en/legal/cookies/">cookie policy</a>.</p>
+    <h2>2. Data collected</h2>
+    <p>This site has no form. With your consent, it uses Google Analytics (GA4) to measure audience (pages viewed, visit sources, device type).</p>
+    <p>If you contact us by email or phone, the information you provide (name, contact details, message content) is used only to answer your request, and is never shared or used for any other purpose.</p>
 
-    <h2>3. Your rights (GDPR)</h2>
-    <ul>
-        <li>Access</li>
-        <li>Rectification</li>
-        <li>Erasure</li>
-        <li>Portability</li>
-        <li>Objection</li>
-    </ul>
+    <h2>3. Cookies</h2>
+    <p>This site sets audience-measurement cookies (Google Analytics) only after you consent; you can refuse or change your mind at any time via the "Manage cookies" button in the footer. This data is processed by Google LLC, which adheres to the EU-U.S. Data Privacy Framework for transfers outside the European Union. See our <a href="/en/legal/cookies/">cookie policy</a>.</p>
 
-    <h2>4. Contact</h2>
-    <p>Email: [contact@example.com]</p>
+    <h2>4. Retention period</h2>
+    <p>Email exchanges are kept for as long as needed to handle your request, then archived or deleted.</p>
+
+    <h2>5. Your rights (GDPR)</h2>
+    <p>Under the General Data Protection Regulation, you have the right to access, rectify, erase, restrict, object to, and port your data. To exercise it, contact <a href="mailto:xxxxxx@bimpact.eu">xxxxxx@bimpact.eu</a>.</p>
+
+    <h2>6. Contact</h2>
+    <p>Email: <a href="mailto:xxxxxx@bimpact.eu">xxxxxx@bimpact.eu</a></p>
 </main>
 
 <footer>
     <div class="container">
-        <p>© <span id="year">2026</span> Your site</p>
+        <p>© <span id="year">2026</span> BIMpact</p>
         <ul class="footer-links">
             <li><a href="/en/legal/privacy/">Privacy</a></li>
             <li><a href="/en/legal/terms/">Terms</a></li>
             <li><a href="/en/legal/cookies/">Cookies</a></li>
+            <li><button type="button" class="footer-cookie-link" id="cookieManage">Manage cookies</button></li>
         </ul>
     </div>
 </footer>
 
+<script src="/assets/js/cookie-consent.js" defer></script>
 <script src="/assets/js/shared.js" defer></script>
 </body>
 </html>

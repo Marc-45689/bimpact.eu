@@ -1,72 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <loc>https://example.com/</loc>
+        <loc>https://bimpact.eu/</loc>
         <priority>1.0</priority>
         <changefreq>weekly</changefreq>
     </url>
     <url>
-        <loc>https://example.com/a-propos/</loc>
+        <loc>https://bimpact.eu/a-propos/</loc>
         <priority>0.8</priority>
         <changefreq>monthly</changefreq>
     </url>
     <url>
-        <loc>https://example.com/projets/</loc>
+        <loc>https://bimpact.eu/projets/</loc>
         <priority>0.8</priority>
         <changefreq>monthly</changefreq>
     </url>
     <url>
-        <loc>https://example.com/blog/</loc>
+        <loc>https://bimpact.eu/blog/</loc>
         <priority>0.8</priority>
         <changefreq>weekly</changefreq>
     </url>
     <url>
-        <loc>https://example.com/mentions-legales/confidentialite/</loc>
+        <loc>https://bimpact.eu/mentions-legales/confidentialite/</loc>
         <priority>0.3</priority>
         <changefreq>yearly</changefreq>
     </url>
     <url>
-        <loc>https://example.com/mentions-legales/cgu/</loc>
+        <loc>https://bimpact.eu/mentions-legales/cgu/</loc>
         <priority>0.3</priority>
         <changefreq>yearly</changefreq>
     </url>
     <url>
-        <loc>https://example.com/mentions-legales/cookies/</loc>
+        <loc>https://bimpact.eu/mentions-legales/cookies/</loc>
         <priority>0.3</priority>
         <changefreq>yearly</changefreq>
     </url>
     <url>
-        <loc>https://example.com/en/</loc>
+        <loc>https://bimpact.eu/en/</loc>
         <priority>0.7</priority>
         <changefreq>monthly</changefreq>
     </url>
     <url>
-        <loc>https://example.com/en/about/</loc>
+        <loc>https://bimpact.eu/en/about/</loc>
         <priority>0.8</priority>
         <changefreq>monthly</changefreq>
     </url>
     <url>
-        <loc>https://example.com/en/projects/</loc>
+        <loc>https://bimpact.eu/en/projects/</loc>
         <priority>0.8</priority>
         <changefreq>monthly</changefreq>
     </url>
     <url>
-        <loc>https://example.com/en/blog/</loc>
+        <loc>https://bimpact.eu/en/blog/</loc>
         <priority>0.8</priority>
         <changefreq>weekly</changefreq>
     </url>
     <url>
-        <loc>https://example.com/en/legal/privacy/</loc>
+        <loc>https://bimpact.eu/en/legal/privacy/</loc>
         <priority>0.3</priority>
         <changefreq>yearly</changefreq>
     </url>
     <url>
-        <loc>https://example.com/en/legal/terms/</loc>
+        <loc>https://bimpact.eu/en/legal/terms/</loc>
         <priority>0.3</priority>
         <changefreq>yearly</changefreq>
     </url>
     <url>
-        <loc>https://example.com/en/legal/cookies/</loc>
+        <loc>https://bimpact.eu/en/legal/cookies/</loc>
         <priority>0.3</priority>
         <changefreq>yearly</changefreq>
     </url>

@@ -26,6 +26,9 @@
     <link rel="icon" type="image/svg+xml" href="/logo-principal.svg">
     <link rel="manifest" href="/site.webmanifest">
     <meta name="theme-color" content="#16283E">
+    <!-- GA_START -->
+    <script src="/assets/js/analytics.js" defer></script>
+    <!-- GA_END -->
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -37,11 +40,20 @@
     <!-- Add a page-specific stylesheet here if needed, e.g. /assets/css/[slug].css -->
 </head>
 <body>
+<div class="cookie-banner" id="cookieBanner" hidden>
+    <div class="container cookie-banner-inner">
+        <p>Ce site utilise Google Analytics pour mesurer l'audience, avec votre accord. <a href="/mentions-legales/cookies/">En savoir plus</a>.</p>
+        <div class="cookie-banner-actions">
+            <button type="button" id="cookieRefuse" class="btn-secondary">Refuser</button>
+            <button type="button" id="cookieAccept" class="btn-primary">Accepter</button>
+        </div>
+    </div>
+</div>
 
 <nav>
     <div class="container">
         <a href="/" class="nav-logo">
-            <img src="/logo-principal.svg" alt="Logo" width="60" height="60" loading="eager"><span class="nav-wordmark">BIM<em>pact</em></span>
+            <img src="/logo-principal.svg" alt="Logo" width="90" height="90" loading="eager"><span class="nav-wordmark">BIM<em>pact</em></span>
         </a>
         <ul class="nav-links" id="navLinks">
             <li><a href="/a-propos/">À propos</a></li>
@@ -92,10 +104,12 @@
             <li><a href="/mentions-legales/confidentialite/">Confidentialité</a></li>
             <li><a href="/mentions-legales/cgu/">CGU</a></li>
             <li><a href="/mentions-legales/cookies/">Cookies</a></li>
+            <li><button type="button" class="footer-cookie-link" id="cookieManage">Gérer les cookies</button></li>
         </ul>
     </div>
 </footer>
 
+<script src="/assets/js/cookie-consent.js" defer></script>
 <script src="/assets/js/shared.js" defer></script>
 </body>
 </html>
