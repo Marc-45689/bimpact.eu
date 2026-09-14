@@ -51,7 +51,7 @@ Reusable HTML/CSS patterns. `/new-page` and `/new-section` read this to pick exi
 |---|---|---|
 | Expertise cards | `.expertise-grid` / `.expertise-card` | 3-up card grid (tools / deliverables / audience) on the homepage |
 | Contact info | `.contact-info` | `<dl>` of direct contact info (email, phone) in the homepage contact section — no form, direct channels only |
-| Hero background illustration | `.hero::before` | Decorative BIM wireframe backdrop (`assets/illustrations/hero-background.svg`), faded on the left via a `var(--off-white)` gradient layer so hero text stays readable; positioned right, `opacity: 0.55`. Purely decorative — no `<img>`, no alt text needed. |
+| Contact background illustration | `#contact::before` | Decorative BIM wireframe backdrop (`assets/illustrations/hero-background.svg`), grayscale, faded on the left via a `var(--off-white)` gradient layer so contact text stays readable; positioned top-right at 49.5% width, `opacity: 0.275`. Purely decorative — no `<img>`, no alt text needed. |
 
 ## Blog-specific
 
