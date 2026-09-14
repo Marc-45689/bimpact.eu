@@ -14,6 +14,7 @@ Reusable HTML/CSS patterns. `/new-page` and `/new-section` read this to pick exi
 | Component | Class | Purpose |
 |---|---|---|
 | Fixed nav | `nav` / `nav.scrolled` | Header with scroll-triggered glass blur |
+| Nav wordmark | `.nav-wordmark` | "BIM<em>pact</em>" text set next to the icon mark in `.nav-logo`; two-tone (off-white / accent) matching `logo-principal.svg`. Rendered in `--font-display` (IBM Plex Sans), not the logo's Space Grotesk — see `docs/brand/brand.md` Logo section. |
 | Mobile drawer | `.nav-links.open` | Hamburger-triggered side drawer under 860px |
 | Language switcher | `.nav-lang` | FR/EN links pointing at the current page's exact counterpart (see `CLAUDE.md` — Languages); `.active` marks the current language |
 

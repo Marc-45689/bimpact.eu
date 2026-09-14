@@ -38,8 +38,9 @@ Where to get them:
 ## Logo
 
 - Icon mark: `logo-principal.svg` — recadrage carré (120×120) de la marque "Tower", sans le texte, pour les emplacements 40px (nav, favicon, `site.webmanifest`).
-- Lockup complet (icône + wordmark "BIMpact"): `docs/inspirations/LOGO BIMpact.svg` — à utiliser pour les grands formats (footer, hero, documents) où le texte reste lisible ; pas encore intégré ailleurs sur le site.
+- Lockup complet (icône + wordmark "BIMpact"): `docs/inspirations/LOGO BIMpact.svg` — badge carré à fond plein, pensé pour les grands formats (footer, hero, documents), pas pour la nav. Pas encore intégré ailleurs sur le site.
 - Wordmark typeface (dans le lockup): Space Grotesk — distinct de la police du site (IBM Plex Sans/Mono), traité comme un élément de logo figé, pas une police d'interface.
+- Nav wordmark (`.nav-wordmark`, `assets/css/main.css`): "BIM<em>pact</em>" affiché en texte HTML à côté de l'icône, **en `--font-display` (IBM Plex Sans), pas en Space Grotesk** — écart assumé par rapport à la règle ci-dessus, pour garantir un rendu net/accessible dans la nav sans dépendre d'un embed de police dans le SVG. Reprend le bicolore du logo (off-white / accent).
 - Minimum size: 40px.
 - Clear space: equivalent to the height of the "o" around the mark.
 
