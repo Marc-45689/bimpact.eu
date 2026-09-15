@@ -59,6 +59,7 @@ Reusable HTML/CSS patterns. `/new-page` and `/new-section` read this to pick exi
 |---|---|---|
 | Hero grid | `.about-hero-grid` | Two-column layout (text / portrait) on `/a-propos/` and `/en/about/`, stacks on mobile (`≤860px`) |
 | Portrait | `.about-photo` | Circular headshot, `object-fit: cover`, `--light-blue` ring border. Only exception to the "no photography" brand rule — see `docs/brand/brand.md` § Photography |
+| Experience timeline | `.about-timeline` / `.about-timeline-item` | Stacked list of past roles, left border rule, mono accent-colored date, reuses `.tag-row`/`.tag` for sector tags |
 
 ## Blog-specific
 
