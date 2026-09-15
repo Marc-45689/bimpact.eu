@@ -277,6 +277,34 @@ footer a:hover { color: var(--accent); }
 .cookie-banner .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
 
 /* ═══════════════════════════════════════
+   ABOUT
+   ═══════════════════════════════════════ */
+.about-hero-grid {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: var(--space-lg);
+    align-items: center;
+}
+.about-photo {
+    width: 220px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: var(--radius-full);
+    border: 2px solid var(--light-blue);
+    justify-self: end;
+}
+@media (max-width: 860px) {
+    .about-hero-grid {
+        grid-template-columns: 1fr;
+    }
+    .about-photo {
+        width: 160px;
+        height: 160px;
+        justify-self: start;
+    }
+}
+
+/* ═══════════════════════════════════════
    REDUCED MOTION
    ═══════════════════════════════════════ */
 @media (prefers-reduced-motion: reduce) {

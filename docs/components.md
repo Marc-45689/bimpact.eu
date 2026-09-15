@@ -53,6 +53,13 @@ Reusable HTML/CSS patterns. `/new-page` and `/new-section` read this to pick exi
 | Contact info | `.contact-info` | `<dl>` of direct contact info (email, phone) in the homepage contact section — no form, direct channels only |
 | Contact background illustration | `#contact::before` | Decorative BIM wireframe backdrop (`assets/illustrations/hero-background.svg`), grayscale, faded on the left via a `var(--off-white)` gradient layer so contact text stays readable; positioned top-right at 49.5% width, `opacity: 0.275`. Purely decorative — no `<img>`, no alt text needed. |
 
+## About-specific
+
+| Component | Class | Purpose |
+|---|---|---|
+| Hero grid | `.about-hero-grid` | Two-column layout (text / portrait) on `/a-propos/` and `/en/about/`, stacks on mobile (`≤860px`) |
+| Portrait | `.about-photo` | Circular headshot, `object-fit: cover`, `--light-blue` ring border. Only exception to the "no photography" brand rule — see `docs/brand/brand.md` § Photography |
+
 ## Blog-specific
 
 | Component | Class / tag | Purpose |
