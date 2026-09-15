@@ -28,7 +28,7 @@ SITE_URL = os.getenv("SITE_URL", "https://example.com").rstrip("/")
 # "kind" drives priority/changefreq and whether/how a category recurses
 # one level deeper (blog articles, legal sub-pages, project pages).
 LOCALES = [
-    ("", {"a-propos": "generic", "projets": "projects", "blog": "blog", "mentions-legales": "legal"}),
+    ("", {"qui-suis-je": "generic", "projets": "projects", "blog": "blog", "mentions-legales": "legal"}),
     ("en", {"about": "generic", "projects": "projects", "blog": "blog", "legal": "legal"}),
 ]
 
