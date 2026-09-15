@@ -21,6 +21,11 @@
         <changefreq>weekly</changefreq>
     </url>
     <url>
+        <loc>https://bimpact.eu/blog/le-bim-explique/</loc>
+        <priority>0.7</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
         <loc>https://bimpact.eu/mentions-legales/confidentialite/</loc>
         <priority>0.3</priority>
         <changefreq>yearly</changefreq>
@@ -54,6 +59,11 @@
         <loc>https://bimpact.eu/en/blog/</loc>
         <priority>0.8</priority>
         <changefreq>weekly</changefreq>
+    </url>
+    <url>
+        <loc>https://bimpact.eu/en/blog/bim-explained/</loc>
+        <priority>0.7</priority>
+        <changefreq>monthly</changefreq>
     </url>
     <url>
         <loc>https://bimpact.eu/en/legal/privacy/</loc>

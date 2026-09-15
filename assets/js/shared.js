@@ -1,7 +1,8 @@
 /* ═══════════════════════════════════════
    SHARED JS
    Nav scroll state, mobile hamburger,
-   reveal-on-scroll, scroll-to-top button.
+   reveal-on-scroll, scroll-to-top button,
+   article FAQ accordion.
    Vanilla, dependency-free.
    ═══════════════════════════════════════ */
 
@@ -66,6 +67,17 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
     }
+
+    // FAQ accordion
+    document.querySelectorAll('.article-faq-item').forEach(item => {
+        const btn = item.querySelector('.article-faq-question');
+        if (btn) {
+            btn.addEventListener('click', () => {
+                const open = item.classList.toggle('open');
+                btn.setAttribute('aria-expanded', open);
+            });
+        }
+    });
 
     // Current year in footer
     const yearEl = document.getElementById('year');
