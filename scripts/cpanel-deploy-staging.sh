@@ -38,4 +38,11 @@ rm -rf .git .claude .github .superpowers .cpanel.yml \
 find docs -type f ! -name "*.pdf" -delete 2>/dev/null || true
 find docs -type d -empty -delete 2>/dev/null || true
 
+# cPanel's deployment task shell can leave a restrictive umask, which
+# produces an unreadable .htaccess (Apache then 403s the whole site with
+# "unable to read htaccess file, denying access to be safe"). Normalize
+# to standard docroot permissions before publishing.
+find . -type d -exec chmod 755 {} \;
+find . -type f -exec chmod 644 {} \;
+
 rsync -a --delete --exclude='.htpasswd' "$TMP"/ "$DEPLOYPATH"/
