@@ -1,15 +1,12 @@
 # ═══════════════════════════════════════
 # STAGING — HTTP BASIC AUTH + INHERITS PROD RULES
-# Replace AuthUserFile with the absolute path of
-# .htpasswd on your host. The setup wizard and
-# /setup-staging-auth will substitute it for you.
 # ═══════════════════════════════════════
 
 AuthType Basic
 AuthName "Staging — restricted"
-# The absolute path is injected at deploy time by .github/workflows/deploy-staging.yml
-# from the O2SWITCH_STAGING_HTPASSWD_PATH secret. Do not edit manually.
-AuthUserFile __HTPASSWD_ABS_PATH__
+# .htpasswd is managed out of band (generate with scripts/htpasswd-gen.sh,
+# upload manually via SFTP/cPanel File Manager) — not part of the git deploy.
+AuthUserFile /home/foma0863/staging.bimpact.eu/.htpasswd
 Require valid-user
 
 Options -Indexes

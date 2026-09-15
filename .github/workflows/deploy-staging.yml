@@ -1,8 +1,12 @@
 name: Deploy to Staging
 
+# Disabled on push: o2switch blocks inbound port 22 by IP allowlist, and
+# GitHub Actions runner IPs rotate too fast to whitelist, so this lftp/SFTP
+# push can never reach the host. Staging now deploys via cPanel Git Version
+# Control pulling from GitHub instead — see CLAUDE.md. Kept as
+# workflow_dispatch in case a future host doesn't have this restriction.
 on:
-  push:
-    branches: [staging]
+  workflow_dispatch:
 
 jobs:
   deploy:
