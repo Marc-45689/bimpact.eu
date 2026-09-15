@@ -152,9 +152,3 @@ Player JS (inline per article):
 })();
 ```
 
-## Projects-specific
-
-| Component | Class | Purpose |
-|---|---|---|
-| Project card | `.project-card` | Grid card for the projects index |
-| Project grid | `.projects-grid` | Responsive grid (auto-fill minmax 320px) |
