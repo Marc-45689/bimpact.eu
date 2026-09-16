@@ -84,6 +84,36 @@ button { font-family: inherit; border: none; background: none; color: inherit; c
     transform: none;
 }
 
+.scroll-top {
+    position: fixed;
+    right: 1.5rem;
+    bottom: 1.5rem;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(22, 40, 62, .35); /* --midnight at 35% */
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(123, 148, 171, .08); /* --soft-blue at 8% */
+    border-radius: var(--radius-md);
+    z-index: 102;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s, transform 0.3s;
+    transform: translateY(10px);
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 18px;
+}
+/* Swapped to absolute + JS-computed `top` once the footer approaches, so
+   the button docks 10px above it instead of floating over it. */
+.scroll-top.docked {
+    position: absolute;
+    bottom: auto;
+}
+
 /* ═══════════════════════════════════════
    SECTION DEFAULTS
    ═══════════════════════════════════════ */
@@ -114,12 +144,107 @@ section { padding: var(--space-xl) 0; overflow: clip; }
     font-size: 1.1em;
 }
 
-/* ─── Contact info (direct channels: email, phone — no form) ─── */
+/* ─── Contact ─── */
 /* Wider than the default .lead cap (60ch) so the tagline's first sentence
    (76 characters in French) doesn't wrap before the signature's own line break. */
 #contact .lead {
     max-width: 80ch;
 }
+#contact {
+    position: relative;
+    overflow: hidden;
+}
+/* Right edge matches .hero's illustration exactly (same calc, see
+   home.css) so the two line up as you scroll from one section to the
+   other. Top comes from --contact-illu-top, a custom property shared.js
+   sets to .contact-form-wrap's offsetTop, so it still lines up with the
+   "Nom" field regardless of how tall the heading/lead above it is. Hidden
+   below 1300px: at that width the form and a 736px-wide image no longer
+   both fit without overlapping. */
+#contact::before {
+    content: "";
+    position: absolute;
+    top: var(--contact-illu-top, 0px);
+    right: max(var(--container-pad), calc((100vw - var(--container-max)) / 2 + var(--container-pad)));
+    width: 736px;
+    height: 414px;
+    background-image:
+        linear-gradient(to right, var(--off-white) 0%, transparent 30%),
+        url('../illustrations/hero-background.svg');
+    background-repeat: no-repeat, no-repeat;
+    background-position: right top, right top;
+    background-size: 100% 100%, 100% auto;
+    opacity: 0.275;
+    filter: grayscale(100%);
+    z-index: 0;
+    pointer-events: none;
+}
+@media (max-width: 1300px) {
+    #contact::before { display: none; }
+}
+#contact > .container { position: relative; z-index: 1; }
+.contact-form-wrap {
+    margin-top: var(--space-lg);
+    max-width: 480px;
+}
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    max-width: 480px;
+}
+.form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+.form-field label {
+    font-family: var(--font-mono);
+    font-size: var(--fs-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--soft-blue);
+}
+.form-field input,
+.form-field textarea {
+    font-family: var(--font-body);
+    font-size: var(--fs-base);
+    color: var(--midnight);
+    background: var(--off-white);
+    border: 1px solid var(--light-blue);
+    border-radius: var(--radius-md);
+    padding: 0.7rem 0.9rem;
+}
+.form-field input:focus,
+.form-field textarea:focus {
+    outline: 2px solid var(--accent);
+    outline-offset: 1px;
+}
+.form-field textarea {
+    min-height: 130px;
+    resize: vertical;
+}
+/* Honeypot: kept in the DOM (not display:none, which some bots skip) but
+   off-screen and out of tab order/AT, so only scripted fillers ever touch it. */
+.form-honeypot {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+.contact-form button[type="submit"] {
+    align-self: flex-start;
+    border: none;
+    cursor: pointer;
+}
+.contact-form button[type="submit"]:disabled {
+    opacity: 0.6;
+    cursor: default;
+}
+.form-status:empty { display: none; }
+.form-status.success { color: var(--accent); font-weight: 600; }
+.form-status.error { color: var(--midnight); }
 .contact-info {
     margin-top: var(--space-lg);
 }
@@ -137,7 +262,10 @@ section { padding: var(--space-xl) 0; overflow: clip; }
 /* ═══════════════════════════════════════
    NAVIGATION
    ═══════════════════════════════════════ */
-nav {
+/* :not(.article-breadcrumb) because the blog article breadcrumb is also
+   a <nav> tag (for its own aria-label) — without this exclusion it would
+   inherit the site nav's fixed positioning and dark background. */
+nav:not(.article-breadcrumb) {
     position: fixed;
     top: 0; left: 0; right: 0;
     z-index: 100;

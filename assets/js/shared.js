@@ -7,6 +7,30 @@
    ═══════════════════════════════════════ */
 
 (function () {
+    // Align the #contact illustration's top with the "Nom" field: the
+    // field's position shifts with the heading/lead text above it (varies
+    // by page and locale), so it's read from the DOM instead of hardcoded.
+    const contactSection = document.getElementById('contact');
+    const formWrap = contactSection ? contactSection.querySelector('.contact-form-wrap') : null;
+    if (contactSection && formWrap) {
+        const alignContactIllustration = () => {
+            contactSection.style.setProperty('--contact-illu-top', formWrap.offsetTop + 'px');
+        };
+        alignContactIllustration();
+        window.addEventListener('resize', alignContactIllustration);
+        window.addEventListener('load', alignContactIllustration);
+        if (document.fonts && document.fonts.ready) {
+            document.fonts.ready.then(alignContactIllustration);
+        }
+        // Belt and braces: whatever causes the heading/lead above the form
+        // to reflow (font swap, translation-specific line wraps, anything
+        // else), a ResizeObserver on #contact itself catches the resulting
+        // height change directly instead of guessing which event fires it.
+        if ('ResizeObserver' in window) {
+            new ResizeObserver(alignContactIllustration).observe(contactSection);
+        }
+    }
+
     // Nav scroll state
     const nav = document.querySelector('nav');
     if (nav) {
@@ -52,6 +76,7 @@
     // Scroll progress bar + back-to-top
     const scrollBar = document.getElementById('scrollProgress');
     const scrollTop = document.getElementById('scrollTop');
+    const footer = document.querySelector('footer');
     if (scrollBar || scrollTop) {
         const onScrollProgress = () => {
             const h = document.documentElement;
@@ -61,10 +86,27 @@
                 const show = h.scrollTop > 600;
                 scrollTop.style.opacity = show ? '1' : '0';
                 scrollTop.style.pointerEvents = show ? 'auto' : 'none';
+
+                // Dock 10px above the footer instead of floating over it
+                // once the footer's top edge reaches the button's resting
+                // spot (24px/1.5rem from the viewport bottom).
+                if (footer) {
+                    const footerTop = footer.getBoundingClientRect().top;
+                    const restBottom = 24;
+                    if (footerTop < window.innerHeight - restBottom) {
+                        scrollTop.classList.add('docked');
+                        scrollTop.style.top = (footer.offsetTop - scrollTop.offsetHeight - 10) + 'px';
+                    } else {
+                        scrollTop.classList.remove('docked');
+                        scrollTop.style.top = '';
+                    }
+                }
+
                 scrollTop.style.transform = show ? 'translateY(0)' : 'translateY(10px)';
             }
         };
         document.addEventListener('scroll', onScrollProgress, { passive: true });
+        window.addEventListener('resize', onScrollProgress);
         onScrollProgress();
     }
     if (scrollTop) {

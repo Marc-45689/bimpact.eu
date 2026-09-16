@@ -73,24 +73,3 @@
     gap: 0.4rem;
     color: var(--deep-blue);
 }
-
-/* ─── Contact ─── */
-#contact {
-    position: relative;
-    overflow: hidden;
-}
-#contact::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-image:
-        linear-gradient(to right, var(--off-white) 0%, var(--off-white) 20%, transparent 55%),
-        url('../illustrations/hero-background.svg');
-    background-repeat: no-repeat, no-repeat;
-    background-position: left center, right top;
-    background-size: 100% 100%, 49.5% auto;
-    opacity: 0.275;
-    filter: grayscale(100%);
-    z-index: 0;
-}
-#contact > .container { position: relative; z-index: 1; }

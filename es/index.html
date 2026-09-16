@@ -23,7 +23,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content="https://bimpact.eu/assets/og/og-es.png">
     <script type="application/ld+json">
-    {"@context":"https://schema.org","@type":"Organization","name":"BIMpact","url":"https://bimpact.eu","logo":"https://bimpact.eu/logo-principal.svg","description":"Técnico de estudios técnicos independiente, modelado BIM de lotes CFO-CFA.","email":"xxxxxx@bimpact.eu","sameAs":["https://www.linkedin.com/in/marc-forner-bimpact"],"founder":{"@type":"Person","name":"Marc Forner","url":"https://bimpact.eu/es/acerca/","sameAs":["https://www.linkedin.com/in/marc-forner-bimpact"]}}
+    {"@context":"https://schema.org","@type":"Organization","name":"BIMpact","url":"https://bimpact.eu","logo":"https://bimpact.eu/logo-principal.svg","description":"Técnico de estudios técnicos independiente, modelado BIM de lotes CFO-CFA.","sameAs":["https://www.linkedin.com/in/marc-forner-bimpact"],"founder":{"@type":"Person","name":"Marc Forner","url":"https://bimpact.eu/es/acerca/","sameAs":["https://www.linkedin.com/in/marc-forner-bimpact"]}}
     </script>
     <link rel="icon" type="image/svg+xml" href="/logo-principal.svg">
     <link rel="manifest" href="/site.webmanifest">
@@ -53,7 +53,7 @@
 </div>
 
 <div id="scrollProgress" style="position:fixed;bottom:0;left:0;height:3px;width:0%;background:var(--accent);z-index:101;"></div>
-<a href="#" id="scrollTop" aria-label="Back to top" style="position:fixed;bottom:1.5rem;right:1.5rem;width:40px;height:40px;display:flex;align-items:center;justify-content:center;background:rgba(13,27,42,0.35);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(124,152,179,0.08);border-radius:12px;z-index:102;opacity:0;pointer-events:none;transition:opacity 0.3s,transform 0.3s;transform:translateY(10px);color:var(--accent);text-decoration:none;font-size:18px;">↑</a>
+<a href="#" id="scrollTop" class="scroll-top" aria-label="Volver arriba">↑</a>
 
 <nav>
     <div class="container">
@@ -122,10 +122,32 @@
             <p class="section-number">Contacto</p>
             <h2 class="section-title">¿Un proyecto <em>CFO-CFA</em>?</h2>
             <p class="lead">Descríbame su proyecto, me pondré en contacto con usted rápidamente para hablarlo.<br>Marc Forner - BIMpact - Especialista en maqueta digital del edificio.</p>
-            <dl class="contact-info">
-                <dt>Email</dt>
-                <dd><a href="mailto:xxxxxx@bimpact.eu">xxxxxx@bimpact.eu</a></dd>
-            </dl>
+            <div class="contact-form-wrap">
+                <form class="contact-form" id="contactForm" data-success="Mensaje enviado, gracias. Me pondré en contacto con usted rápidamente." data-error="Se produjo un error. Inténtelo de nuevo en unos instantes.">
+                    <div class="form-field">
+                        <label for="cfName">Nombre</label>
+                        <input type="text" id="cfName" name="name" required maxlength="200" autocomplete="name">
+                    </div>
+                    <div class="form-field">
+                        <label for="cfEmail">Correo electrónico</label>
+                        <input type="email" id="cfEmail" name="email" required autocomplete="email">
+                    </div>
+                    <div class="form-field">
+                        <label for="cfPhone">Teléfono</label>
+                        <input type="tel" id="cfPhone" name="phone" autocomplete="tel">
+                    </div>
+                    <div class="form-field">
+                        <label for="cfMessage">Mensaje</label>
+                        <textarea id="cfMessage" name="message" required maxlength="5000"></textarea>
+                    </div>
+                    <div class="form-honeypot" aria-hidden="true">
+                        <label for="cfWebsite">Sitio web</label>
+                        <input type="text" id="cfWebsite" name="company_website" tabindex="-1" autocomplete="off">
+                    </div>
+                    <button type="submit" class="btn-primary">Enviar</button>
+                    <p class="form-status" role="status" aria-live="polite"></p>
+                </form>
+            </div>
         </div>
     </section>
 </main>
@@ -144,6 +166,7 @@
 
 <script src="/assets/js/cookie-consent.js" defer></script>
 <script src="/assets/js/shared.js" defer></script>
+<script src="/assets/js/contact-form.js" defer></script>
 
 </body>
 </html>
