@@ -8,6 +8,7 @@
     <link rel="canonical" href="https://bimpact.eu/en/about/">
     <link rel="alternate" hreflang="fr" href="https://bimpact.eu/a-propos/">
     <link rel="alternate" hreflang="en" href="https://bimpact.eu/en/about/">
+    <link rel="alternate" hreflang="es" href="https://bimpact.eu/es/acerca/">
     <link rel="alternate" hreflang="x-default" href="https://bimpact.eu/a-propos/">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://bimpact.eu/en/about/">
@@ -22,6 +23,7 @@
     <!-- GA_END -->
     <link rel="stylesheet" href="/assets/css/tokens.css">
     <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/about.css">
 </head>
 <body>
 <div class="cookie-banner" id="cookieBanner" hidden>
@@ -38,40 +40,96 @@
     <div class="container">
         <a href="/en/" class="nav-logo"><img src="/logo-principal.svg" alt="Logo" width="90" height="90" loading="eager"><span class="nav-wordmark">BIM<em>pact</em></span></a>
         <ul class="nav-links" id="navLinks">
-            <li><a href="/en/about/">About</a></li>
             <li><a href="/en/#expertise">Expertise</a></li>
+            <li><a href="/en/about/">Who am I</a></li>
             <li><a href="/en/blog/">Blog</a></li>
+            <li><a href="#contact" class="nav-cta">Contact</a></li>
         </ul>
         <div class="nav-lang">
             <a href="/a-propos/" hreflang="fr" lang="fr">FR</a>
             <a href="/en/about/" hreflang="en" lang="en" class="active">EN</a>
+            <a href="/es/acerca/" hreflang="es" lang="es">ES</a>
         </div>
         <button class="nav-hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
 </nav>
 
 <main>
-    <section style="padding-top: 8rem;">
+    <section style="padding-top: calc(var(--nav-height) + var(--space-xl));">
+        <div class="container about-hero-grid">
+            <div>
+                <p class="section-number">Who am I</p>
+                <h1 class="section-title">Technical studies specialist for <em>electrical lots</em></h1>
+                <p class="lead">I put my BIM expertise to work for your projects, from early design through the coordination model.</p>
+                <p style="margin-top: var(--space-sm); max-width: 60ch;">With more than 4 years of experience in a design office, I have a strong command of precise, detailed technical drawings and coordination models. BIMpact supports you through the execution phase of your project.</p>
+                <div class="tag-row">
+                    <span class="tag">Revit</span>
+                    <span class="tag">AutoCAD</span>
+                    <span class="tag">DIALux evo</span>
+                </div>
+                <p style="margin-top: var(--space-sm); font-family: var(--font-mono); font-size: var(--fs-xs); text-transform: uppercase; letter-spacing: 0.08em; color: var(--soft-blue);">Languages</p>
+                <div class="tag-row">
+                    <span class="tag">Native French</span>
+                    <span class="tag">Fluent English</span>
+                    <span class="tag">Intermediate Spanish</span>
+                </div>
+            </div>
+            <picture>
+                <source srcset="/assets/photos/marc-forner.webp" type="image/webp">
+                <img src="/assets/photos/marc-forner.jpg" alt="Marc Forner, CFO-CFA technical studies specialist" width="352" height="352" class="about-photo" loading="eager">
+            </picture>
+        </div>
+    </section>
+
+    <section>
         <div class="container">
-            <p class="section-number">About</p>
-            <h1 class="section-title">Technical studies specialist for <em>electrical lots</em></h1>
-            <p class="lead">I put my BIM expertise to work for your projects, from early design through the coordination model.</p>
-            <p style="margin-top: var(--space-sm); max-width: 60ch;">With more than 4 years of experience in a design office, I have a strong command of precise, detailed technical drawings and coordination models. BIMpact supports you through the execution phase of your project.</p>
-            <div class="tag-row">
-                <span class="tag">Revit</span>
-                <span class="tag">AutoCAD</span>
+            <p class="section-number">Experience</p>
+            <h2 class="section-title">Professional experience</h2>
+            <div class="about-timeline">
+                <div class="about-timeline-item">
+                    <p class="about-timeline-date">2023 – 2026</p>
+                    <h3 class="about-timeline-role">CFO-CFA technical studies specialist</h3>
+                    <p class="about-timeline-company">Eiffage Énergie Systèmes Méditerranée (Nice and Antibes branches)</p>
+                    <p class="about-timeline-desc">Delivered technical studies, drawings, electrical diagrams and CFO/VDI/SSI schematics, plus lighting studies.</p>
+                    <div class="tag-row">
+                        <span class="tag">Commercial</span>
+                        <span class="tag">Industrial</span>
+                        <span class="tag">Residential</span>
+                        <span class="tag">Luxury residential</span>
+                    </div>
+                </div>
+                <div class="about-timeline-item">
+                    <p class="about-timeline-date">2021 – 2023</p>
+                    <h3 class="about-timeline-role">BIM drafter</h3>
+                    <p class="about-timeline-company">INGItech</p>
+                    <p class="about-timeline-desc">Modeling CFO-CFA electrical networks in Revit.</p>
+                    <div class="tag-row">
+                        <span class="tag">Commercial</span>
+                        <span class="tag">Industrial</span>
+                        <span class="tag">Residential</span>
+                        <span class="tag">Luxury residential</span>
+                    </div>
+                </div>
             </div>
-            <div style="display: flex; gap: var(--space-sm); flex-wrap: wrap; margin-top: var(--space-md);">
-                <a href="/en/projects/" class="btn-primary">See projects</a>
-                <a href="/en/#contact" class="btn-secondary">Get in touch</a>
-            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="reveal">
+        <div class="container">
+            <p class="section-number">Contact</p>
+            <h2 class="section-title">A <em>CFO-CFA</em> project?</h2>
+            <p class="lead">Tell me about your project and I'll get back to you quickly.<br>Marc Forner - BIMpact - Building information modeling specialist.</p>
+            <dl class="contact-info">
+                <dt>Email</dt>
+                <dd><a href="mailto:xxxxxx@bimpact.eu">xxxxxx@bimpact.eu</a></dd>
+            </dl>
         </div>
     </section>
 </main>
 
 <footer>
     <div class="container">
-        <p>© <span id="year">2026</span> BIMpact</p>
+        <p>© <span id="year">2026</span> BIMpact · Site built by Marc Forner with Claude Code</p>
         <ul class="footer-links">
             <li><a href="/en/legal/privacy/">Privacy</a></li>
             <li><a href="/en/legal/terms/">Terms</a></li>

@@ -3,7 +3,13 @@
    ═══════════════════════════════════════ */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-html { scroll-behavior: smooth; overflow-x: clip; }
+html {
+    scroll-behavior: smooth;
+    overflow-x: clip;
+    /* Without this, anchor jumps (nav links, #contact CTA) land with the
+       target flush under the fixed nav, hidden behind it. */
+    scroll-padding-top: calc(var(--nav-height) + var(--space-sm));
+}
 
 body {
     font-family: var(--font-body);
@@ -107,6 +113,26 @@ section { padding: var(--space-xl) 0; overflow: clip; }
     font-weight: 400;
     font-size: 1.1em;
 }
+
+/* ─── Contact info (direct channels: email, phone — no form) ─── */
+/* Wider than the default .lead cap (60ch) so the tagline's first sentence
+   (76 characters in French) doesn't wrap before the signature's own line break. */
+#contact .lead {
+    max-width: 80ch;
+}
+.contact-info {
+    margin-top: var(--space-lg);
+}
+.contact-info dt {
+    font-family: var(--font-mono);
+    font-size: var(--fs-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--soft-blue);
+    margin-top: var(--space-sm);
+}
+.contact-info dt:first-child { margin-top: 0; }
+.contact-info dd { font-size: var(--fs-md); }
 
 /* ═══════════════════════════════════════
    NAVIGATION

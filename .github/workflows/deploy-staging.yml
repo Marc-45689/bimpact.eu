@@ -1,8 +1,12 @@
 name: Deploy to Staging
 
+# Disabled on push: o2switch blocks inbound port 22 by IP allowlist, and
+# GitHub Actions runner IPs rotate too fast to whitelist, so this lftp/SFTP
+# push can never reach the host. Staging now deploys via cPanel Git Version
+# Control pulling from GitHub instead — see CLAUDE.md. Kept as
+# workflow_dispatch in case a future host doesn't have this restriction.
 on:
-  push:
-    branches: [staging]
+  workflow_dispatch:
 
 jobs:
   deploy:
@@ -14,9 +18,9 @@ jobs:
       - name: Check if deploy secrets are configured
         id: check
         run: |
-          if [ -z "${{ secrets.OVH_HOST }}" ] || [ -z "${{ secrets.STAGING_HTPASSWD_USER }}" ] || [ -z "${{ secrets.OVH_STAGING_HTPASSWD_PATH }}" ]; then
+          if [ -z "${{ secrets.O2SWITCH_HOST }}" ] || [ -z "${{ secrets.STAGING_HTPASSWD_USER }}" ] || [ -z "${{ secrets.O2SWITCH_STAGING_HTPASSWD_PATH }}" ]; then
             echo "skip=true" >> "$GITHUB_OUTPUT"
-            echo "::notice::Deploy secrets not set (OVH_HOST / STAGING_HTPASSWD_USER / OVH_STAGING_HTPASSWD_PATH). This is expected on the unconfigured template repo. Configure them in your forked repo to enable staging deploys. See SETUP.md."
+            echo "::notice::Deploy secrets not set (O2SWITCH_HOST / STAGING_HTPASSWD_USER / O2SWITCH_STAGING_HTPASSWD_PATH). This is expected on the unconfigured template repo. Configure them in your forked repo to enable staging deploys. See SETUP.md."
           else
             echo "skip=false" >> "$GITHUB_OUTPUT"
           fi
@@ -34,7 +38,7 @@ jobs:
       - name: Substitute AuthUserFile path in .htaccess-staging
         if: steps.check.outputs.skip != 'true'
         env:
-          HTPASSWD_PATH: ${{ secrets.OVH_STAGING_HTPASSWD_PATH }}
+          HTPASSWD_PATH: ${{ secrets.O2SWITCH_STAGING_HTPASSWD_PATH }}
         run: |
           python3 -c "
           import pathlib, os
@@ -59,9 +63,9 @@ jobs:
       - name: Deploy via SFTP
         if: steps.check.outputs.skip != 'true'
         env:
-          LFTP_PASSWORD: ${{ secrets.OVH_PASSWORD }}
+          LFTP_PASSWORD: ${{ secrets.O2SWITCH_PASSWORD }}
         run: |
           sudo apt-get install -y -qq lftp > /dev/null 2>&1
-          lftp -u "${{ secrets.OVH_USERNAME }}","$LFTP_PASSWORD" \
-            -e "set sftp:auto-confirm yes; set net:timeout 30; set net:max-retries 2; mirror -R --verbose . ${{ secrets.OVH_STAGING_DIR }}; quit" \
-            sftp://${{ secrets.OVH_HOST }}
+          lftp -u "${{ secrets.O2SWITCH_USERNAME }}","$LFTP_PASSWORD" \
+            -e "set sftp:auto-confirm yes; set net:timeout 30; set net:max-retries 2; mirror -R --verbose . ${{ secrets.O2SWITCH_STAGING_DIR }}; quit" \
+            sftp://${{ secrets.O2SWITCH_HOST }}

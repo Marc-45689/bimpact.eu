@@ -5,11 +5,33 @@
    ═══════════════════════════════════════ */
 
 .hero {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    padding-top: 6rem;
+    position: relative;
+    overflow: hidden;
+    padding-top: calc(var(--nav-height) + var(--space-xl));
+    padding-bottom: var(--space-xl);
 }
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(to right, var(--off-white) 0%, var(--off-white) 20%, transparent 55%),
+        url('../illustrations/expertise-background.svg');
+    background-repeat: no-repeat, no-repeat;
+    /* Portrait-format plate (620x1040) — sized by height, not width, so it
+       reads as a tall vertical accent instead of overflowing the section.
+       Right-align it with the container's content edge (i.e. the right
+       edge of the last expertise card) rather than the full-bleed section
+       edge — this pseudo-element spans the whole .hero, but .container is
+       inset by --container-pad, plus an extra auto-margin once the
+       viewport exceeds --container-max. */
+    background-position: left center, right max(var(--container-pad), calc((100vw - var(--container-max)) / 2 + var(--container-pad))) center;
+    background-size: 100% 100%, auto 72%;
+    opacity: 0.275;
+    filter: grayscale(100%);
+    z-index: 0;
+}
+.hero > .container { position: relative; z-index: 1; }
 .hero-title {
     font-size: var(--fs-hero);
     font-weight: 800;
@@ -23,11 +45,8 @@
     max-width: 46ch;
     font-size: var(--fs-md);
 }
-.hero-actions {
-    margin-top: var(--space-md);
-    display: flex;
-    gap: var(--space-sm);
-    flex-wrap: wrap;
+.hero #expertise {
+    margin-top: var(--space-xl);
 }
 
 /* ─── Expertise cards ─── */
@@ -75,16 +94,3 @@
     z-index: 0;
 }
 #contact > .container { position: relative; z-index: 1; }
-.contact-info {
-    margin-top: var(--space-lg);
-}
-.contact-info dt {
-    font-family: var(--font-mono);
-    font-size: var(--fs-xs);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--soft-blue);
-    margin-top: var(--space-sm);
-}
-.contact-info dt:first-child { margin-top: 0; }
-.contact-info dd { font-size: var(--fs-md); }

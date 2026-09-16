@@ -19,6 +19,12 @@ import os
 import sys
 from pathlib import Path
 
+# Windows consoles often default to a legacy codepage (cp1252) that can't
+# encode the checkmark below; force UTF-8 stdout where supported instead of
+# crashing after the sitemap has already been written successfully.
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8")
+
 ROOT = Path(__file__).resolve().parent.parent
 SITEMAP = ROOT / "sitemap.xml"
 
@@ -28,19 +34,20 @@ SITE_URL = os.getenv("SITE_URL", "https://example.com").rstrip("/")
 # "kind" drives priority/changefreq and whether/how a category recurses
 # one level deeper (blog articles, legal sub-pages, project pages).
 LOCALES = [
-    ("", {"a-propos": "generic", "projets": "projects", "blog": "blog", "mentions-legales": "legal"}),
-    ("en", {"about": "generic", "projects": "projects", "blog": "blog", "legal": "legal"}),
+    ("", {"a-propos": "generic", "blog": "blog", "mentions-legales": "legal"}),
+    ("en", {"about": "generic", "blog": "blog", "legal": "legal"}),
+    ("es", {"acerca": "generic", "blog": "blog", "legal": "legal"}),
 ]
 
-CATEGORY_PRIORITY = {"generic": "0.8", "projects": "0.8", "blog": "0.8", "legal": "0.3"}
-CATEGORY_CHANGEFREQ = {"generic": "monthly", "projects": "monthly", "blog": "weekly", "legal": "yearly"}
-SUBPAGE_PRIORITY = {"projects": "0.7", "blog": "0.7", "legal": "0.3"}
-SUBPAGE_CHANGEFREQ = {"projects": "monthly", "blog": "monthly", "legal": "yearly"}
+CATEGORY_PRIORITY = {"generic": "0.8", "blog": "0.8", "legal": "0.3"}
+CATEGORY_CHANGEFREQ = {"generic": "monthly", "blog": "weekly", "legal": "yearly"}
+SUBPAGE_PRIORITY = {"blog": "0.7", "legal": "0.3"}
+SUBPAGE_CHANGEFREQ = {"blog": "monthly", "legal": "yearly"}
 
-HOME_PRIORITY = {"": "1.0", "en": "0.7"}
-HOME_CHANGEFREQ = {"": "weekly", "en": "monthly"}
+HOME_PRIORITY = {"": "1.0", "en": "0.7", "es": "0.7"}
+HOME_CHANGEFREQ = {"": "weekly", "en": "monthly", "es": "monthly"}
 
-SKIP_TOP_LEVEL = {"assets", "api", "scripts", "docs", "node_modules", "en"}
+SKIP_TOP_LEVEL = {"assets", "api", "scripts", "docs", "node_modules", "en", "es"}
 
 
 def discover() -> list[tuple[str, str, str]]:
@@ -66,10 +73,10 @@ def discover() -> list[tuple[str, str, str]]:
                 entries.append((loc, CATEGORY_PRIORITY[kind], CATEGORY_CHANGEFREQ[kind]))
             if kind == "generic":
                 continue
-            # Recurse one level for blog/<slug>, projects/<slug>, legal/<slug>
+            # Recurse one level for blog/<slug>, legal/<slug>
             # (legal has an extra nesting level today only because its
             # sub-pages already live one level under mentions-legales/legal —
-            # same depth as blog/projects, just named differently.)
+            # same depth as blog, just named differently.)
             for sub in sorted(p for p in category_dir.iterdir() if p.is_dir()):
                 if (sub / "index.html").exists() and not sub.name.startswith("_"):
                     loc = f"{SITE_URL}/{prefix}/{dirname}/{sub.name}/" if prefix else f"{SITE_URL}/{dirname}/{sub.name}/"

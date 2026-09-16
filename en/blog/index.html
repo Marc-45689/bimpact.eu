@@ -3,15 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog — Your site</title>
-    <meta name="description" content="Articles and essays.">
-    <link rel="canonical" href="https://example.com/en/blog/">
-    <link rel="alternate" hreflang="fr" href="https://example.com/blog/">
-    <link rel="alternate" hreflang="en" href="https://example.com/en/blog/">
-    <link rel="alternate" hreflang="x-default" href="https://example.com/blog/">
+    <title>BIMpact: blog</title>
+    <meta name="description" content="The BIMpact blog is coming soon: technical articles on BIM, CFO-CFA and Revit/AutoCAD modeling for your projects.">
+    <link rel="canonical" href="https://bimpact.eu/en/blog/">
+    <link rel="alternate" hreflang="fr" href="https://bimpact.eu/blog/">
+    <link rel="alternate" hreflang="en" href="https://bimpact.eu/en/blog/">
+    <link rel="alternate" hreflang="es" href="https://bimpact.eu/es/blog/">
+    <link rel="alternate" hreflang="x-default" href="https://bimpact.eu/blog/">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://example.com/en/blog/">
-    <meta property="og:title" content="Blog — Your site">
+    <meta property="og:url" content="https://bimpact.eu/en/blog/">
+    <meta property="og:title" content="BIMpact: blog">
+    <meta property="og:description" content="The BIMpact blog is coming soon: technical articles on BIM, CFO-CFA and Revit/AutoCAD modeling for your projects.">
+    <meta property="og:site_name" content="BIMpact">
+    <meta property="og:locale" content="en_US">
     <link rel="icon" type="image/svg+xml" href="/logo-principal.svg">
     <meta name="theme-color" content="#16283E">
     <!-- GA_START -->
@@ -36,13 +40,15 @@
     <div class="container">
         <a href="/en/" class="nav-logo"><img src="/logo-principal.svg" alt="Logo" width="90" height="90" loading="eager"><span class="nav-wordmark">BIM<em>pact</em></span></a>
         <ul class="nav-links" id="navLinks">
-            <li><a href="/en/about/">About</a></li>
             <li><a href="/en/#expertise">Expertise</a></li>
+            <li><a href="/en/about/">Who am I</a></li>
             <li><a href="/en/blog/">Blog</a></li>
+            <li><a href="#contact" class="nav-cta">Contact</a></li>
         </ul>
         <div class="nav-lang">
             <a href="/blog/" hreflang="fr" lang="fr">FR</a>
             <a href="/en/blog/" hreflang="en" lang="en" class="active">EN</a>
+            <a href="/es/blog/" hreflang="es" lang="es">ES</a>
         </div>
         <button class="nav-hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
@@ -52,26 +58,40 @@
     <header class="blog-hero">
         <div class="container">
             <p class="section-number">Blog</p>
-            <h1 class="section-title" style="margin: 0 auto;">Articles &amp; <em>essays</em></h1>
+            <h1 class="section-title" style="margin: 0 auto;">Articles &amp; <em>resources</em></h1>
         </div>
     </header>
     <section style="padding-top: 0;">
         <div class="container">
             <div class="blog-grid">
-                <a href="/en/blog/example-article/" class="blog-card">
+                <a href="/en/blog/bim-explained/" class="blog-card">
                     <div class="blog-card-body">
-                        <h2 class="blog-card-title">Example article title</h2>
-                        <p class="blog-card-meta">2026-04-21 · 5 min read</p>
+                        <h2 class="blog-card-title">BIM explained: more than a 3D model</h2>
+                        <p class="blog-card-meta">2026-09-15 · 5 min read</p>
+                        <p class="blog-card-excerpt">BIM (Building Information Modeling) is becoming increasingly common in the construction industry. But behind the acronym lies a persistent misconception: many still think BIM is just about 3D. That misses the point entirely.</p>
+                        <span class="blog-card-more">Read more</span>
                     </div>
                 </a>
             </div>
+        </div>
+    </section>
+
+    <section id="contact" class="reveal">
+        <div class="container">
+            <p class="section-number">Contact</p>
+            <h2 class="section-title">A <em>CFO-CFA</em> project?</h2>
+            <p class="lead">Tell me about your project and I'll get back to you quickly.<br>Marc Forner - BIMpact - Building information modeling specialist.</p>
+            <dl class="contact-info">
+                <dt>Email</dt>
+                <dd><a href="mailto:xxxxxx@bimpact.eu">xxxxxx@bimpact.eu</a></dd>
+            </dl>
         </div>
     </section>
 </main>
 
 <footer>
     <div class="container">
-        <p>© <span id="year">2026</span> Your site</p>
+        <p>© <span id="year">2026</span> BIMpact · Site built by Marc Forner with Claude Code</p>
         <ul class="footer-links">
             <li><a href="/en/legal/privacy/">Privacy</a></li>
             <li><a href="/en/legal/terms/">Terms</a></li>

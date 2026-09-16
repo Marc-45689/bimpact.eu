@@ -1,0 +1,11 @@
+---
+# cPanel "Git Version Control" deployment config. This same file content
+# is used by both cPanel repos on the host: the one tracking `staging`
+# (deploys to staging.bimpact.eu) and the one tracking `main` (deploys to
+# bimpact.eu). Keeping it identical on both branches means merging
+# staging into main never produces a merge conflict on this path — the
+# staging vs. production behavior is picked by scripts/cpanel-deploy.sh
+# based on whichever branch is actually checked out on the host.
+deployment:
+  tasks:
+    - /bin/bash scripts/cpanel-deploy.sh

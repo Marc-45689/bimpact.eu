@@ -1,0 +1,61 @@
+/* ═══════════════════════════════════════
+   ABOUT PAGE
+   Styles specific to /a-propos/ and /en/about/.
+   Keep shared patterns in main.css.
+   ═══════════════════════════════════════ */
+
+.about-hero-grid {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: var(--space-lg);
+    align-items: center;
+}
+.about-photo {
+    width: 352px;
+    height: 352px;
+    object-fit: cover;
+    border-radius: var(--radius-lg);
+    border: 2px solid var(--light-blue);
+    justify-self: end;
+}
+@media (max-width: 860px) {
+    .about-hero-grid {
+        grid-template-columns: 1fr;
+    }
+    .about-photo {
+        width: 256px;
+        height: 256px;
+        justify-self: start;
+    }
+}
+
+.about-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+    margin-top: var(--space-md);
+}
+.about-timeline-item {
+    padding-left: var(--space-sm);
+    border-left: 2px solid var(--light-blue);
+}
+.about-timeline-date {
+    font-family: var(--font-mono);
+    font-size: var(--fs-xs);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+}
+.about-timeline-role {
+    font-size: var(--fs-md);
+    font-weight: 600;
+    margin-top: var(--space-xs);
+}
+.about-timeline-company {
+    color: var(--soft-blue);
+    margin-top: 0.25rem;
+}
+.about-timeline-desc {
+    margin-top: var(--space-xs);
+    max-width: 60ch;
+}

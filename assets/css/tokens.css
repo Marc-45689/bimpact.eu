@@ -54,6 +54,10 @@
     --container-max: 1320px;
     --container-pad: clamp(1.5rem, 4vw, 3rem);
 
+    /* Fixed nav footprint — logo height (90px) + vertical padding (1.25rem * 2).
+       Used to clear content below the fixed nav and to offset anchor scrolling. */
+    --nav-height:    8.125rem;
+
     /* Motion */
     --ease-out:      cubic-bezier(0.16, 1, 0.3, 1);
     --transition:    0.3s var(--ease-out);

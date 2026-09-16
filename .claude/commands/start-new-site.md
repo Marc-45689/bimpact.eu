@@ -82,11 +82,11 @@ Log the decisions in `docs/brand/toolbelt.md`.
 Ask for SFTP host, username, password, prod directory, staging directory. Set via `gh secret set`:
 
 ```
-gh secret set OVH_HOST --body "<host>"
-gh secret set OVH_USERNAME --body "<user>"
-gh secret set OVH_PASSWORD --body "<pass>"
-gh secret set OVH_PROD_DIR --body "<path>"
-gh secret set OVH_STAGING_DIR --body "<path>"
+gh secret set O2SWITCH_HOST --body "<host>"
+gh secret set O2SWITCH_USERNAME --body "<user>"
+gh secret set O2SWITCH_PASSWORD --body "<pass>"
+gh secret set O2SWITCH_PROD_DIR --body "<path>"
+gh secret set O2SWITCH_STAGING_DIR --body "<path>"
 ```
 
 Remind the user that passwords typed in terminals can leak into shell history — recommend using `gh secret set NAME` (without `--body`) which reads from stdin.
@@ -95,7 +95,7 @@ Remind the user that passwords typed in terminals can leak into shell history �
 
 Run `bash scripts/htpasswd-gen.sh`. The script writes credentials to `.staging-credentials.txt` with mode 600 (gitignored). Tell the user to open that file themselves, copy the password to their password manager, then delete the file. **Do not read the password aloud in your response — it ends up in the session transcript.**
 
-Then run the three `gh secret set` calls the script tells them to run. Ask the user for the absolute server path to the staging `.htpasswd` (the workflow will place it there during deploy) and set it as `OVH_STAGING_HTPASSWD_PATH`. No manual editing of `.htaccess-staging` is needed — the workflow substitutes the path at deploy time.
+Then run the three `gh secret set` calls the script tells them to run. Ask the user for the absolute server path to the staging `.htpasswd` (the workflow will place it there during deploy) and set it as `O2SWITCH_STAGING_HTPASSWD_PATH`. No manual editing of `.htaccess-staging` is needed — the workflow substitutes the path at deploy time.
 
 ## Step 11 — Git and GitHub
 

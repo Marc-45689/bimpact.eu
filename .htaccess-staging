@@ -1,16 +1,18 @@
 # ═══════════════════════════════════════
 # STAGING — HTTP BASIC AUTH + INHERITS PROD RULES
-# Replace AuthUserFile with the absolute path of
-# .htpasswd on your host. The setup wizard and
-# /setup-staging-auth will substitute it for you.
 # ═══════════════════════════════════════
 
 AuthType Basic
 AuthName "Staging — restricted"
-# The absolute path is injected at deploy time by .github/workflows/deploy-staging.yml
-# from the OVH_STAGING_HTPASSWD_PATH secret. Do not edit manually.
-AuthUserFile __HTPASSWD_ABS_PATH__
+# .htpasswd is managed out of band (generate with scripts/htpasswd-gen.sh,
+# upload manually via SFTP/cPanel File Manager) — not part of the git deploy.
+AuthUserFile /home/foma0863/staging.bimpact.eu/.htpasswd
+
+# AutoSSL/Let's Encrypt HTTP domain-control validation must reach
+# /.well-known/ unauthenticated, or certificate issuance/renewal fails.
+SetEnvIf Request_URI "^/\.well-known/(pki-validation|acme-challenge)/" ALLOW_NOAUTH
 Require valid-user
+Require env ALLOW_NOAUTH
 
 Options -Indexes
 ErrorDocument 403 /404.html
@@ -21,6 +23,11 @@ ErrorDocument 404 /404.html
 </FilesMatch>
 
 RewriteEngine On
+
+# Let AutoSSL/Let's Encrypt HTTP domain-control validation through in plain HTTP —
+# otherwise the force-HTTPS redirect below breaks certificate issuance/renewal.
+RewriteCond %{REQUEST_URI} ^/\.well-known/(pki-validation|acme-challenge)/ [NC]
+RewriteRule ^ - [L]
 
 RewriteCond %{HTTPS} !on
 RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]

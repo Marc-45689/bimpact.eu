@@ -22,6 +22,11 @@ ErrorDocument 404 /404.html
 # ═══════════════════════════════════════
 RewriteEngine On
 
+# Let AutoSSL/Let's Encrypt HTTP domain-control validation through in plain HTTP —
+# otherwise the force-HTTPS redirect below breaks certificate issuance/renewal.
+RewriteCond %{REQUEST_URI} ^/\.well-known/(pki-validation|acme-challenge)/ [NC]
+RewriteRule ^ - [L]
+
 # Force HTTPS
 RewriteCond %{HTTPS} !on
 RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]

@@ -16,7 +16,7 @@ Reusable HTML/CSS patterns. `/new-page` and `/new-section` read this to pick exi
 | Fixed nav | `nav` / `nav.scrolled` | Header with scroll-triggered glass blur |
 | Nav wordmark | `.nav-wordmark` | "BIM<em>pact</em>" text set next to the icon mark in `.nav-logo`; two-tone (off-white / accent) matching `logo-principal.svg`. Rendered in `--font-display` (IBM Plex Sans), not the logo's Space Grotesk — see `docs/brand/brand.md` Logo section. |
 | Mobile drawer | `.nav-links.open` | Hamburger-triggered side drawer under 860px |
-| Language switcher | `.nav-lang` | FR/EN links pointing at the current page's exact counterpart (see `CLAUDE.md` — Languages); `.active` marks the current language |
+| Language switcher | `.nav-lang` | FR/EN/ES links pointing at the current page's exact counterpart (see `CLAUDE.md` — Languages); `.active` marks the current language |
 | Cookie consent banner | `.cookie-banner` / `.cookie-banner-inner` / `.cookie-banner-actions` | Fixed bottom bar on every page, gates `assets/js/analytics.js` (GA4) behind an accept/refuse choice via `assets/js/cookie-consent.js`; reopened from the footer's `.footer-cookie-link` button. `hidden` attribute toggles visibility. |
 
 ## CTAs
@@ -44,14 +44,23 @@ Reusable HTML/CSS patterns. `/new-page` and `/new-section` read this to pick exi
 | `.sr-only` | Visually hidden, screen-reader accessible |
 | `.lead` | Section intro paragraph, `--fs-md`, `--soft-blue`, capped at 60ch |
 | `.tag-row` / `.tag` | Row of small pill tags (tools, keywords), mono font, outlined |
+| Contact info | `.contact-info` (`main.css`) | `<dl>` of direct contact info (email, phone) — no form, direct channels only. Reused in the `#contact` section on the homepage, `/a-propos/`, `/blog/`, and every blog article including `_template-article.html` (and their `/en/` twins) — new articles get it automatically from the template. Tagline: first sentence, then `<br>`, then the "Marc Forner - BIMpact - ..." signature line, both hardcoded per language (not a token). |
 
 ## Home-specific
 
 | Component | Class | Purpose |
 |---|---|---|
-| Expertise cards | `.expertise-grid` / `.expertise-card` | 3-up card grid (tools / deliverables / audience) on the homepage |
-| Contact info | `.contact-info` | `<dl>` of direct contact info (email, phone) in the homepage contact section — no form, direct channels only |
-| Contact background illustration | `#contact::before` | Decorative BIM wireframe backdrop (`assets/illustrations/hero-background.svg`), grayscale, faded on the left via a `var(--off-white)` gradient layer so contact text stays readable; positioned top-right at 49.5% width, `opacity: 0.275`. Purely decorative — no `<img>`, no alt text needed. |
+| Expertise cards | `.expertise-grid` / `.expertise-card` | 3-up card grid (tools / deliverables / audience), nested inside the merged hero/expertise `<header>` on the homepage |
+| Contact background illustration | `#contact::before` | Decorative BIM wireframe backdrop (`assets/illustrations/hero-background.svg`), grayscale, faded on the left via a `var(--off-white)` gradient layer so contact text stays readable; positioned top-right at 49.5% width, `opacity: 0.275`. Purely decorative — no `<img>`, no alt text needed. Homepage-only (defined in `home.css`); other pages' `#contact` section has a plain background. |
+| Hero/expertise background illustration | `.hero::before` | Same decorative-backdrop technique as the contact illustration above, reusing a different plate from the same generative set (`assets/illustrations/expertise-background.svg`, portrait 620×1040 — sized by height via `background-size: auto 90%` rather than width, since it's a tall plate, not a wide one). Same grayscale/gradient/opacity treatment. |
+
+## About-specific
+
+| Component | Class | Purpose |
+|---|---|---|
+| Hero grid | `.about-hero-grid` | Two-column layout (text / portrait) on `/a-propos/` and `/en/about/`, stacks on mobile (`≤860px`) |
+| Portrait | `.about-photo` | Square headshot, `object-fit: cover`, `--radius-lg` corners, `--light-blue` ring border — matches the squared-off technical/blueprint language used elsewhere (icon logo crop, `.expertise-card`), rather than a circular crop. Only exception to the "no photography" brand rule — see `docs/brand/brand.md` § Photography |
+| Experience timeline | `.about-timeline` / `.about-timeline-item` | Stacked list of past roles, left border rule, mono accent-colored date, reuses `.tag-row`/`.tag` for sector tags. Optional `.about-timeline-desc` paragraph for a brief role description. |
 
 ## Blog-specific
 
@@ -77,9 +86,13 @@ Reusable HTML/CSS patterns. `/new-page` and `/new-section` read this to pick exi
     <div class="blog-card-body">
         <h2 class="blog-card-title"><title></h2>
         <p class="blog-card-meta"><YYYY-MM-DD> · <N> min read</p>
+        <p class="blog-card-excerpt"><first paragraph of the article, verbatim></p>
+        <span class="blog-card-more">Lire plus / Read more</span>
     </div>
 </a>
 ```
+
+`.blog-card-excerpt` clips to 6 lines (`max-height`) and fades out the last 3 via a `mask-image` gradient rather than a hard cutoff; `.blog-card-more` is a plain accent-colored label, not a separate link (the whole card is already the `<a>`).
 
 ### Blog — FAQ item
 
@@ -144,9 +157,3 @@ Player JS (inline per article):
 })();
 ```
 
-## Projects-specific
-
-| Component | Class | Purpose |
-|---|---|---|
-| Project card | `.project-card` | Grid card for the projects index |
-| Project grid | `.projects-grid` | Responsive grid (auto-fill minmax 320px) |

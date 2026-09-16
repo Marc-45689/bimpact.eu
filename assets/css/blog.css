@@ -8,7 +8,7 @@
 /* --- BLOG INDEX --- */
 
 .blog-hero {
-    padding: 8rem 0 var(--space-md);
+    padding: calc(var(--nav-height) + var(--space-xl)) 0 var(--space-md);
     text-align: center;
 }
 
@@ -41,10 +41,29 @@
     font-weight: 700;
     line-height: 1.3;
     margin-bottom: 0.5rem;
+    color: var(--off-white);
 }
 .blog-card-meta {
     font-size: var(--fs-xs);
     color: var(--soft-blue);
+}
+.blog-card-excerpt {
+    margin-top: var(--space-sm);
+    font-size: var(--fs-sm);
+    line-height: 1.6;
+    color: var(--soft-blue);
+    max-height: calc(1.6em * 6);
+    overflow: hidden;
+    /* Fade out the last 3 of 6 lines instead of a hard cutoff. */
+    -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 50%, transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 0%, #000 50%, transparent 100%);
+}
+.blog-card-more {
+    display: inline-block;
+    margin-top: var(--space-xs);
+    font-size: var(--fs-sm);
+    font-weight: 600;
+    color: var(--accent);
 }
 
 /* --- ARTICLE BREADCRUMB --- */
@@ -76,7 +95,7 @@ article li { margin-bottom: 0.5rem; }
 article ul li::marker { color: var(--accent); }
 article a { color: var(--accent); border-bottom: 1px solid var(--accent-dim); }
 article a:hover { border-bottom-color: var(--accent); }
-article strong { font-weight: 700; color: var(--off-white); }
+article strong { font-weight: 700; color: var(--midnight); }
 
 /* --- BLOCKQUOTE --- */
 
@@ -223,6 +242,7 @@ figure.article-img-center figcaption {
 .article-cta-inline h3 {
     margin: 0 0 0.5rem;
     font-size: var(--fs-lg);
+    color: var(--off-white);
 }
 .article-cta-inline p {
     margin-bottom: var(--space-sm);
@@ -257,7 +277,7 @@ figure.article-img-center figcaption {
     padding: var(--space-sm) 0;
     font-size: var(--fs-md);
     font-weight: 700;
-    color: var(--off-white);
+    color: var(--midnight);
     text-align: left;
 }
 .article-faq-question svg {
