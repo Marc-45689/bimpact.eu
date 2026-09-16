@@ -154,23 +154,36 @@ section { padding: var(--space-xl) 0; overflow: clip; }
     position: relative;
     overflow: hidden;
 }
-#contact::before {
+.contact-form-wrap {
+    position: relative;
+    margin-top: var(--space-lg);
+    max-width: 480px;
+}
+/* top:0 here is exactly the top of the "Nom" field (the form's first
+   child) — anchoring the illustration to the wrap instead of the whole
+   #contact section is what keeps it aligned regardless of how tall the
+   heading/lead above it is per page or locale. */
+.contact-form-wrap::before {
     content: "";
     position: absolute;
-    inset: 0;
+    top: 0;
+    bottom: 0;
+    left: 100%;
+    width: 420px;
     background-image:
-        linear-gradient(to right, var(--off-white) 0%, var(--off-white) 20%, transparent 55%),
+        linear-gradient(to right, var(--off-white) 0%, transparent 25%),
         url('../illustrations/hero-background.svg');
     background-repeat: no-repeat, no-repeat;
-    background-position: left center, right bottom;
-    background-size: 100% 100%, 49.5% auto;
+    background-position: left top, left top;
+    background-size: 100% 100%, 100% auto;
     opacity: 0.275;
     filter: grayscale(100%);
     z-index: 0;
+    pointer-events: none;
 }
-#contact > .container { position: relative; z-index: 1; }
 .contact-form {
-    margin-top: var(--space-lg);
+    position: relative;
+    z-index: 1;
     display: flex;
     flex-direction: column;
     gap: var(--space-sm);
