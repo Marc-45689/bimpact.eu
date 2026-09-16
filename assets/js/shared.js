@@ -19,11 +19,15 @@
         alignContactIllustration();
         window.addEventListener('resize', alignContactIllustration);
         window.addEventListener('load', alignContactIllustration);
-        // Re-run once the web font swaps in — before that, the heading/lead
-        // above the form render in a fallback font with different metrics,
-        // so the initial measurement lands too high.
         if (document.fonts && document.fonts.ready) {
             document.fonts.ready.then(alignContactIllustration);
+        }
+        // Belt and braces: whatever causes the heading/lead above the form
+        // to reflow (font swap, translation-specific line wraps, anything
+        // else), a ResizeObserver on #contact itself catches the resulting
+        // height change directly instead of guessing which event fires it.
+        if ('ResizeObserver' in window) {
+            new ResizeObserver(alignContactIllustration).observe(contactSection);
         }
     }
 
