@@ -52,6 +52,7 @@ Reusable HTML/CSS patterns. `/new-page` and `/new-section` read this to pick exi
 |---|---|---|
 | Expertise cards | `.expertise-grid` / `.expertise-card` | 3-up card grid (tools / deliverables / audience), nested inside the merged hero/expertise `<header>` on the homepage |
 | Contact background illustration | `#contact::before` | Decorative BIM wireframe backdrop (`assets/illustrations/hero-background.svg`), grayscale, faded on the left via a `var(--off-white)` gradient layer so contact text stays readable; positioned top-right at 49.5% width, `opacity: 0.275`. Purely decorative — no `<img>`, no alt text needed. Homepage-only (defined in `home.css`); other pages' `#contact` section has a plain background. |
+| Hero/expertise background illustration | `.hero::before` | Same decorative-backdrop technique as the contact illustration above, reusing a different plate from the same generative set (`assets/illustrations/expertise-background.svg`, portrait 620×1040 — sized by height via `background-size: auto 90%` rather than width, since it's a tall plate, not a wide one). Same grayscale/gradient/opacity treatment. |
 
 ## About-specific
 
@@ -59,7 +60,7 @@ Reusable HTML/CSS patterns. `/new-page` and `/new-section` read this to pick exi
 |---|---|---|
 | Hero grid | `.about-hero-grid` | Two-column layout (text / portrait) on `/a-propos/` and `/en/about/`, stacks on mobile (`≤860px`) |
 | Portrait | `.about-photo` | Square headshot, `object-fit: cover`, `--radius-lg` corners, `--light-blue` ring border — matches the squared-off technical/blueprint language used elsewhere (icon logo crop, `.expertise-card`), rather than a circular crop. Only exception to the "no photography" brand rule — see `docs/brand/brand.md` § Photography |
-| Experience timeline | `.about-timeline` / `.about-timeline-item` | Stacked list of past roles, left border rule, mono accent-colored date, reuses `.tag-row`/`.tag` for sector tags |
+| Experience timeline | `.about-timeline` / `.about-timeline-item` | Stacked list of past roles, left border rule, mono accent-colored date, reuses `.tag-row`/`.tag` for sector tags. Optional `.about-timeline-desc` paragraph for a brief role description. |
 
 ## Blog-specific
 
@@ -85,9 +86,13 @@ Reusable HTML/CSS patterns. `/new-page` and `/new-section` read this to pick exi
     <div class="blog-card-body">
         <h2 class="blog-card-title"><title></h2>
         <p class="blog-card-meta"><YYYY-MM-DD> · <N> min read</p>
+        <p class="blog-card-excerpt"><first paragraph of the article, verbatim></p>
+        <span class="blog-card-more">Lire plus / Read more</span>
     </div>
 </a>
 ```
+
+`.blog-card-excerpt` clips to 6 lines (`max-height`) and fades out the last 3 via a `mask-image` gradient rather than a hard cutoff; `.blog-card-more` is a plain accent-colored label, not a separate link (the whole card is already the `<a>`).
 
 ### Blog — FAQ item
 

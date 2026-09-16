@@ -3,7 +3,13 @@
    ═══════════════════════════════════════ */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-html { scroll-behavior: smooth; overflow-x: clip; }
+html {
+    scroll-behavior: smooth;
+    overflow-x: clip;
+    /* Without this, anchor jumps (nav links, #contact CTA) land with the
+       target flush under the fixed nav, hidden behind it. */
+    scroll-padding-top: calc(var(--nav-height) + var(--space-sm));
+}
 
 body {
     font-family: var(--font-body);

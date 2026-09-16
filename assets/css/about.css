@@ -55,3 +55,7 @@
     color: var(--soft-blue);
     margin-top: 0.25rem;
 }
+.about-timeline-desc {
+    margin-top: var(--space-xs);
+    max-width: 60ch;
+}

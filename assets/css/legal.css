@@ -6,7 +6,7 @@
 .legal-content {
     max-width: 72ch;
     margin: 0 auto;
-    padding: 8rem var(--container-pad) var(--space-xl);
+    padding: calc(var(--nav-height) + var(--space-xl)) var(--container-pad) var(--space-xl);
 }
 .legal-content h1 {
     font-size: var(--fs-2xl);
