@@ -71,6 +71,7 @@
 .article-breadcrumb {
     font-size: var(--fs-sm);
     color: var(--soft-blue);
+    margin-top: var(--space-sm);
     margin-bottom: var(--space-sm);
 }
 .article-breadcrumb a { border-bottom: 1px solid transparent; }

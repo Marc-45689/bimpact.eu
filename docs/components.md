@@ -38,7 +38,7 @@ Reusable HTML/CSS patterns. `/new-page` and `/new-section` read this to pick exi
 |---|---|---|
 | Reveal on scroll | `.reveal` / `.reveal.visible` | IntersectionObserver fade-up |
 | Scroll progress | `#scrollProgress` | Bottom-fixed progress bar |
-| Back to top | `#scrollTop` | Fixed button appearing after 600px scroll |
+| Back to top | `#scrollTop` / `.scroll-top` / `.scroll-top.docked` | On every page. Fixed button appearing after 600px scroll; `shared.js` adds `.docked` (switches to `position: absolute`, `top` computed from the footer's offset) once the footer approaches, so it settles 10px above the footer instead of floating over it. |
 
 ## Utilities
 

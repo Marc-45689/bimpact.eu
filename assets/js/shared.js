@@ -52,6 +52,7 @@
     // Scroll progress bar + back-to-top
     const scrollBar = document.getElementById('scrollProgress');
     const scrollTop = document.getElementById('scrollTop');
+    const footer = document.querySelector('footer');
     if (scrollBar || scrollTop) {
         const onScrollProgress = () => {
             const h = document.documentElement;
@@ -61,10 +62,27 @@
                 const show = h.scrollTop > 600;
                 scrollTop.style.opacity = show ? '1' : '0';
                 scrollTop.style.pointerEvents = show ? 'auto' : 'none';
+
+                // Dock 10px above the footer instead of floating over it
+                // once the footer's top edge reaches the button's resting
+                // spot (24px/1.5rem from the viewport bottom).
+                if (footer) {
+                    const footerTop = footer.getBoundingClientRect().top;
+                    const restBottom = 24;
+                    if (footerTop < window.innerHeight - restBottom) {
+                        scrollTop.classList.add('docked');
+                        scrollTop.style.top = (footer.offsetTop - scrollTop.offsetHeight - 10) + 'px';
+                    } else {
+                        scrollTop.classList.remove('docked');
+                        scrollTop.style.top = '';
+                    }
+                }
+
                 scrollTop.style.transform = show ? 'translateY(0)' : 'translateY(10px)';
             }
         };
         document.addEventListener('scroll', onScrollProgress, { passive: true });
+        window.addEventListener('resize', onScrollProgress);
         onScrollProgress();
     }
     if (scrollTop) {
