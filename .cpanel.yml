@@ -1,14 +1,11 @@
 ---
-# cPanel "Git Version Control" deployment config for this branch (staging).
-# Runs server-side after "Update from Remote" + "Deploy HEAD Commit" in
-# cPanel, or after a manual "Pull or Deploy". See scripts/cpanel-deploy-staging.sh
-# for what actually happens; this file only wires the deploy path.
-#
-# NOTE: this file is staging-only. If this branch is ever merged into
-# main, main needs its own .cpanel.yml (different deploy path, no
-# noindex/GA stripping) before setting up a production cPanel repo —
-# don't reuse this one as-is.
+# cPanel "Git Version Control" deployment config. This same file content
+# is used by both cPanel repos on the host: the one tracking `staging`
+# (deploys to staging.bimpact.eu) and the one tracking `main` (deploys to
+# bimpact.eu). Keeping it identical on both branches means merging
+# staging into main never produces a merge conflict on this path — the
+# staging vs. production behavior is picked by scripts/cpanel-deploy.sh
+# based on whichever branch is actually checked out on the host.
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/foma0863/staging.bimpact.eu/
-    - /bin/bash scripts/cpanel-deploy-staging.sh $DEPLOYPATH
+    - /bin/bash scripts/cpanel-deploy.sh
