@@ -44,21 +44,21 @@ Reusable HTML/CSS patterns. `/new-page` and `/new-section` read this to pick exi
 | `.sr-only` | Visually hidden, screen-reader accessible |
 | `.lead` | Section intro paragraph, `--fs-md`, `--soft-blue`, capped at 60ch |
 | `.tag-row` / `.tag` | Row of small pill tags (tools, keywords), mono font, outlined |
+| Contact info | `.contact-info` (`main.css`) | `<dl>` of direct contact info (email, phone) — no form, direct channels only. Reused in the `#contact` section on the homepage, `/a-propos/`, and `/blog/` (and their `/en/` twins). |
 
 ## Home-specific
 
 | Component | Class | Purpose |
 |---|---|---|
-| Expertise cards | `.expertise-grid` / `.expertise-card` | 3-up card grid (tools / deliverables / audience) on the homepage |
-| Contact info | `.contact-info` | `<dl>` of direct contact info (email, phone) in the homepage contact section — no form, direct channels only |
-| Contact background illustration | `#contact::before` | Decorative BIM wireframe backdrop (`assets/illustrations/hero-background.svg`), grayscale, faded on the left via a `var(--off-white)` gradient layer so contact text stays readable; positioned top-right at 49.5% width, `opacity: 0.275`. Purely decorative — no `<img>`, no alt text needed. |
+| Expertise cards | `.expertise-grid` / `.expertise-card` | 3-up card grid (tools / deliverables / audience), nested inside the merged hero/expertise `<header>` on the homepage |
+| Contact background illustration | `#contact::before` | Decorative BIM wireframe backdrop (`assets/illustrations/hero-background.svg`), grayscale, faded on the left via a `var(--off-white)` gradient layer so contact text stays readable; positioned top-right at 49.5% width, `opacity: 0.275`. Purely decorative — no `<img>`, no alt text needed. Homepage-only (defined in `home.css`); other pages' `#contact` section has a plain background. |
 
 ## About-specific
 
 | Component | Class | Purpose |
 |---|---|---|
-| Hero grid | `.about-hero-grid` | Two-column layout (text / portrait) on `/qui-suis-je/` and `/en/about/`, stacks on mobile (`≤860px`) |
-| Portrait | `.about-photo` | Circular headshot, `object-fit: cover`, `--light-blue` ring border. Only exception to the "no photography" brand rule — see `docs/brand/brand.md` § Photography |
+| Hero grid | `.about-hero-grid` | Two-column layout (text / portrait) on `/a-propos/` and `/en/about/`, stacks on mobile (`≤860px`) |
+| Portrait | `.about-photo` | Square headshot, `object-fit: cover`, `--radius-lg` corners, `--light-blue` ring border — matches the squared-off technical/blueprint language used elsewhere (icon logo crop, `.expertise-card`), rather than a circular crop. Only exception to the "no photography" brand rule — see `docs/brand/brand.md` § Photography |
 | Experience timeline | `.about-timeline` / `.about-timeline-item` | Stacked list of past roles, left border rule, mono accent-colored date, reuses `.tag-row`/`.tag` for sector tags |
 
 ## Blog-specific

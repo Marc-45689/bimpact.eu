@@ -1,7 +1,7 @@
 {
   "_doc": "Directory name translations used by /start-new-site when the user picks a non-English language. Keys are the English defaults (as shipped), values are per-language replacements. Only add a language here if you want to offer automatic renaming.",
   "fr": {
-    "about":           "qui-suis-je",
+    "about":           "a-propos",
     "projects":        "projets",
     "blog":            "blog",
     "legal":           "mentions-legales",

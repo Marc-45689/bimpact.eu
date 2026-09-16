@@ -1,6 +1,6 @@
 /* ═══════════════════════════════════════
    ABOUT PAGE
-   Styles specific to /qui-suis-je/ and /en/about/.
+   Styles specific to /a-propos/ and /en/about/.
    Keep shared patterns in main.css.
    ═══════════════════════════════════════ */
 
@@ -14,7 +14,7 @@
     width: 352px;
     height: 352px;
     object-fit: cover;
-    border-radius: var(--radius-full);
+    border-radius: var(--radius-lg);
     border: 2px solid var(--light-blue);
     justify-self: end;
 }

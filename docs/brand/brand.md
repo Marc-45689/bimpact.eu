@@ -47,7 +47,7 @@ Where to get them:
 ## Photography
 
 - Style: pas de photographie de manière générale — le site privilégie l'illustration technique/schématique (esprit plan, schéma de principe, ligne fine) plutôt que la photo, cohérent avec l'univers BIM.
-- Exception: un portrait de Marc Forner sur `/qui-suis-je/` (et son twin `/en/about/`), en noir et blanc pour rester cohérent avec la palette du site — seul emplacement autorisé pour une photo.
+- Exception: un portrait de Marc Forner sur `/a-propos/` (et son twin `/en/about/`), en noir et blanc pour rester cohérent avec la palette du site — seul emplacement autorisé pour une photo.
 - Sources: illustrations générées ou dessinées ad hoc, voir `docs/brand/illustration-prompt.md`.
 - Retouch: portrait en niveaux de gris, pas d'autre retouche.
 
