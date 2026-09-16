@@ -19,6 +19,12 @@ import os
 import sys
 from pathlib import Path
 
+# Windows consoles often default to a legacy codepage (cp1252) that can't
+# encode the checkmark below; force UTF-8 stdout where supported instead of
+# crashing after the sitemap has already been written successfully.
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8")
+
 ROOT = Path(__file__).resolve().parent.parent
 SITEMAP = ROOT / "sitemap.xml"
 

@@ -21,12 +21,12 @@
         <changefreq>monthly</changefreq>
     </url>
     <url>
-        <loc>https://bimpact.eu/mentions-legales/confidentialite/</loc>
+        <loc>https://bimpact.eu/mentions-legales/cgu/</loc>
         <priority>0.3</priority>
         <changefreq>yearly</changefreq>
     </url>
     <url>
-        <loc>https://bimpact.eu/mentions-legales/cgu/</loc>
+        <loc>https://bimpact.eu/mentions-legales/confidentialite/</loc>
         <priority>0.3</priority>
         <changefreq>yearly</changefreq>
     </url>
@@ -56,17 +56,17 @@
         <changefreq>monthly</changefreq>
     </url>
     <url>
+        <loc>https://bimpact.eu/en/legal/cookies/</loc>
+        <priority>0.3</priority>
+        <changefreq>yearly</changefreq>
+    </url>
+    <url>
         <loc>https://bimpact.eu/en/legal/privacy/</loc>
         <priority>0.3</priority>
         <changefreq>yearly</changefreq>
     </url>
     <url>
         <loc>https://bimpact.eu/en/legal/terms/</loc>
-        <priority>0.3</priority>
-        <changefreq>yearly</changefreq>
-    </url>
-    <url>
-        <loc>https://bimpact.eu/en/legal/cookies/</loc>
         <priority>0.3</priority>
         <changefreq>yearly</changefreq>
     </url>
