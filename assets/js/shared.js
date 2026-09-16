@@ -18,6 +18,13 @@
         };
         alignContactIllustration();
         window.addEventListener('resize', alignContactIllustration);
+        window.addEventListener('load', alignContactIllustration);
+        // Re-run once the web font swaps in — before that, the heading/lead
+        // above the form render in a fallback font with different metrics,
+        // so the initial measurement lands too high.
+        if (document.fonts && document.fonts.ready) {
+            document.fonts.ready.then(alignContactIllustration);
+        }
     }
 
     // Nav scroll state
