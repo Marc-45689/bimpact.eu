@@ -7,6 +7,19 @@
    ═══════════════════════════════════════ */
 
 (function () {
+    // Align the #contact illustration's top with the "Nom" field: the
+    // field's position shifts with the heading/lead text above it (varies
+    // by page and locale), so it's read from the DOM instead of hardcoded.
+    const contactSection = document.getElementById('contact');
+    const formWrap = contactSection ? contactSection.querySelector('.contact-form-wrap') : null;
+    if (contactSection && formWrap) {
+        const alignContactIllustration = () => {
+            contactSection.style.setProperty('--contact-illu-top', formWrap.offsetTop + 'px');
+        };
+        alignContactIllustration();
+        window.addEventListener('resize', alignContactIllustration);
+    }
+
     // Nav scroll state
     const nav = document.querySelector('nav');
     if (nav) {

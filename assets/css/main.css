@@ -154,36 +154,40 @@ section { padding: var(--space-xl) 0; overflow: clip; }
     position: relative;
     overflow: hidden;
 }
-.contact-form-wrap {
-    position: relative;
-    margin-top: var(--space-lg);
-    max-width: 480px;
-}
-/* top:0 here is exactly the top of the "Nom" field (the form's first
-   child) — anchoring the illustration to the wrap instead of the whole
-   #contact section is what keeps it aligned regardless of how tall the
-   heading/lead above it is per page or locale. */
-.contact-form-wrap::before {
+/* Right edge matches .hero's illustration exactly (same calc, see
+   home.css) so the two line up as you scroll from one section to the
+   other. Top comes from --contact-illu-top, a custom property shared.js
+   sets to .contact-form-wrap's offsetTop, so it still lines up with the
+   "Nom" field regardless of how tall the heading/lead above it is. Hidden
+   below 1180px: at that width the form and a 640px-wide image no longer
+   both fit without overlapping. */
+#contact::before {
     content: "";
     position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 100%;
+    top: var(--contact-illu-top, 0px);
+    right: max(var(--container-pad), calc((100vw - var(--container-max)) / 2 + var(--container-pad)));
     width: 640px;
+    height: 360px;
     background-image:
-        linear-gradient(to right, var(--off-white) 0%, transparent 25%),
+        linear-gradient(to right, var(--off-white) 0%, transparent 30%),
         url('../illustrations/hero-background.svg');
     background-repeat: no-repeat, no-repeat;
-    background-position: left top, left top;
+    background-position: right top, right top;
     background-size: 100% 100%, 100% auto;
     opacity: 0.275;
     filter: grayscale(100%);
     z-index: 0;
     pointer-events: none;
 }
+@media (max-width: 1180px) {
+    #contact::before { display: none; }
+}
+#contact > .container { position: relative; z-index: 1; }
+.contact-form-wrap {
+    margin-top: var(--space-lg);
+    max-width: 480px;
+}
 .contact-form {
-    position: relative;
-    z-index: 1;
     display: flex;
     flex-direction: column;
     gap: var(--space-sm);
