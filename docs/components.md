@@ -19,6 +19,12 @@ Reusable HTML/CSS patterns. `/new-page` and `/new-section` read this to pick exi
 | Language switcher | `.nav-lang` | FR/EN/ES links pointing at the current page's exact counterpart (see `CLAUDE.md` — Languages); `.active` marks the current language |
 | Cookie consent banner | `.cookie-banner` / `.cookie-banner-inner` / `.cookie-banner-actions` | Fixed bottom bar on every page, gates `assets/js/analytics.js` (GA4) behind an accept/refuse choice via `assets/js/cookie-consent.js`; reopened from the footer's `.footer-cookie-link` button. `hidden` attribute toggles visibility. |
 
+## Forms
+
+| Component | Class | Purpose |
+|---|---|---|
+| Contact form | `.contact-form` / `.form-field` / `.form-status` | Name/email/message form on `#contact` (home, about, blog — every locale), posts JSON to `api/contact.php` via `assets/js/contact-form.js`. Anti-spam: `.form-honeypot` hidden field (`company_website`, must stay empty) plus a server-side minimum fill time — no captcha, no third-party script, no CSP change. Success/error text comes from `data-success`/`data-error` on the `<form>` so each locale sets its own copy. Fires a `contact_form_submit` GA4 event on success (only if consent already granted). |
+
 ## CTAs
 
 | Component | Class | Purpose |

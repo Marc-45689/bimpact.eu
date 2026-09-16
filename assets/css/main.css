@@ -114,12 +114,71 @@ section { padding: var(--space-xl) 0; overflow: clip; }
     font-size: 1.1em;
 }
 
-/* ─── Contact info (direct channels: email, phone — no form) ─── */
+/* ─── Contact ─── */
 /* Wider than the default .lead cap (60ch) so the tagline's first sentence
    (76 characters in French) doesn't wrap before the signature's own line break. */
 #contact .lead {
     max-width: 80ch;
 }
+.contact-form {
+    margin-top: var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    max-width: 480px;
+}
+.form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+.form-field label {
+    font-family: var(--font-mono);
+    font-size: var(--fs-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--soft-blue);
+}
+.form-field input,
+.form-field textarea {
+    font-family: var(--font-body);
+    font-size: var(--fs-base);
+    color: var(--midnight);
+    background: var(--off-white);
+    border: 1px solid var(--light-blue);
+    border-radius: var(--radius-md);
+    padding: 0.7rem 0.9rem;
+}
+.form-field input:focus,
+.form-field textarea:focus {
+    outline: 2px solid var(--accent);
+    outline-offset: 1px;
+}
+.form-field textarea {
+    min-height: 130px;
+    resize: vertical;
+}
+/* Honeypot: kept in the DOM (not display:none, which some bots skip) but
+   off-screen and out of tab order/AT, so only scripted fillers ever touch it. */
+.form-honeypot {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+.contact-form button[type="submit"] {
+    align-self: flex-start;
+    border: none;
+    cursor: pointer;
+}
+.contact-form button[type="submit"]:disabled {
+    opacity: 0.6;
+    cursor: default;
+}
+.form-status:empty { display: none; }
+.form-status.success { color: var(--accent); font-weight: 600; }
+.form-status.error { color: var(--midnight); }
 .contact-info {
     margin-top: var(--space-lg);
 }

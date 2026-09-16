@@ -31,7 +31,7 @@ No build, lint, or test tooling — this is a static HTML/CSS/JS site with no pa
 - `docs/brand/` is the single source of brand truth. `.claude/skills/starter-setup/SKILL.md` — not the individual command files in `.claude/commands/` — is where the actual shared logic lives (brand-loading order, the module registry, the CSP-mutation table per module, sitemap priority rules). Read the skill to understand what a slash command really does.
 - `assets/css/tokens.css` defines every design token; `docs/components.md` is the living catalog of reusable classes built on those tokens — check it before inventing new CSS, and add a row when you introduce a new reusable class.
 - Module state (booking / CRM / analytics / cookie-consent / blog / podcast / illustrations) is tracked in `docs/brand/toolbelt.md`; each active module must have a matching `Content-Security-Policy` allowance in both `.htaccess` and `.htaccess-staging`.
-- `api/*.php` are SFTP-deployed PHP proxies that load secrets via `require_once __DIR__ . '/_env.php'` from a server-side `.env` (never committed, created manually on the host); `.env.example` documents expected keys.
+- `api/*.php` are PHP endpoints, deployed the same way as the rest of the site now (cPanel Git pull — see Commands above), that load secrets via `require_once __DIR__ . '/_env.php'` from a server-side `.env` (never committed, created manually on the host); `.env.example` documents expected keys.
 
 ## Non-negotiable rules
 
