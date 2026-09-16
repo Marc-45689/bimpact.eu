@@ -23,7 +23,7 @@ Reusable HTML/CSS patterns. `/new-page` and `/new-section` read this to pick exi
 
 | Component | Class | Purpose |
 |---|---|---|
-| Contact form | `.contact-form` / `.form-field` / `.form-status` | Name/email/message form on `#contact` (home, about, blog — every locale), posts JSON to `api/contact.php` via `assets/js/contact-form.js`. Anti-spam: `.form-honeypot` hidden field (`company_website`, must stay empty) plus a server-side minimum fill time — no captcha, no third-party script, no CSP change. Success/error text comes from `data-success`/`data-error` on the `<form>` so each locale sets its own copy. Fires a `contact_form_submit` GA4 event on success (only if consent already granted). |
+| Contact form | `.contact-form` / `.form-field` / `.form-status` | Name/email/phone (optional)/message form on `#contact` (home, about, blog — every locale), posts JSON to `api/contact.php` via `assets/js/contact-form.js`. No raw `mailto:` link anywhere on the site — the form is the only contact channel, to keep the address off bot-scraped pages; legal pages link to it instead (nav `.nav-cta` + a `.btn-primary` in their own "Contact" section). Anti-spam: `.form-honeypot` hidden field (`company_website`, must stay empty) plus a server-side minimum fill time — no captcha, no third-party script, no CSP change. Success/error text comes from `data-success`/`data-error` on the `<form>` so each locale sets its own copy. Fires a `contact_form_submit` GA4 event on success (only if consent already granted). |
 
 ## CTAs
 

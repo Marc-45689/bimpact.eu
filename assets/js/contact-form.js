@@ -13,6 +13,7 @@
         var payload = {
             name: form.querySelector('[name="name"]').value.trim(),
             email: form.querySelector('[name="email"]').value.trim(),
+            phone: form.querySelector('[name="phone"]').value.trim(),
             message: form.querySelector('[name="message"]').value.trim(),
             company_website: form.querySelector('[name="company_website"]').value,
             elapsed: Date.now() - loadedAt,

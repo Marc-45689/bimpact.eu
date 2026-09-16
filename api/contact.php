@@ -45,6 +45,7 @@ if ($elapsed > 0 && $elapsed < 3000) {
 
 $name    = trim((string) ($input['name'] ?? ''));
 $email   = trim((string) ($input['email'] ?? ''));
+$phone   = trim((string) ($input['phone'] ?? ''));
 $message = trim((string) ($input['message'] ?? ''));
 
 if ($name === '' || $message === '' || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -52,7 +53,7 @@ if ($name === '' || $message === '' || !filter_var($email, FILTER_VALIDATE_EMAIL
     echo json_encode(['error' => 'invalid input']);
     exit;
 }
-if (mb_strlen($name) > 200 || mb_strlen($message) > 5000) {
+if (mb_strlen($name) > 200 || mb_strlen($phone) > 40 || mb_strlen($message) > 5000) {
     http_response_code(400);
     echo json_encode(['error' => 'input too long']);
     exit;
@@ -62,6 +63,7 @@ if (mb_strlen($name) > 200 || mb_strlen($message) > 5000) {
 // mail header (body-only fields don't need this, headers do).
 $name  = str_replace(["\r", "\n"], '', $name);
 $email = str_replace(["\r", "\n"], '', $email);
+$phone = str_replace(["\r", "\n"], '', $phone);
 
 $locale = in_array($input['locale'] ?? '', ['fr', 'en', 'es'], true) ? $input['locale'] : 'fr';
 
@@ -72,7 +74,8 @@ $subjects = [
 ];
 $subject = '=?UTF-8?B?' . base64_encode($subjects[$locale]) . '?=';
 
-$body = "Nom : $name\nEmail : $email\n\n$message\n";
+$phoneLine = $phone !== '' ? "Téléphone : $phone\n" : '';
+$body = "Nom : $name\nEmail : $email\n{$phoneLine}\n$message\n";
 
 $headers = implode("\r\n", [
     'From: BIMpact <no-reply@bimpact.eu>',

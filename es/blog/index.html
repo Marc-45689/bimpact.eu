@@ -87,7 +87,7 @@
             <p class="section-number">Contacto</p>
             <h2 class="section-title">¿Un proyecto <em>CFO-CFA</em>?</h2>
             <p class="lead">Descríbame su proyecto, me pondré en contacto con usted rápidamente para hablarlo.<br>Marc Forner - BIMpact - Especialista en maqueta digital del edificio.</p>
-            <form class="contact-form" id="contactForm" data-success="Mensaje enviado, gracias. Me pondré en contacto con usted rápidamente." data-error="Se produjo un error. Inténtelo de nuevo o escríbame directamente a xxxxxx@bimpact.eu.">
+            <form class="contact-form" id="contactForm" data-success="Mensaje enviado, gracias. Me pondré en contacto con usted rápidamente." data-error="Se produjo un error. Inténtelo de nuevo en unos instantes.">
                 <div class="form-field">
                     <label for="cfName">Nombre</label>
                     <input type="text" id="cfName" name="name" required maxlength="200" autocomplete="name">
@@ -95,6 +95,10 @@
                 <div class="form-field">
                     <label for="cfEmail">Correo electrónico</label>
                     <input type="email" id="cfEmail" name="email" required autocomplete="email">
+                </div>
+                <div class="form-field">
+                    <label for="cfPhone">Teléfono</label>
+                    <input type="tel" id="cfPhone" name="phone" autocomplete="tel">
                 </div>
                 <div class="form-field">
                     <label for="cfMessage">Mensaje</label>
@@ -107,10 +111,6 @@
                 <button type="submit" class="btn-primary">Enviar</button>
                 <p class="form-status" role="status" aria-live="polite"></p>
             </form>
-            <dl class="contact-info">
-                <dt>Email</dt>
-                <dd><a href="mailto:xxxxxx@bimpact.eu">xxxxxx@bimpact.eu</a></dd>
-            </dl>
         </div>
     </section>
 </main>
