@@ -115,6 +115,11 @@ section { padding: var(--space-xl) 0; overflow: clip; }
 }
 
 /* ─── Contact info (direct channels: email, phone — no form) ─── */
+/* Wider than the default .lead cap (60ch) so the tagline's first sentence
+   (76 characters in French) doesn't wrap before the signature's own line break. */
+#contact .lead {
+    max-width: 80ch;
+}
 .contact-info {
     margin-top: var(--space-lg);
 }

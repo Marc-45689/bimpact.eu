@@ -36,6 +36,7 @@ SITE_URL = os.getenv("SITE_URL", "https://example.com").rstrip("/")
 LOCALES = [
     ("", {"a-propos": "generic", "blog": "blog", "mentions-legales": "legal"}),
     ("en", {"about": "generic", "blog": "blog", "legal": "legal"}),
+    ("es", {"acerca": "generic", "blog": "blog", "legal": "legal"}),
 ]
 
 CATEGORY_PRIORITY = {"generic": "0.8", "blog": "0.8", "legal": "0.3"}
@@ -43,10 +44,10 @@ CATEGORY_CHANGEFREQ = {"generic": "monthly", "blog": "weekly", "legal": "yearly"
 SUBPAGE_PRIORITY = {"blog": "0.7", "legal": "0.3"}
 SUBPAGE_CHANGEFREQ = {"blog": "monthly", "legal": "yearly"}
 
-HOME_PRIORITY = {"": "1.0", "en": "0.7"}
-HOME_CHANGEFREQ = {"": "weekly", "en": "monthly"}
+HOME_PRIORITY = {"": "1.0", "en": "0.7", "es": "0.7"}
+HOME_CHANGEFREQ = {"": "weekly", "en": "monthly", "es": "monthly"}
 
-SKIP_TOP_LEVEL = {"assets", "api", "scripts", "docs", "node_modules", "en"}
+SKIP_TOP_LEVEL = {"assets", "api", "scripts", "docs", "node_modules", "en", "es"}
 
 
 def discover() -> list[tuple[str, str, str]]:

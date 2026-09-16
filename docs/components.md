@@ -16,7 +16,7 @@ Reusable HTML/CSS patterns. `/new-page` and `/new-section` read this to pick exi
 | Fixed nav | `nav` / `nav.scrolled` | Header with scroll-triggered glass blur |
 | Nav wordmark | `.nav-wordmark` | "BIM<em>pact</em>" text set next to the icon mark in `.nav-logo`; two-tone (off-white / accent) matching `logo-principal.svg`. Rendered in `--font-display` (IBM Plex Sans), not the logo's Space Grotesk — see `docs/brand/brand.md` Logo section. |
 | Mobile drawer | `.nav-links.open` | Hamburger-triggered side drawer under 860px |
-| Language switcher | `.nav-lang` | FR/EN links pointing at the current page's exact counterpart (see `CLAUDE.md` — Languages); `.active` marks the current language |
+| Language switcher | `.nav-lang` | FR/EN/ES links pointing at the current page's exact counterpart (see `CLAUDE.md` — Languages); `.active` marks the current language |
 | Cookie consent banner | `.cookie-banner` / `.cookie-banner-inner` / `.cookie-banner-actions` | Fixed bottom bar on every page, gates `assets/js/analytics.js` (GA4) behind an accept/refuse choice via `assets/js/cookie-consent.js`; reopened from the footer's `.footer-cookie-link` button. `hidden` attribute toggles visibility. |
 
 ## CTAs
@@ -44,7 +44,7 @@ Reusable HTML/CSS patterns. `/new-page` and `/new-section` read this to pick exi
 | `.sr-only` | Visually hidden, screen-reader accessible |
 | `.lead` | Section intro paragraph, `--fs-md`, `--soft-blue`, capped at 60ch |
 | `.tag-row` / `.tag` | Row of small pill tags (tools, keywords), mono font, outlined |
-| Contact info | `.contact-info` (`main.css`) | `<dl>` of direct contact info (email, phone) — no form, direct channels only. Reused in the `#contact` section on the homepage, `/a-propos/`, and `/blog/` (and their `/en/` twins). |
+| Contact info | `.contact-info` (`main.css`) | `<dl>` of direct contact info (email, phone) — no form, direct channels only. Reused in the `#contact` section on the homepage, `/a-propos/`, `/blog/`, and every blog article including `_template-article.html` (and their `/en/` twins) — new articles get it automatically from the template. Tagline: first sentence, then `<br>`, then the "Marc Forner - BIMpact - ..." signature line, both hardcoded per language (not a token). |
 
 ## Home-specific
 
