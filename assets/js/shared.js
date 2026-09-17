@@ -14,7 +14,7 @@
     const contactSection = document.getElementById('contact');
     const formWrap = contactSection ? contactSection.querySelector('.contact-form-wrap') : null;
     const lead = contactSection ? contactSection.querySelector('.lead') : null;
-    const CONTACT_ILLU_NUDGE = 300;
+    const CONTACT_ILLU_NUDGE = 150;
     if (contactSection && formWrap) {
         const alignContactIllustration = () => {
             const target = (lead ? lead.offsetTop + lead.offsetHeight : formWrap.offsetTop) + CONTACT_ILLU_NUDGE;
