@@ -7,14 +7,16 @@
    ═══════════════════════════════════════ */
 
 (function () {
-    // Align the #contact illustration's top with the "Nom" field: the
+    // Align the #contact illustration's top with the "Message" field: the
     // field's position shifts with the heading/lead text above it (varies
     // by page and locale), so it's read from the DOM instead of hardcoded.
     const contactSection = document.getElementById('contact');
     const formWrap = contactSection ? contactSection.querySelector('.contact-form-wrap') : null;
+    const messageField = document.getElementById('cfMessage');
     if (contactSection && formWrap) {
         const alignContactIllustration = () => {
-            contactSection.style.setProperty('--contact-illu-top', formWrap.offsetTop + 'px');
+            const target = messageField || formWrap;
+            contactSection.style.setProperty('--contact-illu-top', target.offsetTop + 'px');
         };
         alignContactIllustration();
         window.addEventListener('resize', alignContactIllustration);

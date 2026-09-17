@@ -157,8 +157,8 @@ section { padding: var(--space-xl) 0; overflow: clip; }
 /* Right edge matches .hero's illustration exactly (same calc, see
    home.css) so the two line up as you scroll from one section to the
    other. Top comes from --contact-illu-top, a custom property shared.js
-   sets to .contact-form-wrap's offsetTop, so it still lines up with the
-   "Nom" field regardless of how tall the heading/lead above it is. Hidden
+   sets to the "Message" field's offsetTop, so it still lines up with that
+   field regardless of how tall the heading/lead above it is. Hidden
    below 1300px: at that width the form and a 736px-wide image no longer
    both fit without overlapping. */
 #contact::before {
