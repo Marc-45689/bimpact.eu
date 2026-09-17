@@ -7,15 +7,15 @@
    ═══════════════════════════════════════ */
 
 (function () {
-    // Align the #contact illustration's top with the "Téléphone" field: the
+    // Align the #contact illustration's top with the "Email" field: the
     // field's position shifts with the heading/lead text above it (varies
     // by page and locale), so it's read from the DOM instead of hardcoded.
     const contactSection = document.getElementById('contact');
     const formWrap = contactSection ? contactSection.querySelector('.contact-form-wrap') : null;
-    const phoneField = document.getElementById('cfPhone');
+    const emailField = document.getElementById('cfEmail');
     if (contactSection && formWrap) {
         const alignContactIllustration = () => {
-            const target = phoneField || formWrap;
+            const target = emailField || formWrap;
             contactSection.style.setProperty('--contact-illu-top', target.offsetTop + 'px');
         };
         alignContactIllustration();
