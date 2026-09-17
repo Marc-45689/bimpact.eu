@@ -8,15 +8,16 @@
 
 (function () {
     // Align the #contact illustration's top with the bottom of the intro
-    // paragraph (.lead): that paragraph's height shifts with the heading
-    // above it (varies by page and locale), so it's read from the DOM
-    // instead of hardcoded.
+    // paragraph (.lead), plus a fixed nudge down (Marc's call): that
+    // paragraph's height shifts with the heading above it (varies by page
+    // and locale), so it's read from the DOM instead of hardcoded.
     const contactSection = document.getElementById('contact');
     const formWrap = contactSection ? contactSection.querySelector('.contact-form-wrap') : null;
     const lead = contactSection ? contactSection.querySelector('.lead') : null;
+    const CONTACT_ILLU_NUDGE = 300;
     if (contactSection && formWrap) {
         const alignContactIllustration = () => {
-            const target = lead ? lead.offsetTop + lead.offsetHeight : formWrap.offsetTop;
+            const target = (lead ? lead.offsetTop + lead.offsetHeight : formWrap.offsetTop) + CONTACT_ILLU_NUDGE;
             contactSection.style.setProperty('--contact-illu-top', target + 'px');
         };
         alignContactIllustration();
