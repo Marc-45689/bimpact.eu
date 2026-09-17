@@ -7,16 +7,17 @@
    ═══════════════════════════════════════ */
 
 (function () {
-    // Align the #contact illustration's top with the "Email" field: the
-    // field's position shifts with the heading/lead text above it (varies
-    // by page and locale), so it's read from the DOM instead of hardcoded.
+    // Align the #contact illustration's top with the bottom of the intro
+    // paragraph (.lead): that paragraph's height shifts with the heading
+    // above it (varies by page and locale), so it's read from the DOM
+    // instead of hardcoded.
     const contactSection = document.getElementById('contact');
     const formWrap = contactSection ? contactSection.querySelector('.contact-form-wrap') : null;
-    const emailField = document.getElementById('cfEmail');
+    const lead = contactSection ? contactSection.querySelector('.lead') : null;
     if (contactSection && formWrap) {
         const alignContactIllustration = () => {
-            const target = emailField || formWrap;
-            contactSection.style.setProperty('--contact-illu-top', target.offsetTop + 'px');
+            const target = lead ? lead.offsetTop + lead.offsetHeight : formWrap.offsetTop;
+            contactSection.style.setProperty('--contact-illu-top', target + 'px');
         };
         alignContactIllustration();
         window.addEventListener('resize', alignContactIllustration);
