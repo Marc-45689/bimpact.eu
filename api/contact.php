@@ -2,10 +2,11 @@
 /**
  * ═══════════════════════════════════════
  * CONTACT FORM ENDPOINT
- * Receives the site's contact form and emails the submission to
- * xxxxxx@bimpact.eu via PHP mail(). Anti-spam is a honeypot field
- * (company_website, must stay empty) plus a minimum fill time — no
- * captcha, no third-party service.
+ * Receives the site's contact form and emails the submission via PHP
+ * mail() to the address in CONTACT_TO_EMAIL (server .env — never
+ * hardcode the recipient here, this file is public on GitHub). Anti-spam
+ * is a honeypot field (company_website, must stay empty) plus a minimum
+ * fill time — no captcha, no third-party service.
  * ═══════════════════════════════════════
  */
 
@@ -19,7 +20,12 @@ header('Access-Control-Allow-Headers: Content-Type');
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') { http_response_code(204); exit; }
 if ($_SERVER['REQUEST_METHOD'] !== 'POST')     { http_response_code(405); echo json_encode(['error' => 'method not allowed']); exit; }
 
-$TO = 'xxxxxx@bimpact.eu';
+$TO = getenv('CONTACT_TO_EMAIL') ?: '';
+if ($TO === '') {
+    http_response_code(500);
+    echo json_encode(['error' => 'server misconfigured']);
+    exit;
+}
 
 $input = json_decode(file_get_contents('php://input'), true);
 if (!is_array($input)) {
