@@ -50,7 +50,8 @@ Reusable HTML/CSS patterns. `/new-page` and `/new-section` read this to pick exi
 | `.sr-only` | Visually hidden, screen-reader accessible |
 | `.lead` | Section intro paragraph, `--fs-md`, `--soft-blue`, capped at 60ch |
 | `.tag-row` / `.tag` | Row of small pill tags (tools, keywords), mono font, outlined |
-| Contact info | `.contact-info` (`main.css`) | `<dl>` of direct contact info (email, phone) — no form, direct channels only. Reused in the `#contact` section on the homepage, `/a-propos/`, `/blog/`, and every blog article including `_template-article.html` (and their `/en/` twins) — new articles get it automatically from the template. Tagline: first sentence, then `<br>`, then the "Marc Forner - BIMpact - ..." signature line, both hardcoded per language (not a token). |
+| Contact info | `.contact-info` (`main.css`) | `<dl>` of direct contact info (email, phone), placed between the `.lead` tagline and `.contact-form-wrap`. Used in the `#contact` section on the homepage, `/a-propos/`, `/blog/`, and every blog article including `_template-article.html` (all three locale trees) — new articles get it automatically from the template. Tagline: first sentence, then `<br>`, then the "Marc Forner - BIMpact - ..." signature line, both hardcoded per language (not a token). |
+| Obfuscated phone link | `.js-phone` (empty `<span>` inside a `.contact-info` `<dd>`) | The phone number is never written as plaintext in HTML or JS — `assets/js/shared.js` decodes a char-code array (fixed offset) at runtime and replaces the `<span class="js-phone">` with a real `<a href="tel:...">` link, deterring static scrapers while staying a normal clickable link for real visitors. A `<noscript>` sibling (e.g. "Disponible par email ci-dessus.") is the no-JS fallback — never put the digits there. To change the number, recompute the char-code array in `shared.js` (see comment there), don't just edit the HTML. |
 
 ## Home-specific
 
