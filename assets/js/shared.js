@@ -134,4 +134,22 @@
     // Current year in footer
     const yearEl = document.getElementById('year');
     if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+    // Phone number obfuscation: kept out of the HTML and this source as
+    // plaintext (character codes shifted by a fixed offset instead) so
+    // static scrapers harvesting phone numbers from page/JS text don't
+    // pick it up. Decoded and turned into a real tel: link only here, at
+    // runtime, in the browser — no-JS visitors get the <noscript> fallback.
+    const phoneEls = document.querySelectorAll('.js-phone');
+    if (phoneEls.length) {
+        const PHONE_CODES = [50, 58, 58, 39, 62, 39, 61, 62, 39, 62, 64, 39, 57, 57, 39, 58, 61];
+        const PHONE_OFFSET = 7;
+        const number = PHONE_CODES.map(c => String.fromCharCode(c - PHONE_OFFSET)).join('');
+        phoneEls.forEach(el => {
+            const link = document.createElement('a');
+            link.href = 'tel:' + number.replace(/[^\d+]/g, '');
+            link.textContent = number;
+            el.replaceWith(link);
+        });
+    }
 })();
