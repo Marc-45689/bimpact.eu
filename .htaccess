@@ -27,6 +27,11 @@ RewriteEngine On
 RewriteCond %{REQUEST_URI} ^/\.well-known/(pki-validation|acme-challenge)/ [NC]
 RewriteRule ^ - [L]
 
+# mail.bimpact.eu serves the webmail (cPanel Roundcube on port 2096), not the site.
+# 302 so the target can change later without browsers caching it forever.
+RewriteCond %{HTTP_HOST} ^mail\.bimpact\.eu$ [NC]
+RewriteRule ^ https://mail.bimpact.eu:2096/ [R=302,L]
+
 # Force HTTPS
 RewriteCond %{HTTPS} !on
 RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
