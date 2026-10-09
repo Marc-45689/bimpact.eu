@@ -10,14 +10,27 @@
  *     $key = getenv('BREVO_API_KEY') ?: '';
  *
  * The .env file must NEVER be committed to git.
- * Create it manually on the host via SFTP at the
- * site root.
+ * Preferred location: OUTSIDE the docroot, in the
+ * home directory (/home/<account>/.env-bimpact),
+ * shared by staging and production. There it can
+ * neither be served over the web nor be wiped by
+ * the `rsync --delete` of the cPanel deploy. A
+ * legacy .env at the site root is still read as a
+ * fallback.
+ * Written for PHP 7.2+ (no PHP 8-only functions).
  * ═══════════════════════════════════════
  */
 
 (function () {
-    $envPath = realpath(__DIR__ . '/../.env');
-    if ($envPath === false || !is_readable($envPath)) {
+    $envPath = false;
+    foreach ([dirname(__DIR__, 2) . '/.env-bimpact', __DIR__ . '/../.env'] as $candidate) {
+        $resolved = realpath($candidate);
+        if ($resolved !== false && is_readable($resolved)) {
+            $envPath = $resolved;
+            break;
+        }
+    }
+    if ($envPath === false) {
         return;
     }
 
@@ -26,7 +39,7 @@
 
     foreach ($lines as $line) {
         $line = trim($line);
-        if ($line === '' || str_starts_with($line, '#')) continue;
+        if ($line === '' || $line[0] === '#') continue;
 
         $eq = strpos($line, '=');
         if ($eq === false) continue;

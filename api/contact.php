@@ -5,8 +5,9 @@
  * Receives the site's contact form and emails the submission via PHP
  * mail() to the address in CONTACT_TO_EMAIL (server .env — never
  * hardcode the recipient here, this file is public on GitHub). Anti-spam
- * is a honeypot field (company_website, must stay empty) plus a minimum
- * fill time — no captcha, no third-party service.
+ * is a honeypot field (company_website, must stay empty), a minimum
+ * fill time and a per-IP rate limit — no captcha, no third-party service.
+ * Written for PHP 7.2+ (no PHP 8-only functions).
  * ═══════════════════════════════════════
  */
 
@@ -42,9 +43,10 @@ if (!empty($input['company_website'])) {
 }
 
 // Filled in under 3 seconds of the page loading = almost certainly
-// scripted, not a human reading three form fields.
+// scripted, not a human reading three form fields. contact-form.js always
+// sends `elapsed`, so a missing value is a script posting directly.
 $elapsed = isset($input['elapsed']) ? (int) $input['elapsed'] : 0;
-if ($elapsed > 0 && $elapsed < 3000) {
+if ($elapsed < 3000) {
     echo json_encode(['success' => true]);
     exit;
 }
@@ -70,6 +72,32 @@ if (mb_strlen($name) > 200 || mb_strlen($phone) > 40 || mb_strlen($message) > 50
 $name  = str_replace(["\r", "\n"], '', $name);
 $email = str_replace(["\r", "\n"], '', $email);
 $phone = str_replace(["\r", "\n"], '', $phone);
+
+// Rate limit: at most $maxPerHour messages per hour per IP, so a script
+// cannot flood the inbox. Timestamps live outside the docroot, one file
+// per hashed IP (the address itself is never stored).
+$maxPerHour = 5;
+$rlDir = dirname(__DIR__, 2) . '/.contact-ratelimit';
+if (!is_dir($rlDir)) {
+    @mkdir($rlDir, 0700);
+}
+$rlFile = $rlDir . '/' . hash('sha256', $_SERVER['REMOTE_ADDR'] ?? '?');
+$now = time();
+$recent = [];
+if (is_readable($rlFile)) {
+    foreach (explode("\n", (string) file_get_contents($rlFile)) as $t) {
+        if ((int) $t > $now - 3600) {
+            $recent[] = (int) $t;
+        }
+    }
+}
+if (count($recent) >= $maxPerHour) {
+    http_response_code(429);
+    echo json_encode(['error' => 'too many requests']);
+    exit;
+}
+$recent[] = $now;
+@file_put_contents($rlFile, implode("\n", $recent), LOCK_EX);
 
 $locale = in_array($input['locale'] ?? '', ['fr', 'en', 'es'], true) ? $input['locale'] : 'fr';
 

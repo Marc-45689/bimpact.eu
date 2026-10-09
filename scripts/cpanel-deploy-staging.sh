@@ -34,7 +34,10 @@ cp .htaccess-staging .htaccess
 
 rm -rf .git .claude .github .superpowers .cpanel.yml \
        .htaccess-staging robots-staging.txt \
-       .env.example SETUP.md CLAUDE.md
+       .env.example SETUP.md CLAUDE.md \
+       README.md LICENSE scripts
+# Template endpoints (*.php.example) are documentation, not part of the site.
+rm -f api/*.example
 find docs -type f ! -name "*.pdf" -delete 2>/dev/null || true
 find docs -type d -empty -delete 2>/dev/null || true
 
@@ -45,4 +48,4 @@ find docs -type d -empty -delete 2>/dev/null || true
 find . -type d -exec chmod 755 {} \;
 find . -type f -exec chmod 644 {} \;
 
-rsync -a --delete --exclude='.htpasswd' "$TMP"/ "$DEPLOYPATH"/
+rsync -a --delete --exclude='.htpasswd' --exclude='.env' "$TMP"/ "$DEPLOYPATH"/
