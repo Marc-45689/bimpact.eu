@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIM execution plan: 7 points to lock before modeling</title>
+    <meta name="description" content="Goals, roles, software, naming, LOD, checks: the 7 points a BIM execution plan must settle before the first line of modeling.">
+    <link rel="canonical" href="https://bimpact.eu/en/blog/bim-execution-plan-key-points/">
+    <link rel="alternate" hreflang="fr" href="https://bimpact.eu/blog/convention-bim-points-cles/">
+    <link rel="alternate" hreflang="en" href="https://bimpact.eu/en/blog/bim-execution-plan-key-points/">
+    <link rel="alternate" hreflang="es" href="https://bimpact.eu/es/blog/convencion-bim-puntos-clave/">
+    <link rel="alternate" hreflang="x-default" href="https://bimpact.eu/blog/convention-bim-points-cles/">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://bimpact.eu/en/blog/bim-execution-plan-key-points/">
+    <meta property="og:title" content="BIM execution plan: 7 points to lock before modeling">
+    <meta property="og:description" content="Goals, roles, software, naming, LOD, checks: the 7 points a BIM execution plan must settle before the first line of modeling.">
+    <meta property="og:site_name" content="BIMpact">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:image" content="https://bimpact.eu/assets/og/convention-bim-points-cles.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="675">
+    <meta property="og:image:alt" content="Two wireframe models linked by dotted lines to a complete building, illustrating the federated model of a BIM execution plan">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://bimpact.eu/assets/og/convention-bim-points-cles.jpg">
+    <script type="application/ld+json">
+    {"@context": "https://schema.org", "@type": "Article", "headline": "BIM execution plan: 7 points to lock before modeling", "description": "Goals, roles, software, naming, LOD, checks: the 7 points a BIM execution plan must settle before the first line of modeling.", "datePublished": "2026-10-10", "inLanguage": "en", "author": {"@type": "Person", "name": "Marc Forner"}, "publisher": {"@type": "Organization", "name": "BIMpact"}, "mainEntityOfPage": "https://bimpact.eu/en/blog/bim-execution-plan-key-points/"}
+    </script>
+    <script type="application/ld+json">
+    {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is the difference between BIM requirements and a BIM execution plan?", "acceptedAnswer": {"@type": "Answer", "text": "The BIM requirements are written by the client and state their expectations. The BIM execution plan is the project team's answer: it describes how the project will be modeled, exchanged and checked."}}, {"@type": "Question", "name": "Who writes the BIM execution plan?", "acceptedAnswer": {"@type": "Answer", "text": "The project BIM manager, together with each party's BIM coordinator. It is then attached to the contracts and updated at each phase."}}, {"@type": "Question", "name": "Are BEP, BIM protocol and convention BIM the same thing?", "acceptedAnswer": {"@type": "Answer", "text": "In practice, yes. All three terms refer to the document that sets the rules for producing and exchanging models on a project."}}, {"@type": "Question", "name": "Is a BIM execution plan mandatory?", "acceptedAnswer": {"@type": "Answer", "text": "Not by law, but without one nothing contractually fixes formats, roles or expected levels of development. It is a frequent source of disputes over BIM deliverables."}}]}
+    </script>
+    <link rel="icon" type="image/svg+xml" href="/logo-principal.svg">
+    <meta name="theme-color" content="#16283E">
+    <!-- GA_START -->
+    <script src="/assets/js/analytics.js" defer></script>
+    <!-- GA_END -->
+    <link rel="stylesheet" href="/assets/css/tokens.css">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/blog.css">
+</head>
+<body>
+<div class="cookie-banner" id="cookieBanner" hidden>
+    <div class="container cookie-banner-inner">
+        <p>This site uses Google Analytics to measure audience, with your consent. <a href="/en/legal/cookies/">Learn more</a>.</p>
+        <div class="cookie-banner-actions">
+            <button type="button" id="cookieRefuse" class="btn-secondary">Refuse</button>
+            <button type="button" id="cookieAccept" class="btn-primary">Accept</button>
+        </div>
+    </div>
+</div>
+
+<a href="#" id="scrollTop" class="scroll-top" aria-label="Back to top">↑</a>
+
+<nav>
+    <div class="container">
+        <a href="/en/" class="nav-logo"><img src="/logo-principal.svg" alt="Logo" width="90" height="90" loading="eager"><span class="nav-wordmark">BIM<em>pact</em></span></a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="/en/#expertise">Expertise</a></li>
+            <li><a href="/en/about/">Who am I</a></li>
+            <li><a href="/en/blog/">Blog</a></li>
+            <li><a href="#contact" class="nav-cta">Contact</a></li>
+        </ul>
+        <div class="nav-lang">
+            <a href="/blog/convention-bim-points-cles/" hreflang="fr" lang="fr">FR</a>
+            <a href="/en/blog/bim-execution-plan-key-points/" hreflang="en" lang="en" class="active">EN</a>
+            <a href="/es/blog/convencion-bim-puntos-clave/" hreflang="es" lang="es">ES</a>
+        </div>
+        <button class="nav-hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+</nav>
+
+<main>
+    <article style="padding: calc(var(--nav-height) + var(--space-xl)) 0 var(--space-xl);">
+        <div class="container" style="max-width: 760px;">
+            <nav class="article-breadcrumb" aria-label="Breadcrumb">
+                <a href="/en/">Home</a> / <a href="/en/blog/">Blog</a> / <span>BIM execution plan</span>
+            </nav>
+            <p class="section-number">Method</p>
+            <h1 class="section-title">BIM execution plan: 7 points to lock before modeling</h1>
+            <p style="color: var(--soft-blue); margin-top: var(--space-sm);">2026-10-10 · 4 min read</p>
+
+            <figure class="article-img-center">
+                <img src="/assets/illustrations-blog/convention-bim-points-cles.webp" alt="Two wireframe models linked by dotted lines to a complete building, illustrating the federated model of a BIM execution plan" width="1200" height="675" loading="eager">
+            </figure>
+
+            <p style="margin-top: var(--space-md);">BIM projects rarely go off track because of the software. They go off track because a question was left open at kickoff: who delivers what, when, in which format, and who checks it? The BIM execution plan exists to settle those questions before anyone starts modeling.</p>
+
+            <h2>BIM requirements or BIM execution plan: who writes what?</h2>
+            <p>The client writes the requirements, the project team answers with the execution plan.</p>
+            <p>The <strong>BIM requirements</strong> state what the client expects: what the model will be used for (CMMS, building management, asset register), which formats are accepted, which roles are expected. The <strong>BIM execution plan</strong> (BEP, called <em>convention BIM</em> or <em>protocole BIM</em> in France) describes how the project will actually be produced. It is written by the BIM manager, attached to the contracts and updated at every phase. It is both contractual and alive.</p>
+
+            <h2>The 7 points to lock</h2>
+            <h3>1. Goals: why BIM on this project?</h3>
+            <p>The answer changes how you model. A model for thermal analysis must be "watertight" and organized in volumes. A model for quantity take-off is organized by objects. Without a written goal, you produce data nobody will use.</p>
+
+            <h3>2. Roles, and above all their scope</h3>
+            <p>Naming the BIM manager is not enough. Do they only run the process and clash detection, or the schedule too? Does each party have a BIM coordinator responsible for its discipline model? Write it down. And state that the BIM manager facilitates the project: they are not its decision-maker.</p>
+
+            <h3>3. Software and versions</h3>
+            <p>An upgrade mid-project can break procedures that used to work. For each party, the plan fixes the software, version, native format and export format. Any update goes through the BIM manager.</p>
+
+            <h3>4. Model organization</h3>
+            <p>A single reference point, shared by every model, in absolute or relative coordinates. On a large project, a split into sub-models by trade, zone or level, so files stay workable. It sounds obvious. It is still the most common reason models fail to line up.</p>
+
+            <div class="article-cta-inline">
+                <svg class="corner-plus tl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                <svg class="corner-plus br" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                <h3>A CFO-CFA project to model?</h3>
+                <p>I work on your technical trades, from early design through the coordination model.</p>
+                <a href="/en/#contact" class="btn-primary">Get in touch</a>
+            </div>
+
+            <h3>5. File and object naming</h3>
+            <p>A file naming convention lets the federated model be assembled without ambiguity. A typical structure:</p>
+            <div class="table-wrapper">
+                <table>
+                    <thead><tr><th>Field</th><th>Example</th></tr></thead>
+                    <tbody>
+                        <tr><td>Project</td><td>HBX</td></tr>
+                        <tr><td>Discipline</td><td>ELE (power), CFA (low voltage), HVAC, STR</td></tr>
+                        <tr><td>Originator</td><td>BMP</td></tr>
+                        <tr><td>Zone</td><td>BATA</td></tr>
+                        <tr><td>Level</td><td>R01</td></tr>
+                        <tr><td>File type</td><td>M3D</td></tr>
+                        <tr><td>Version</td><td>V03</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p>Result: <code>HBX_ELE_BMP_BATA_R01_M3D_V03</code>. Same logic for objects, which can then be grouped into a single schedule even when they sit in several files.</p>
+
+            <h3>6. Level of development per phase</h3>
+            <p>For each object type, the geometry and information expected at each phase. I cover this in <a href="/en/blog/bim-lod-levels-of-development/">BIM LOD: what each level really requires</a>.</p>
+
+            <h3>7. Checks before each issue</h3>
+            <p>They are defined before the first exchange, not after the first problem:</p>
+            <ul>
+                <li>3D check and consistency of the 2D drawings extracted from the model;</li>
+                <li>compliance with production procedures and schedule;</li>
+                <li>visual check (no duplicates, no stray objects) and check of filled-in parameters;</li>
+                <li>clash register, each clash assigned to the trade concerned, which remains responsible for the technical fix.</li>
+            </ul>
+            <p>The plan also sets the exchange frequency, the platform and access rights.</p>
+
+            <div class="article-callout">
+                <p>My advice if you work as a subcontractor: ask for the execution plan before you price the job. If there is none, propose a short version covering at least points 3, 4 and 5. Those are the ones that block exchanges from the very first issue.</p>
+            </div>
+
+            <h2>What about the legal side?</h2>
+            <p>The plan should state who owns the models, who can access the data and where it is stored, what each party must do, including subcontractors, and who is liable if a third party modifies a model. Each producer of data remains responsible for the information they produce.</p>
+
+            <h2>A short plan beats no plan</h2>
+            <p>There is no need to aim for fifty pages. Ten pages that settle these seven points, signed by everyone, protect the project better than an exhaustive document nobody reads. The rest gets added phase by phase.</p>
+
+            <section class="article-faq">
+                <h2 class="article-faq-title">Frequently asked questions</h2>
+                <div class="article-faq-item">
+                    <button type="button" class="article-faq-question" aria-expanded="false">
+                        What is the difference between BIM requirements and a BIM execution plan?
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                    </button>
+                    <div class="article-faq-answer">
+                        <div class="article-faq-answer-inner">
+                            <p>The BIM requirements are written by the client and state their expectations. The BIM execution plan is the project team's answer: it describes how the project will be modeled, exchanged and checked.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="article-faq-item">
+                    <button type="button" class="article-faq-question" aria-expanded="false">
+                        Who writes the BIM execution plan?
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                    </button>
+                    <div class="article-faq-answer">
+                        <div class="article-faq-answer-inner">
+                            <p>The project BIM manager, together with each party's BIM coordinator. It is then attached to the contracts and updated at each phase.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="article-faq-item">
+                    <button type="button" class="article-faq-question" aria-expanded="false">
+                        Are BEP, BIM protocol and convention BIM the same thing?
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                    </button>
+                    <div class="article-faq-answer">
+                        <div class="article-faq-answer-inner">
+                            <p>In practice, yes. All three terms refer to the document that sets the rules for producing and exchanging models on a project.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="article-faq-item">
+                    <button type="button" class="article-faq-question" aria-expanded="false">
+                        Is a BIM execution plan mandatory?
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                    </button>
+                    <div class="article-faq-answer">
+                        <div class="article-faq-answer-inner">
+                            <p>Not by law, but without one nothing contractually fixes formats, roles or expected levels of development. It is a frequent source of disputes over BIM deliverables.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <p style="margin-top: var(--space-lg); font-size: var(--fs-sm); color: var(--soft-blue);">Sources: Annalisa De Maestri, <em>Premiers pas en BIM</em>, Eyrolles; Revit and BIM training material.</p>
+        </div>
+    </article>
+
+    <section id="contact" class="reveal">
+        <div class="container">
+            <p class="section-number">Contact</p>
+            <h2 class="section-title">A <em>CFO-CFA</em> project?</h2>
+            <p class="lead">Tell me about your project and I'll get back to you quickly.<br>Marc Forner - BIMpact - Building information modeling specialist.</p>
+            <dl class="contact-info">
+                <dt>Phone</dt>
+                <dd><span class="js-phone"></span><noscript>Available via the form below.</noscript></dd>
+            </dl>
+            <div class="contact-form-wrap">
+                <form class="contact-form" id="contactForm" data-success="Message sent, thank you. I'll get back to you quickly." data-error="Something went wrong. Please try again in a moment.">
+                    <div class="form-field">
+                        <label for="cfName">Name</label>
+                        <input type="text" id="cfName" name="name" required maxlength="200" autocomplete="name">
+                    </div>
+                    <div class="form-field">
+                        <label for="cfEmail">Email</label>
+                        <input type="email" id="cfEmail" name="email" required autocomplete="email">
+                    </div>
+                    <div class="form-field">
+                        <label for="cfPhone">Phone</label>
+                        <input type="tel" id="cfPhone" name="phone" autocomplete="tel">
+                    </div>
+                    <div class="form-field">
+                        <label for="cfMessage">Message</label>
+                        <textarea id="cfMessage" name="message" required maxlength="5000"></textarea>
+                    </div>
+                    <div class="form-honeypot" aria-hidden="true">
+                        <label for="cfWebsite">Website</label>
+                        <input type="text" id="cfWebsite" name="company_website" tabindex="-1" autocomplete="off">
+                    </div>
+                    <button type="submit" class="btn-primary">Send</button>
+                    <p class="form-status" role="status" aria-live="polite"></p>
+                </form>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="container">
+        <p>© <span id="year">2026</span> BIMpact · Site built by Marc Forner with Claude Code</p>
+        <ul class="footer-links">
+            <li><a href="/en/legal/privacy/">Privacy</a></li>
+            <li><a href="/en/legal/terms/">Terms</a></li>
+            <li><a href="/en/legal/cookies/">Cookies</a></li>
+            <li><button type="button" class="footer-cookie-link" id="cookieManage">Manage cookies</button></li>
+        </ul>
+    </div>
+</footer>
+
+<script src="/assets/js/cookie-consent.js" defer></script>
+<script src="/assets/js/shared.js" defer></script>
+<script src="/assets/js/contact-form.js" defer></script>
+</body>
+</html>

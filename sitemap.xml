@@ -16,7 +16,27 @@
         <changefreq>weekly</changefreq>
     </url>
     <url>
+        <loc>https://bimpact.eu/blog/convention-bim-points-cles/</loc>
+        <priority>0.7</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>https://bimpact.eu/blog/export-ifc-revit-bonnes-pratiques/</loc>
+        <priority>0.7</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
         <loc>https://bimpact.eu/blog/le-bim-explique/</loc>
+        <priority>0.7</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>https://bimpact.eu/blog/lod-bim-niveaux-de-developpement/</loc>
+        <priority>0.7</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>https://bimpact.eu/blog/revit-electricite-circuits-tableaux/</loc>
         <priority>0.7</priority>
         <changefreq>monthly</changefreq>
     </url>
@@ -51,7 +71,27 @@
         <changefreq>weekly</changefreq>
     </url>
     <url>
+        <loc>https://bimpact.eu/en/blog/bim-execution-plan-key-points/</loc>
+        <priority>0.7</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
         <loc>https://bimpact.eu/en/blog/bim-explained/</loc>
+        <priority>0.7</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>https://bimpact.eu/en/blog/bim-lod-levels-of-development/</loc>
+        <priority>0.7</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>https://bimpact.eu/en/blog/revit-electrical-circuits-panels/</loc>
+        <priority>0.7</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>https://bimpact.eu/en/blog/revit-ifc-export-best-practices/</loc>
         <priority>0.7</priority>
         <changefreq>monthly</changefreq>
     </url>
@@ -86,7 +126,27 @@
         <changefreq>weekly</changefreq>
     </url>
     <url>
+        <loc>https://bimpact.eu/es/blog/convencion-bim-puntos-clave/</loc>
+        <priority>0.7</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
         <loc>https://bimpact.eu/es/blog/el-bim-explicado/</loc>
+        <priority>0.7</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>https://bimpact.eu/es/blog/exportar-ifc-revit-buenas-practicas/</loc>
+        <priority>0.7</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>https://bimpact.eu/es/blog/lod-bim-niveles-de-desarrollo/</loc>
+        <priority>0.7</priority>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>https://bimpact.eu/es/blog/revit-electricidad-circuitos-cuadros/</loc>
         <priority>0.7</priority>
         <changefreq>monthly</changefreq>
     </url>

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convention BIM : 7 points à verrouiller avant de modéliser</title>
+    <meta name="description" content="Objectifs, rôles, logiciels, nommage, LOD, contrôles : les 7 points qu'une convention BIM doit trancher avant la première ligne de modélisation.">
+    <link rel="canonical" href="https://bimpact.eu/blog/convention-bim-points-cles/">
+    <link rel="alternate" hreflang="fr" href="https://bimpact.eu/blog/convention-bim-points-cles/">
+    <link rel="alternate" hreflang="en" href="https://bimpact.eu/en/blog/bim-execution-plan-key-points/">
+    <link rel="alternate" hreflang="es" href="https://bimpact.eu/es/blog/convencion-bim-puntos-clave/">
+    <link rel="alternate" hreflang="x-default" href="https://bimpact.eu/blog/convention-bim-points-cles/">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://bimpact.eu/blog/convention-bim-points-cles/">
+    <meta property="og:title" content="Convention BIM : 7 points à verrouiller avant de modéliser">
+    <meta property="og:description" content="Objectifs, rôles, logiciels, nommage, LOD, contrôles : les 7 points qu'une convention BIM doit trancher avant la première ligne de modélisation.">
+    <meta property="og:site_name" content="BIMpact">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:image" content="https://bimpact.eu/assets/og/convention-bim-points-cles.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="675">
+    <meta property="og:image:alt" content="Deux maquettes filaires reliées par des pointillés à un bâtiment complet, illustrant la maquette fédérée d'une convention BIM">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://bimpact.eu/assets/og/convention-bim-points-cles.jpg">
+    <script type="application/ld+json">
+    {"@context": "https://schema.org", "@type": "Article", "headline": "Convention BIM : 7 points à verrouiller avant de modéliser", "description": "Objectifs, rôles, logiciels, nommage, LOD, contrôles : les 7 points qu'une convention BIM doit trancher avant la première ligne de modélisation.", "datePublished": "2026-10-10", "inLanguage": "fr", "author": {"@type": "Person", "name": "Marc Forner"}, "publisher": {"@type": "Organization", "name": "BIMpact"}, "mainEntityOfPage": "https://bimpact.eu/blog/convention-bim-points-cles/"}
+    </script>
+    <script type="application/ld+json">
+    {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Quelle différence entre cahier des charges BIM et convention BIM ?", "acceptedAnswer": {"@type": "Answer", "text": "Le cahier des charges BIM est rédigé par le maître d'ouvrage et exprime ses attentes. La convention BIM est la réponse des équipes de conception ou d'exécution : elle décrit comment le projet sera modélisé, échangé et contrôlé."}}, {"@type": "Question", "name": "Qui rédige la convention BIM ?", "acceptedAnswer": {"@type": "Answer", "text": "Le manager BIM du projet, en concertation avec les coordinateurs BIM de chaque intervenant. Elle est ensuite annexée aux contrats et mise à jour à chaque phase."}}, {"@type": "Question", "name": "Convention BIM, protocole BIM et BEP : est-ce la même chose ?", "acceptedAnswer": {"@type": "Answer", "text": "Dans la pratique, oui. Les trois termes désignent le document qui fixe les règles de production et d'échange des maquettes sur un projet. BEP signifie BIM Execution Plan."}}, {"@type": "Question", "name": "Une convention BIM est-elle obligatoire ?", "acceptedAnswer": {"@type": "Answer", "text": "Aucune loi ne l'impose, mais sans elle, rien ne fixe contractuellement les formats, les rôles ni les niveaux de développement attendus. C'est une source fréquente de litiges sur les livrables BIM."}}]}
+    </script>
+    <link rel="icon" type="image/svg+xml" href="/logo-principal.svg">
+    <meta name="theme-color" content="#16283E">
+    <!-- GA_START -->
+    <script src="/assets/js/analytics.js" defer></script>
+    <!-- GA_END -->
+    <link rel="stylesheet" href="/assets/css/tokens.css">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/blog.css">
+</head>
+<body>
+<div class="cookie-banner" id="cookieBanner" hidden>
+    <div class="container cookie-banner-inner">
+        <p>Ce site utilise Google Analytics pour mesurer l'audience, avec votre accord. <a href="/mentions-legales/cookies/">En savoir plus</a>.</p>
+        <div class="cookie-banner-actions">
+            <button type="button" id="cookieRefuse" class="btn-secondary">Refuser</button>
+            <button type="button" id="cookieAccept" class="btn-primary">Accepter</button>
+        </div>
+    </div>
+</div>
+
+<a href="#" id="scrollTop" class="scroll-top" aria-label="Retour en haut">↑</a>
+
+<nav>
+    <div class="container">
+        <a href="/" class="nav-logo"><img src="/logo-principal.svg" alt="Logo" width="90" height="90" loading="eager"><span class="nav-wordmark">BIM<em>pact</em></span></a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="/#expertise">Expertise</a></li>
+            <li><a href="/a-propos/">À propos</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="#contact" class="nav-cta">Contact</a></li>
+        </ul>
+        <div class="nav-lang">
+            <a href="/blog/convention-bim-points-cles/" hreflang="fr" lang="fr" class="active">FR</a>
+            <a href="/en/blog/bim-execution-plan-key-points/" hreflang="en" lang="en">EN</a>
+            <a href="/es/blog/convencion-bim-puntos-clave/" hreflang="es" lang="es">ES</a>
+        </div>
+        <button class="nav-hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+</nav>
+
+<main>
+    <article style="padding: calc(var(--nav-height) + var(--space-xl)) 0 var(--space-xl);">
+        <div class="container" style="max-width: 760px;">
+            <nav class="article-breadcrumb" aria-label="Breadcrumb">
+                <a href="/">Accueil</a> / <a href="/blog/">Blog</a> / <span>Convention BIM</span>
+            </nav>
+            <p class="section-number">Méthode</p>
+            <h1 class="section-title">Convention BIM : 7 points à verrouiller avant de modéliser</h1>
+            <p style="color: var(--soft-blue); margin-top: var(--space-sm);">2026-10-10 · 4 min de lecture</p>
+
+            <figure class="article-img-center">
+                <img src="/assets/illustrations-blog/convention-bim-points-cles.webp" alt="Deux maquettes filaires reliées par des pointillés à un bâtiment complet, illustrant la maquette fédérée d'une convention BIM" width="1200" height="675" loading="eager">
+            </figure>
+
+            <p style="margin-top: var(--space-md);">Un projet BIM déraille rarement à cause du logiciel. Il déraille parce qu'une question est restée sans réponse au démarrage : qui livre quoi, quand, dans quel format, et qui vérifie ? La convention BIM sert à trancher ces questions avant la première ligne de modélisation.</p>
+
+            <h2>Convention BIM ou cahier des charges BIM : qui écrit quoi ?</h2>
+            <p>Le maître d'ouvrage écrit le cahier des charges, les équipes répondent par la convention.</p>
+            <p>Le <strong>cahier des charges BIM</strong> exprime les attentes du client : à quoi servira la maquette (GMAO, gestion technique, recensement du patrimoine), quels formats il accepte, quels rôles il attend. La <strong>convention BIM</strong>, qu'on appelle aussi protocole BIM ou BEP (<em>BIM Execution Plan</em>), décrit comment le projet sera réellement produit. Elle est rédigée par le manager BIM, annexée aux marchés, et mise à jour à chaque phase. C'est un document contractuel et vivant.</p>
+
+            <h2>Les 7 points à verrouiller</h2>
+            <h3>1. Les objectifs : pourquoi du BIM sur ce projet ?</h3>
+            <p>La réponse change la façon de modéliser. Une maquette destinée au calcul thermique doit être « étanche » et organisée en volumes. Une maquette destinée aux métrés s'organise par objets. Sans objectif écrit, on produit de la donnée que personne n'exploitera.</p>
+
+            <h3>2. Les rôles, et surtout leur périmètre</h3>
+            <p>Nommer le manager BIM ne suffit pas. Gère-t-il seulement le processus et la détection de conflits, ou aussi le planning (OPC) ? Chaque entité a-t-elle un coordinateur BIM responsable de sa maquette métier ? Écrivez-le. Et rappelez que le manager BIM facilite le projet : il n'en est pas le décideur.</p>
+
+            <h3>3. Les logiciels et leurs versions</h3>
+            <p>Une montée de version en cours de projet peut casser des procédures qui fonctionnaient. Pour chaque intervenant, la convention fixe le logiciel, la version, le format natif et le format d'export. Toute mise à jour passe par le manager BIM.</p>
+
+            <h3>4. L'organisation des maquettes</h3>
+            <p>Un point de référence unique, partagé par toutes les maquettes, en coordonnées absolues ou relatives. Sur un gros projet, un découpage en sous-maquettes par lot, zone ou niveau, pour garder des fichiers manipulables. Le point paraît évident. C'est pourtant la cause la plus courante de maquettes qui ne se superposent pas.</p>
+
+            <div class="article-cta-inline">
+                <svg class="corner-plus tl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                <svg class="corner-plus br" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                <h3>Un projet CFO-CFA à modéliser ?</h3>
+                <p>J'interviens sur vos lots techniques, de l'esquisse à la maquette de synthèse.</p>
+                <a href="/#contact" class="btn-primary">Me contacter</a>
+            </div>
+
+            <h3>5. Le nommage des fichiers et des objets</h3>
+            <p>Une nomenclature de fichiers permet d'assembler la maquette fédérée sans ambiguïté. Une structure classique :</p>
+            <div class="table-wrapper">
+                <table>
+                    <thead><tr><th>Champ</th><th>Exemple</th></tr></thead>
+                    <tbody>
+                        <tr><td>Projet</td><td>HBX</td></tr>
+                        <tr><td>Discipline</td><td>ELE (CFO), CFA, CVC, STR</td></tr>
+                        <tr><td>Intervenant</td><td>BMP</td></tr>
+                        <tr><td>Zone</td><td>BATA</td></tr>
+                        <tr><td>Niveau</td><td>R01</td></tr>
+                        <tr><td>Type de fichier</td><td>M3D</td></tr>
+                        <tr><td>Version</td><td>V03</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p>Résultat : <code>HBX_ELE_BMP_BATA_R01_M3D_V03</code>. Même logique pour les objets, qu'on peut alors regrouper dans une seule nomenclature même s'ils sont répartis sur plusieurs fichiers.</p>
+
+            <h3>6. Le niveau de développement par phase</h3>
+            <p>Pour chaque typologie d'objet, la géométrie et l'information attendues à chaque phase. J'ai détaillé ce point dans <a href="/blog/lod-bim-niveaux-de-developpement/">LOD en BIM : ce que chaque niveau exige vraiment</a>.</p>
+
+            <h3>7. Les contrôles avant chaque diffusion</h3>
+            <p>Ils se définissent avant le premier échange, pas après le premier problème :</p>
+            <ul>
+                <li>vérification 3D et cohérence des plans 2D extraits de la maquette ;</li>
+                <li>respect des procédures et du planning de production ;</li>
+                <li>contrôle visuel (ni doublons ni objets parasites) et contrôle des paramètres renseignés ;</li>
+                <li>recensement des conflits, chacun affecté au lot concerné, qui reste responsable de la solution technique.</li>
+            </ul>
+            <p>La convention précise aussi la fréquence des échanges, la plateforme et les droits d'accès.</p>
+
+            <div class="article-callout">
+                <p>Mon conseil si vous intervenez en sous-traitance : demandez la convention avant de chiffrer. S'il n'en existe pas, proposez une version courte qui couvre au moins les points 3, 4 et 5. Ce sont ceux qui bloquent les échanges dès la première diffusion.</p>
+            </div>
+
+            <h2>Et le volet juridique ?</h2>
+            <p>Rien n'interdit de travailler en BIM dans le cadre actuel (loi MOP, code de la propriété intellectuelle). La convention doit en revanche préciser à qui appartiennent les maquettes, qui accède aux données et où elles sont stockées, ce que chaque partie doit faire, y compris en sous-traitance, et qui est responsable si un tiers modifie une maquette. Chaque producteur de donnée reste responsable de l'information qu'il produit.</p>
+
+            <h2>Une convention courte vaut mieux qu'aucune</h2>
+            <p>Inutile de viser cinquante pages. Une dizaine de pages qui tranchent ces sept points, signées par tous, protègent mieux le projet qu'un document exhaustif que personne ne lit. Le reste s'ajoute à chaque phase.</p>
+
+            <section class="article-faq">
+                <h2 class="article-faq-title">Questions fréquentes</h2>
+                <div class="article-faq-item">
+                    <button type="button" class="article-faq-question" aria-expanded="false">
+                        Quelle différence entre cahier des charges BIM et convention BIM ?
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                    </button>
+                    <div class="article-faq-answer">
+                        <div class="article-faq-answer-inner">
+                            <p>Le cahier des charges BIM est rédigé par le maître d'ouvrage et exprime ses attentes. La convention BIM est la réponse des équipes de conception ou d'exécution : elle décrit comment le projet sera modélisé, échangé et contrôlé.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="article-faq-item">
+                    <button type="button" class="article-faq-question" aria-expanded="false">
+                        Qui rédige la convention BIM ?
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                    </button>
+                    <div class="article-faq-answer">
+                        <div class="article-faq-answer-inner">
+                            <p>Le manager BIM du projet, en concertation avec les coordinateurs BIM de chaque intervenant. Elle est ensuite annexée aux contrats et mise à jour à chaque phase.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="article-faq-item">
+                    <button type="button" class="article-faq-question" aria-expanded="false">
+                        Convention BIM, protocole BIM et BEP : est-ce la même chose ?
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                    </button>
+                    <div class="article-faq-answer">
+                        <div class="article-faq-answer-inner">
+                            <p>Dans la pratique, oui. Les trois termes désignent le document qui fixe les règles de production et d'échange des maquettes sur un projet. BEP signifie BIM Execution Plan.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="article-faq-item">
+                    <button type="button" class="article-faq-question" aria-expanded="false">
+                        Une convention BIM est-elle obligatoire ?
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                    </button>
+                    <div class="article-faq-answer">
+                        <div class="article-faq-answer-inner">
+                            <p>Aucune loi ne l'impose, mais sans elle, rien ne fixe contractuellement les formats, les rôles ni les niveaux de développement attendus. C'est une source fréquente de litiges sur les livrables BIM.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <p style="margin-top: var(--space-lg); font-size: var(--fs-sm); color: var(--soft-blue);">Sources : Annalisa De Maestri, <em>Premiers pas en BIM</em>, Eyrolles ; supports de formation Revit et BIM.</p>
+        </div>
+    </article>
+
+    <section id="contact" class="reveal">
+        <div class="container">
+            <p class="section-number">Contact</p>
+            <h2 class="section-title">Un projet <em>CFO-CFA</em> ?</h2>
+            <p class="lead">Décrivez-moi votre projet, je reviens vers vous rapidement pour en discuter.<br>Marc Forner - BIMpact - Spécialiste en maquette numérique du bâtiment.</p>
+            <dl class="contact-info">
+                <dt>Téléphone</dt>
+                <dd><span class="js-phone"></span><noscript>Disponible via le formulaire ci-dessous.</noscript></dd>
+            </dl>
+            <div class="contact-form-wrap">
+                <form class="contact-form" id="contactForm" data-success="Message envoyé, merci. Je reviens vers vous rapidement." data-error="Une erreur est survenue. Réessayez dans quelques instants.">
+                    <div class="form-field">
+                        <label for="cfName">Nom</label>
+                        <input type="text" id="cfName" name="name" required maxlength="200" autocomplete="name">
+                    </div>
+                    <div class="form-field">
+                        <label for="cfEmail">Email</label>
+                        <input type="email" id="cfEmail" name="email" required autocomplete="email">
+                    </div>
+                    <div class="form-field">
+                        <label for="cfPhone">Téléphone</label>
+                        <input type="tel" id="cfPhone" name="phone" autocomplete="tel">
+                    </div>
+                    <div class="form-field">
+                        <label for="cfMessage">Message</label>
+                        <textarea id="cfMessage" name="message" required maxlength="5000"></textarea>
+                    </div>
+                    <div class="form-honeypot" aria-hidden="true">
+                        <label for="cfWebsite">Site web</label>
+                        <input type="text" id="cfWebsite" name="company_website" tabindex="-1" autocomplete="off">
+                    </div>
+                    <button type="submit" class="btn-primary">Envoyer</button>
+                    <p class="form-status" role="status" aria-live="polite"></p>
+                </form>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="container">
+        <p>© <span id="year">2026</span> BIMpact · Site réalisé par Marc Forner sur Claude Code</p>
+        <ul class="footer-links">
+            <li><a href="/mentions-legales/confidentialite/">Confidentialité</a></li>
+            <li><a href="/mentions-legales/cgu/">CGU</a></li>
+            <li><a href="/mentions-legales/cookies/">Cookies</a></li>
+            <li><button type="button" class="footer-cookie-link" id="cookieManage">Gérer les cookies</button></li>
+        </ul>
+    </div>
+</footer>
+
+<script src="/assets/js/cookie-consent.js" defer></script>
+<script src="/assets/js/shared.js" defer></script>
+<script src="/assets/js/contact-form.js" defer></script>
+</body>
+</html>

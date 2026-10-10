@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOD en BIM: lo que exige realmente cada nivel</title>
+    <meta name="description" content="LOD 100, 300, 400: qué abarca cada nivel de desarrollo BIM, la diferencia entre LoD y LoI, y cómo fijar el LOD objeto por objeto.">
+    <link rel="canonical" href="https://bimpact.eu/es/blog/lod-bim-niveles-de-desarrollo/">
+    <link rel="alternate" hreflang="fr" href="https://bimpact.eu/blog/lod-bim-niveaux-de-developpement/">
+    <link rel="alternate" hreflang="en" href="https://bimpact.eu/en/blog/bim-lod-levels-of-development/">
+    <link rel="alternate" hreflang="es" href="https://bimpact.eu/es/blog/lod-bim-niveles-de-desarrollo/">
+    <link rel="alternate" hreflang="x-default" href="https://bimpact.eu/blog/lod-bim-niveaux-de-developpement/">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://bimpact.eu/es/blog/lod-bim-niveles-de-desarrollo/">
+    <meta property="og:title" content="LOD en BIM: lo que exige realmente cada nivel">
+    <meta property="og:description" content="LOD 100, 300, 400: qué abarca cada nivel de desarrollo BIM, la diferencia entre LoD y LoI, y cómo fijar el LOD objeto por objeto.">
+    <meta property="og:site_name" content="BIMpact">
+    <meta property="og:locale" content="es_ES">
+    <meta property="og:image" content="https://bimpact.eu/assets/og/lod-bim-niveaux-de-developpement.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="675">
+    <meta property="og:image:alt" content="Tres bloques isométricos en alámbrico, del volumen simple al objeto detallado, que ilustran los niveles de desarrollo BIM">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://bimpact.eu/assets/og/lod-bim-niveaux-de-developpement.jpg">
+    <script type="application/ld+json">
+    {"@context": "https://schema.org", "@type": "Article", "headline": "LOD en BIM: lo que exige realmente cada nivel", "description": "LOD 100, 300, 400: qué abarca cada nivel de desarrollo BIM, la diferencia entre LoD y LoI, y cómo fijar el LOD objeto por objeto.", "datePublished": "2026-10-10", "inLanguage": "es", "author": {"@type": "Person", "name": "Marc Forner"}, "publisher": {"@type": "Organization", "name": "BIMpact"}, "mainEntityOfPage": "https://bimpact.eu/es/blog/lod-bim-niveles-de-desarrollo/"}
+    </script>
+    <script type="application/ld+json">
+    {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "¿Qué significa LOD en BIM?", "acceptedAnswer": {"@type": "Answer", "text": "LOD significa Level of Development, nivel de desarrollo. Describe a la vez la precisión geométrica de un objeto (LoD, nivel de detalle) y la cantidad de información asociada (LoI, nivel de información)."}}, {"@type": "Question", "name": "¿Qué diferencia hay entre LoD y LoI?", "acceptedAnswer": {"@type": "Answer", "text": "El LoD mide el detalle gráfico del objeto modelado. El LoI se refiere a los datos no visibles: referencias, características técnicas, información de mantenimiento. El LOD reúne ambos."}}, {"@type": "Question", "name": "¿Qué LOD para una licitación?", "acceptedAnswer": {"@type": "Answer", "text": "En fase de proyecto de ejecución y licitación se suele exigir un LOD 300: objetos 3D precisos, conformes al pliego, que las empresas pueden usar para presupuestar. Algunos objetos pueden quedarse en LOD 200 si su uso no justifica más."}}, {"@type": "Question", "name": "¿Quién define el LOD de un proyecto BIM?", "acceptedAnswer": {"@type": "Answer", "text": "El promotor expresa sus necesidades en el pliego de requisitos BIM. El BIM manager las traduce en niveles de desarrollo por objeto y por fase en el plan de ejecución BIM, junto con los coordinadores de cada disciplina."}}]}
+    </script>
+    <link rel="icon" type="image/svg+xml" href="/logo-principal.svg">
+    <meta name="theme-color" content="#16283E">
+    <!-- GA_START -->
+    <script src="/assets/js/analytics.js" defer></script>
+    <!-- GA_END -->
+    <link rel="stylesheet" href="/assets/css/tokens.css">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/blog.css">
+</head>
+<body>
+<div class="cookie-banner" id="cookieBanner" hidden>
+    <div class="container cookie-banner-inner">
+        <p>Este sitio utiliza Google Analytics para medir la audiencia, con su consentimiento. <a href="/es/legal/cookies/">Más información</a>.</p>
+        <div class="cookie-banner-actions">
+            <button type="button" id="cookieRefuse" class="btn-secondary">Rechazar</button>
+            <button type="button" id="cookieAccept" class="btn-primary">Aceptar</button>
+        </div>
+    </div>
+</div>
+
+<a href="#" id="scrollTop" class="scroll-top" aria-label="Volver arriba">↑</a>
+
+<nav>
+    <div class="container">
+        <a href="/es/" class="nav-logo"><img src="/logo-principal.svg" alt="Logo" width="90" height="90" loading="eager"><span class="nav-wordmark">BIM<em>pact</em></span></a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="/es/#expertise">Experiencia</a></li>
+            <li><a href="/es/acerca/">Sobre mí</a></li>
+            <li><a href="/es/blog/">Blog</a></li>
+            <li><a href="#contact" class="nav-cta">Contacto</a></li>
+        </ul>
+        <div class="nav-lang">
+            <a href="/blog/lod-bim-niveaux-de-developpement/" hreflang="fr" lang="fr">FR</a>
+            <a href="/en/blog/bim-lod-levels-of-development/" hreflang="en" lang="en">EN</a>
+            <a href="/es/blog/lod-bim-niveles-de-desarrollo/" hreflang="es" lang="es" class="active">ES</a>
+        </div>
+        <button class="nav-hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+</nav>
+
+<main>
+    <article style="padding: calc(var(--nav-height) + var(--space-xl)) 0 var(--space-xl);">
+        <div class="container" style="max-width: 760px;">
+            <nav class="article-breadcrumb" aria-label="Breadcrumb">
+                <a href="/es/">Inicio</a> / <a href="/es/blog/">Blog</a> / <span>LOD en BIM</span>
+            </nav>
+            <p class="section-number">BIM</p>
+            <h1 class="section-title">LOD en BIM: lo que exige realmente cada nivel</h1>
+            <p style="color: var(--soft-blue); margin-top: var(--space-sm);">2026-10-10 · 5 min de lectura</p>
+
+            <figure class="article-img-center">
+                <img src="/assets/illustrations-blog/lod-bim-niveaux-de-developpement.webp" alt="Tres bloques isométricos en alámbrico, del volumen simple al objeto detallado, que ilustran los niveles de desarrollo BIM" width="1200" height="675" loading="eager">
+            </figure>
+
+            <p style="margin-top: var(--space-md);">«Modelado en LOD 300.» Esta línea aparece en casi todos los pliegos de requisitos BIM. Por sí sola, no garantiza nada. Un LOD solo protege el proyecto si se define objeto por objeto, fase por fase, y si todos los agentes lo leen de la misma manera.</p>
+
+            <h2>¿Qué es el LOD en BIM?</h2>
+            <p>El LOD (<em>level of development</em>, nivel de desarrollo) mide dos cosas a la vez: la precisión geométrica de un objeto y la cantidad de información que lleva. Se suele escribir así: LOD = LoD + LoI.</p>
+            <ul>
+                <li><strong>El LoD, nivel de detalle</strong>: la geometría, desde un volumen genérico hasta la forma exacta del producto instalado.</li>
+                <li><strong>El LoI, nivel de información</strong>: los datos que no se ven en pantalla, como la referencia, la potencia, el fabricante o la periodicidad de mantenimiento.</li>
+            </ul>
+            <p>Los dos rara vez avanzan al mismo ritmo. Una puerta dibujada de forma sencilla puede llevar todos los datos que necesita el explotador. Una bandeja portacables muy detallada puede no tener ningún parámetro rellenado. Y como una maqueta no tiene escala de dibujo, porque cada objeto se modela a escala real, la verdadera pregunta nunca es «hasta dónde dibujar». Es «qué información, para qué uso y en qué momento».</p>
+
+            <h2>LOD 100 a 500: las escalas de referencia</h2>
+            <p>La mayoría de los proyectos se apoyan en dos clasificaciones que coinciden en gran parte: la británica de la PAS 1192-2 (LOD 1 a 7) y la estadounidense del AIA G202-2013 (LOD 100 a 500).</p>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr><th>UK</th><th>US</th><th>Fase</th><th>Contenido esperado</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>LOD 2</td><td>LOD 100</td><td>Estudio previo, concurso</td><td>Volúmenes, símbolos, elementos genéricos. Listado general.</td></tr>
+                        <tr><td>LOD 3</td><td>LOD 200</td><td>Anteproyecto</td><td>Objetos definidos, dimensiones aproximadas. Datos básicos para elegir productos.</td></tr>
+                        <tr><td>LOD 4</td><td>LOD 300</td><td>Proyecto de ejecución, licitación</td><td>Objetos 3D precisos, conformes al pliego. Ubicación, funcionamiento, acceso y mantenimiento.</td></tr>
+                        <tr><td>LOD 5</td><td>LOD 400</td><td>Obra</td><td>Objetos de fabricante en lugar de los genéricos, con sus datos.</td></tr>
+                        <tr><td>LOD 6-7</td><td>LOD 500</td><td>As-built, explotación</td><td>Maqueta «tal como se construyó». Mantenimiento, puesta en servicio, seguridad.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p>El BIMForum añade un escalón que los equipos de instalaciones conocen bien: el <strong>LOD 350</strong>. Precisa las interfaces entre sistemas, como soportes, pasos y conexiones. Suele ser lo que hace realmente útil la detección de interferencias en coordinación.</p>
+
+            <div class="article-callout">
+                <p>Mi opinión: en el día a día, el «nivel de información necesaria» que introduce la EN 17412-1 (2020) es más útil que una cifra de LOD. Obliga a escribir, para cada objeto y cada uso, la geometría, los datos y los documentos esperados. La PAS 1192, por cierto, ha sido sustituida por la serie ISO 19650.</p>
+            </div>
+
+            <h2>¿Por qué fijar el LOD por objeto y no por proyecto?</h2>
+            <p>Porque un LOD único cuesta caro y no aporta nada. En diseño, una losa de hormigón en LOD 200 suele bastar. Una fachada acristalada o un cuarto técnico exigirán un LOD 300 en la misma fase. Ambos conviven con normalidad en la misma maqueta.</p>
+            <p>En las instalaciones eléctricas y de corrientes débiles, estos son los niveles que recomiendo:</p>
+            <ul>
+                <li><strong>Bandejas portacables y conductos</strong>: dimensiones reales desde el proyecto de ejecución. Son las que condicionan los pasos y la coordinación con climatización y fontanería.</li>
+                <li><strong>Luminarias y mecanismos</strong>: familias genéricas en diseño, pero ya con potencia, tensión y circuito.</li>
+                <li><strong>Cuadros eléctricos</strong>: volumen y zona de acceso modelados pronto. La referencia del fabricante puede esperar a la obra.</li>
+                <li><strong>As-built</strong>: geometría simplificada, información completa para el GMAO.</li>
+            </ul>
+            <p>El último punto suele sorprender. Una maqueta as-built puede quedarse en LoD 200 con un LoI 500. El explotador necesita el dato, no el render.</p>
+
+            <div class="article-cta-inline">
+                <svg class="corner-plus tl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                <svg class="corner-plus br" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                <h3>¿Un proyecto CFO-CFA que modelar?</h3>
+                <p>Trabajo en sus lotes técnicos, desde el anteproyecto hasta la maqueta de síntesis.</p>
+                <a href="/es/#contact" class="btn-primary">Contactarme</a>
+            </div>
+
+            <h2>¿Quién fija el LOD y dónde se escribe?</h2>
+            <p>El promotor expresa la necesidad, el BIM manager la traduce. El pliego de requisitos BIM indica para qué servirá la maqueta, en obra y en explotación. El <a href="/es/blog/convencion-bim-puntos-clave/">plan de ejecución BIM</a> convierte esa necesidad en niveles por objeto. El BIM manager no decide solo: explica qué significa cada LOD y arbitra cuando un coordinador pide más detalle del que exige el contrato.</p>
+            <p>La herramienta más eficaz sigue siendo una tabla descriptiva redactada para cada proyecto. Para cada disciplina y tipo de objeto (pilar de hormigón, bandeja portacables, luminaria), indica el LoD geométrico por fase y el LoI esperado, con la lista de parámetros. Una imagen de referencia por fase no es obligatoria, pero evita muchos malentendidos.</p>
+
+            <h2>Cuatro errores frecuentes</h2>
+            <ul>
+                <li><strong>Sobremodelar.</strong> Un LOD 400 exigido en todas partes hace pesados los archivos y ralentiza a todo el equipo, sin beneficio para la fase en curso.</li>
+                <li><strong>Confundir detalle e información.</strong> Una geometría cuidada sin parámetros no sirve ni para mediciones ni para explotación.</li>
+                <li><strong>Descuidar las transiciones de fase.</strong> Al pasar de proyecto a obra, no todas las empresas se contratan a la vez. Hay que comprobar la coherencia de LoD y LoI una por una.</li>
+                <li><strong>Dejar el LOD implícito.</strong> Sin tabla, cada uno lee «LOD 300» a su manera. El desacuerdo aparece en la entrega, en el peor momento.</li>
+            </ul>
+
+            <h2>Por dónde empezar</h2>
+            <p>Abra su próximo pliego de requisitos y busque la línea «LOD 300». Si no va acompañada de una tabla por objeto, es el primer documento que debe pedir, o proponer usted mismo. Unas horas de definición siempre cuestan menos que rehacer una maqueta en la entrega.</p>
+
+            <section class="article-faq">
+                <h2 class="article-faq-title">Preguntas frecuentes</h2>
+                <div class="article-faq-item">
+                    <button type="button" class="article-faq-question" aria-expanded="false">
+                        ¿Qué significa LOD en BIM?
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                    </button>
+                    <div class="article-faq-answer">
+                        <div class="article-faq-answer-inner">
+                            <p>LOD significa Level of Development, nivel de desarrollo. Describe a la vez la precisión geométrica de un objeto (LoD, nivel de detalle) y la cantidad de información asociada (LoI, nivel de información).</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="article-faq-item">
+                    <button type="button" class="article-faq-question" aria-expanded="false">
+                        ¿Qué diferencia hay entre LoD y LoI?
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                    </button>
+                    <div class="article-faq-answer">
+                        <div class="article-faq-answer-inner">
+                            <p>El LoD mide el detalle gráfico del objeto modelado. El LoI se refiere a los datos no visibles: referencias, características técnicas, información de mantenimiento. El LOD reúne ambos.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="article-faq-item">
+                    <button type="button" class="article-faq-question" aria-expanded="false">
+                        ¿Qué LOD para una licitación?
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                    </button>
+                    <div class="article-faq-answer">
+                        <div class="article-faq-answer-inner">
+                            <p>En fase de proyecto de ejecución y licitación se suele exigir un LOD 300: objetos 3D precisos, conformes al pliego, que las empresas pueden usar para presupuestar. Algunos objetos pueden quedarse en LOD 200 si su uso no justifica más.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="article-faq-item">
+                    <button type="button" class="article-faq-question" aria-expanded="false">
+                        ¿Quién define el LOD de un proyecto BIM?
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                    </button>
+                    <div class="article-faq-answer">
+                        <div class="article-faq-answer-inner">
+                            <p>El promotor expresa sus necesidades en el pliego de requisitos BIM. El BIM manager las traduce en niveles de desarrollo por objeto y por fase en el plan de ejecución BIM, junto con los coordinadores de cada disciplina.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <p style="margin-top: var(--space-lg); font-size: var(--fs-sm); color: var(--soft-blue);">Fuentes: Annalisa De Maestri, <em>Premiers pas en BIM</em>, Eyrolles; PAS 1192-2; AIA G202-2013; EN 17412-1.</p>
+        </div>
+    </article>
+
+    <section id="contact" class="reveal">
+        <div class="container">
+            <p class="section-number">Contacto</p>
+            <h2 class="section-title">¿Un proyecto <em>CFO-CFA</em>?</h2>
+            <p class="lead">Descríbame su proyecto, me pondré en contacto con usted rápidamente para hablarlo.<br>Marc Forner - BIMpact - Especialista en maqueta digital del edificio.</p>
+            <dl class="contact-info">
+                <dt>Teléfono</dt>
+                <dd><span class="js-phone"></span><noscript>Disponible mediante el formulario a continuación.</noscript></dd>
+            </dl>
+            <div class="contact-form-wrap">
+                <form class="contact-form" id="contactForm" data-success="Mensaje enviado, gracias. Me pondré en contacto con usted rápidamente." data-error="Se produjo un error. Inténtelo de nuevo en unos instantes.">
+                    <div class="form-field">
+                        <label for="cfName">Nombre</label>
+                        <input type="text" id="cfName" name="name" required maxlength="200" autocomplete="name">
+                    </div>
+                    <div class="form-field">
+                        <label for="cfEmail">Correo electrónico</label>
+                        <input type="email" id="cfEmail" name="email" required autocomplete="email">
+                    </div>
+                    <div class="form-field">
+                        <label for="cfPhone">Teléfono</label>
+                        <input type="tel" id="cfPhone" name="phone" autocomplete="tel">
+                    </div>
+                    <div class="form-field">
+                        <label for="cfMessage">Mensaje</label>
+                        <textarea id="cfMessage" name="message" required maxlength="5000"></textarea>
+                    </div>
+                    <div class="form-honeypot" aria-hidden="true">
+                        <label for="cfWebsite">Sitio web</label>
+                        <input type="text" id="cfWebsite" name="company_website" tabindex="-1" autocomplete="off">
+                    </div>
+                    <button type="submit" class="btn-primary">Enviar</button>
+                    <p class="form-status" role="status" aria-live="polite"></p>
+                </form>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="container">
+        <p>© <span id="year">2026</span> BIMpact · Sitio creado por Marc Forner con Claude Code</p>
+        <ul class="footer-links">
+            <li><a href="/es/legal/privacidad/">Privacidad</a></li>
+            <li><a href="/es/legal/terminos/">Términos</a></li>
+            <li><a href="/es/legal/cookies/">Cookies</a></li>
+            <li><button type="button" class="footer-cookie-link" id="cookieManage">Gestionar cookies</button></li>
+        </ul>
+    </div>
+</footer>
+
+<script src="/assets/js/cookie-consent.js" defer></script>
+<script src="/assets/js/shared.js" defer></script>
+<script src="/assets/js/contact-form.js" defer></script>
+</body>
+</html>
