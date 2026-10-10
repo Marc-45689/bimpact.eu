@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Export IFC depuis Revit : 6 bonnes pratiques</title>
+    <meta name="description" content="Configuration d'export, correspondance des classes, IfcExportAs, liaison plutôt qu'ouverture : 6 pratiques pour un export IFC fiable depuis Revit.">
+    <link rel="canonical" href="https://bimpact.eu/blog/export-ifc-revit-bonnes-pratiques/">
+    <link rel="alternate" hreflang="fr" href="https://bimpact.eu/blog/export-ifc-revit-bonnes-pratiques/">
+    <link rel="alternate" hreflang="en" href="https://bimpact.eu/en/blog/revit-ifc-export-best-practices/">
+    <link rel="alternate" hreflang="es" href="https://bimpact.eu/es/blog/exportar-ifc-revit-buenas-practicas/">
+    <link rel="alternate" hreflang="x-default" href="https://bimpact.eu/blog/export-ifc-revit-bonnes-pratiques/">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://bimpact.eu/blog/export-ifc-revit-bonnes-pratiques/">
+    <meta property="og:title" content="Export IFC depuis Revit : 6 bonnes pratiques">
+    <meta property="og:description" content="Configuration d'export, correspondance des classes, IfcExportAs, liaison plutôt qu'ouverture : 6 pratiques pour un export IFC fiable depuis Revit.">
+    <meta property="og:site_name" content="BIMpact">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:image" content="https://bimpact.eu/assets/og/export-ifc-revit-bonnes-pratiques.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="675">
+    <meta property="og:image:alt" content="Deux bâtiments filaires reliés par un flux de petits cubes de données, illustrant l'échange de maquettes au format IFC">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://bimpact.eu/assets/og/export-ifc-revit-bonnes-pratiques.jpg">
+    <script type="application/ld+json">
+    {"@context": "https://schema.org", "@type": "Article", "headline": "Export IFC depuis Revit : 6 bonnes pratiques", "description": "Configuration d'export, correspondance des classes, IfcExportAs, liaison plutôt qu'ouverture : 6 pratiques pour un export IFC fiable depuis Revit.", "datePublished": "2026-10-10", "inLanguage": "fr", "author": {"@type": "Person", "name": "Marc Forner"}, "publisher": {"@type": "Organization", "name": "BIMpact"}, "mainEntityOfPage": "https://bimpact.eu/blog/export-ifc-revit-bonnes-pratiques/"}
+    </script>
+    <script type="application/ld+json">
+    {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Qu'est-ce qu'un fichier IFC ?", "acceptedAnswer": {"@type": "Answer", "text": "L'IFC (Industry Foundation Classes) est un format ouvert et normalisé (ISO 16739) qui décrit les objets d'une maquette BIM, leurs propriétés et leurs relations. Il permet d'échanger des maquettes entre logiciels d'éditeurs différents."}}, {"@type": "Question", "name": "Faut-il ouvrir ou lier un fichier IFC dans Revit ?", "acceptedAnswer": {"@type": "Answer", "text": "Il vaut mieux le lier. Un IFC lié peut être rechargé à chaque mise à jour de l'émetteur, alors qu'un IFC ouvert devient un projet indépendant, coupé de sa source."}}, {"@type": "Question", "name": "Pourquoi mes objets sortent-ils en IfcBuildingElementProxy ?", "acceptedAnswer": {"@type": "Answer", "text": "Parce que leur catégorie Revit n'a pas de correspondance définie dans la table d'export, ce qui arrive souvent avec les modèles génériques. Il faut corriger la table ou renseigner les paramètres IfcExportAs et IfcExportType dans la famille."}}, {"@type": "Question", "name": "IFC2x3 ou IFC4 : quelle version choisir ?", "acceptedAnswer": {"@type": "Answer", "text": "Celle que fixe la convention BIM du projet. L'IFC4 décrit mieux les équipements techniques, mais tous les logiciels des intervenants doivent la prendre en charge correctement en import comme en export."}}]}
+    </script>
+    <link rel="icon" type="image/svg+xml" href="/logo-principal.svg">
+    <meta name="theme-color" content="#16283E">
+    <!-- GA_START -->
+    <script src="/assets/js/analytics.js" defer></script>
+    <!-- GA_END -->
+    <link rel="stylesheet" href="/assets/css/tokens.css">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/blog.css">
+</head>
+<body>
+<div class="cookie-banner" id="cookieBanner" hidden>
+    <div class="container cookie-banner-inner">
+        <p>Ce site utilise Google Analytics pour mesurer l'audience, avec votre accord. <a href="/mentions-legales/cookies/">En savoir plus</a>.</p>
+        <div class="cookie-banner-actions">
+            <button type="button" id="cookieRefuse" class="btn-secondary">Refuser</button>
+            <button type="button" id="cookieAccept" class="btn-primary">Accepter</button>
+        </div>
+    </div>
+</div>
+
+<a href="#" id="scrollTop" class="scroll-top" aria-label="Retour en haut">↑</a>
+
+<nav>
+    <div class="container">
+        <a href="/" class="nav-logo"><img src="/logo-principal.svg" alt="Logo" width="90" height="90" loading="eager"><span class="nav-wordmark">BIM<em>pact</em></span></a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="/#expertise">Expertise</a></li>
+            <li><a href="/a-propos/">À propos</a></li>
+            <li><a href="/blog/">Blog</a></li>
+            <li><a href="#contact" class="nav-cta">Contact</a></li>
+        </ul>
+        <div class="nav-lang">
+            <a href="/blog/export-ifc-revit-bonnes-pratiques/" hreflang="fr" lang="fr" class="active">FR</a>
+            <a href="/en/blog/revit-ifc-export-best-practices/" hreflang="en" lang="en">EN</a>
+            <a href="/es/blog/exportar-ifc-revit-buenas-practicas/" hreflang="es" lang="es">ES</a>
+        </div>
+        <button class="nav-hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+</nav>
+
+<main>
+    <article style="padding: calc(var(--nav-height) + var(--space-xl)) 0 var(--space-xl);">
+        <div class="container" style="max-width: 760px;">
+            <nav class="article-breadcrumb" aria-label="Breadcrumb">
+                <a href="/">Accueil</a> / <a href="/blog/">Blog</a> / <span>Export IFC depuis Revit</span>
+            </nav>
+            <p class="section-number">Revit</p>
+            <h1 class="section-title">Export IFC depuis Revit : 6 bonnes pratiques</h1>
+            <p style="color: var(--soft-blue); margin-top: var(--space-sm);">2026-10-10 · 4 min de lecture</p>
+
+            <figure class="article-img-center">
+                <img src="/assets/illustrations-blog/export-ifc-revit-bonnes-pratiques.webp" alt="Deux bâtiments filaires reliés par un flux de petits cubes de données, illustrant l'échange de maquettes au format IFC" width="1200" height="675" loading="eager">
+            </figure>
+
+            <p style="margin-top: var(--space-md);">Vos chemins de câbles apparaissent-ils dans la maquette fédérée ? Si l'export IFC n'est pas réglé, ils arrivent chez le coordinateur sous forme d'objets anonymes, impossibles à filtrer. L'IFC permet à des logiciels différents de partager une même maquette. Encore faut-il le configurer.</p>
+
+            <h2>L'IFC est un format d'échange, pas un format de travail</h2>
+            <p>L'IFC (<em>Industry Foundation Classes</em>) est un format ouvert, normalisé ISO 16739 et porté par buildingSMART. Il transporte la géométrie, les propriétés des objets et leurs relations, sans dépendre d'un éditeur. C'est la base de l'openBIM.</p>
+            <p>Il n'est pas paramétrique pour autant. La logique famille, type et instance de Revit disparaît à l'export : chaque élément devient une géométrie figée avec ses propriétés. Chacun continue donc à travailler dans son format natif, et l'IFC ne sert qu'à échanger.</p>
+
+            <h2>1. Utiliser l'exportateur IFC à jour</h2>
+            <p>Autodesk a placé le moteur IFC de Revit en open source en 2011. Il évolue plus vite que Revit lui-même et offre une interface d'export bien plus complète que celle de base. Installez sa dernière version pour votre version de Revit : beaucoup de défauts d'export y sont déjà corrigés.</p>
+
+            <h2>2. Créer une configuration d'export par projet</h2>
+            <p>Ne partez pas des réglages par défaut. Dupliquez une configuration et enregistrez-y ce que prévoit la <a href="/blog/convention-bim-points-cles/">convention BIM</a> :</p>
+            <ul>
+                <li><strong>la version IFC et la phase</strong> exportée (IFC2x3 ou IFC4, avec la bonne définition de vue) ;</li>
+                <li><strong>la découpe des murs et poteaux par niveau</strong>, souvent attendue par les autres logiciels ;</li>
+                <li><strong>les jeux de propriétés</strong> : propriétés Revit, jeux communs IFC, quantités de base ;</li>
+                <li><strong>le stockage du GUID IFC</strong> dans Revit, pour que chaque objet garde le même identifiant d'un export à l'autre.</li>
+            </ul>
+            <p>Partagez ensuite ce fichier avec toute l'équipe. Deux exports faits avec des réglages différents ne se comparent pas.</p>
+
+            <h2>3. Soigner la table de correspondance des classes</h2>
+            <p>C'est le réglage qui décide si vos objets sont lisibles chez les autres. Revit range les objets par catégories, l'IFC par classes, et la table fait le lien : les murs deviennent des <code>IfcWall</code>, les portes des <code>IfcDoor</code>. Sans correspondance, Revit exporte l'objet en <code>IfcBuildingElementProxy</code>, une classe fourre-tout.</p>
+            <p>Pour les lots électriques en IFC4, vérifiez au moins ces lignes :</p>
+            <div class="table-wrapper">
+                <table>
+                    <thead><tr><th>Catégorie Revit</th><th>Classe IFC4 attendue</th></tr></thead>
+                    <tbody>
+                        <tr><td>Chemins de câbles</td><td>IfcCableCarrierSegment</td></tr>
+                        <tr><td>Raccords de chemins de câbles</td><td>IfcCableCarrierFitting</td></tr>
+                        <tr><td>Conduits</td><td>IfcCableCarrierSegment (conduit)</td></tr>
+                        <tr><td>Luminaires</td><td>IfcLightFixture</td></tr>
+                        <tr><td>Équipements électriques (tableaux)</td><td>IfcElectricDistributionBoard</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p>Le piège classique : les modèles génériques. Sans réglage, ils finissent tous en proxy.</p>
+
+            <div class="article-cta-inline">
+                <svg class="corner-plus tl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                <svg class="corner-plus br" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                <h3>Un projet CFO-CFA à modéliser ?</h3>
+                <p>J'interviens sur vos lots techniques, de l'esquisse à la maquette de synthèse.</p>
+                <a href="/#contact" class="btn-primary">Me contacter</a>
+            </div>
+
+            <h2>4. Forcer la classe dans la famille</h2>
+            <p>Quand une famille ne rentre dans aucune catégorie Revit adaptée, deux paramètres partagés de type texte imposent sa classe : <code>IfcExportAs</code> pour la classe, <code>IfcExportType</code> pour le type prédéfini. Renseignés dans la famille, ils priment sur la table de correspondance. Une famille bien faite se pense donc dès sa création pour l'export, gabarit et paramètres compris.</p>
+
+            <h2>5. Lier un IFC reçu, ne pas l'ouvrir</h2>
+            <p>Ouvrir un IFC dans Revit crée un nouveau projet, coupé de sa source. À la prochaine mise à jour de l'émetteur, vous ne pourrez pas suivre. Un IFC lié se recharge à chaque version, accepte les accrochages et les cotations, et se pilote vue par vue comme n'importe quel lien Revit.</p>
+
+            <h2>6. Contrôler l'IFC avant de l'envoyer</h2>
+            <p>Un export n'est validé qu'une fois ouvert dans une visionneuse IFC indépendante. Pour ma part, j'utilise BIMvision, qui fait très bien le travail. Vérifiez au minimum :</p>
+            <ul>
+                <li><strong>les classes</strong> : aucun objet métier en proxy ;</li>
+                <li><strong>les propriétés</strong> : les paramètres demandés par la convention sont présents et renseignés ;</li>
+                <li><strong>la position</strong> : la maquette se superpose aux autres lots, au bon point de référence ;</li>
+                <li><strong>les couleurs</strong> : un objet gris dans Revit peut apparaître blanc dans la visionneuse, ce qui gêne la lecture en réunion.</li>
+            </ul>
+
+            <div class="article-callout">
+                <p>Ce contrôle prend quelques minutes. Il évite de découvrir en réunion de synthèse que vos réseaux électriques sont introuvables dans la maquette fédérée.</p>
+            </div>
+
+            <h2>Le réflexe à prendre</h2>
+            <p>Si vous ne retenez qu'une pratique, gardez la dernière : ouvrez chaque IFC dans une visionneuse avant de l'envoyer. La configuration d'export et la table de correspondance se règlent une fois par projet. Le contrôle, lui, se fait à chaque diffusion.</p>
+
+            <section class="article-faq">
+                <h2 class="article-faq-title">Questions fréquentes</h2>
+                <div class="article-faq-item">
+                    <button type="button" class="article-faq-question" aria-expanded="false">
+                        Qu'est-ce qu'un fichier IFC ?
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                    </button>
+                    <div class="article-faq-answer">
+                        <div class="article-faq-answer-inner">
+                            <p>L'IFC (Industry Foundation Classes) est un format ouvert et normalisé (ISO 16739) qui décrit les objets d'une maquette BIM, leurs propriétés et leurs relations. Il permet d'échanger des maquettes entre logiciels d'éditeurs différents.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="article-faq-item">
+                    <button type="button" class="article-faq-question" aria-expanded="false">
+                        Faut-il ouvrir ou lier un fichier IFC dans Revit ?
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                    </button>
+                    <div class="article-faq-answer">
+                        <div class="article-faq-answer-inner">
+                            <p>Il vaut mieux le lier. Un IFC lié peut être rechargé à chaque mise à jour de l'émetteur, alors qu'un IFC ouvert devient un projet indépendant, coupé de sa source.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="article-faq-item">
+                    <button type="button" class="article-faq-question" aria-expanded="false">
+                        Pourquoi mes objets sortent-ils en IfcBuildingElementProxy ?
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                    </button>
+                    <div class="article-faq-answer">
+                        <div class="article-faq-answer-inner">
+                            <p>Parce que leur catégorie Revit n'a pas de correspondance définie dans la table d'export, ce qui arrive souvent avec les modèles génériques. Il faut corriger la table ou renseigner les paramètres IfcExportAs et IfcExportType dans la famille.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="article-faq-item">
+                    <button type="button" class="article-faq-question" aria-expanded="false">
+                        IFC2x3 ou IFC4 : quelle version choisir ?
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                    </button>
+                    <div class="article-faq-answer">
+                        <div class="article-faq-answer-inner">
+                            <p>Celle que fixe la convention BIM du projet. L'IFC4 décrit mieux les équipements techniques, mais tous les logiciels des intervenants doivent la prendre en charge correctement en import comme en export.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <p style="margin-top: var(--space-lg); font-size: var(--fs-sm); color: var(--soft-blue);">Sources : livre blanc Autodesk « Les bonnes pratiques BIM IFC dans Revit » ; buildingSMART International ; supports de formation Revit.</p>
+        </div>
+    </article>
+
+    <section id="contact" class="reveal">
+        <div class="container">
+            <p class="section-number">Contact</p>
+            <h2 class="section-title">Un projet <em>CFO-CFA</em> ?</h2>
+            <p class="lead">Décrivez-moi votre projet, je reviens vers vous rapidement pour en discuter.<br>Marc Forner - BIMpact - Spécialiste en maquette numérique du bâtiment.</p>
+            <dl class="contact-info">
+                <dt>Téléphone</dt>
+                <dd><span class="js-phone"></span><noscript>Disponible via le formulaire ci-dessous.</noscript></dd>
+            </dl>
+            <div class="contact-form-wrap">
+                <form class="contact-form" id="contactForm" data-success="Message envoyé, merci. Je reviens vers vous rapidement." data-error="Une erreur est survenue. Réessayez dans quelques instants.">
+                    <div class="form-field">
+                        <label for="cfName">Nom</label>
+                        <input type="text" id="cfName" name="name" required maxlength="200" autocomplete="name">
+                    </div>
+                    <div class="form-field">
+                        <label for="cfEmail">Email</label>
+                        <input type="email" id="cfEmail" name="email" required autocomplete="email">
+                    </div>
+                    <div class="form-field">
+                        <label for="cfPhone">Téléphone</label>
+                        <input type="tel" id="cfPhone" name="phone" autocomplete="tel">
+                    </div>
+                    <div class="form-field">
+                        <label for="cfMessage">Message</label>
+                        <textarea id="cfMessage" name="message" required maxlength="5000"></textarea>
+                    </div>
+                    <div class="form-honeypot" aria-hidden="true">
+                        <label for="cfWebsite">Site web</label>
+                        <input type="text" id="cfWebsite" name="company_website" tabindex="-1" autocomplete="off">
+                    </div>
+                    <button type="submit" class="btn-primary">Envoyer</button>
+                    <p class="form-status" role="status" aria-live="polite"></p>
+                </form>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="container">
+        <p>© <span id="year">2026</span> BIMpact · Site réalisé par Marc Forner sur Claude Code</p>
+        <ul class="footer-links">
+            <li><a href="/mentions-legales/confidentialite/">Confidentialité</a></li>
+            <li><a href="/mentions-legales/cgu/">CGU</a></li>
+            <li><a href="/mentions-legales/cookies/">Cookies</a></li>
+            <li><button type="button" class="footer-cookie-link" id="cookieManage">Gérer les cookies</button></li>
+        </ul>
+    </div>
+</footer>
+
+<script src="/assets/js/cookie-consent.js" defer></script>
+<script src="/assets/js/shared.js" defer></script>
+<script src="/assets/js/contact-form.js" defer></script>
+</body>
+</html>

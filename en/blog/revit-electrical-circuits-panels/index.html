@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electrical design in Revit: circuits, panels, schedules</title>
+    <meta name="description" content="Electrical settings, panels, circuits, lighting, cable trays: modeling an electrical package in Revit, and what Revit does not calculate.">
+    <link rel="canonical" href="https://bimpact.eu/en/blog/revit-electrical-circuits-panels/">
+    <link rel="alternate" hreflang="fr" href="https://bimpact.eu/blog/revit-electricite-circuits-tableaux/">
+    <link rel="alternate" hreflang="en" href="https://bimpact.eu/en/blog/revit-electrical-circuits-panels/">
+    <link rel="alternate" hreflang="es" href="https://bimpact.eu/es/blog/revit-electricidad-circuitos-cuadros/">
+    <link rel="alternate" hreflang="x-default" href="https://bimpact.eu/blog/revit-electricite-circuits-tableaux/">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://bimpact.eu/en/blog/revit-electrical-circuits-panels/">
+    <meta property="og:title" content="Electrical design in Revit: circuits, panels, schedules">
+    <meta property="og:description" content="Electrical settings, panels, circuits, lighting, cable trays: modeling an electrical package in Revit, and what Revit does not calculate.">
+    <meta property="og:site_name" content="BIMpact">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:image" content="https://bimpact.eu/assets/og/revit-electricite-circuits-tableaux.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="675">
+    <meta property="og:image:alt" content="Wireframe electrical panel connected to a ceiling with light fixtures and a cable tray, over a grid floor plan">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://bimpact.eu/assets/og/revit-electricite-circuits-tableaux.jpg">
+    <script type="application/ld+json">
+    {"@context": "https://schema.org", "@type": "Article", "headline": "Electrical design in Revit: circuits, panels, schedules", "description": "Electrical settings, panels, circuits, lighting, cable trays: modeling an electrical package in Revit, and what Revit does not calculate.", "datePublished": "2026-10-10", "inLanguage": "en", "author": {"@type": "Person", "name": "Marc Forner"}, "publisher": {"@type": "Organization", "name": "BIMpact"}, "mainEntityOfPage": "https://bimpact.eu/en/blog/revit-electrical-circuits-panels/"}
+    </script>
+    <script type="application/ld+json">
+    {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Can Revit size an electrical installation to code?", "acceptedAnswer": {"@type": "Answer", "text": "No. Revit builds circuits and load summaries, but regulatory sizing (cable sizes, voltage drops, protective devices) is done in dedicated electrical design software."}}, {"@type": "Question", "name": "Why does Revit refuse to connect a device to a circuit?", "acceptedAnswer": {"@type": "Answer", "text": "Most often, the device's voltage or number of poles does not match the panel's distribution system. Align these parameters in the device and panel properties."}}, {"@type": "Question", "name": "Should I copy the architect's walls into the electrical model?", "acceptedAnswer": {"@type": "Answer", "text": "Not necessarily. Face-based families attach to the faces of the architect's link. Copying is only useful for some families or to create spaces."}}, {"@type": "Question", "name": "How do I get a load summary per panel in Revit?", "acceptedAnswer": {"@type": "Answer", "text": "Create a panel schedule from the electrical panel. It lists circuits, their loads and their distribution per phase, and updates with every change to the model."}}]}
+    </script>
+    <link rel="icon" type="image/svg+xml" href="/logo-principal.svg">
+    <meta name="theme-color" content="#16283E">
+    <!-- GA_START -->
+    <script src="/assets/js/analytics.js" defer></script>
+    <!-- GA_END -->
+    <link rel="stylesheet" href="/assets/css/tokens.css">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/blog.css">
+</head>
+<body>
+<div class="cookie-banner" id="cookieBanner" hidden>
+    <div class="container cookie-banner-inner">
+        <p>This site uses Google Analytics to measure audience, with your consent. <a href="/en/legal/cookies/">Learn more</a>.</p>
+        <div class="cookie-banner-actions">
+            <button type="button" id="cookieRefuse" class="btn-secondary">Refuse</button>
+            <button type="button" id="cookieAccept" class="btn-primary">Accept</button>
+        </div>
+    </div>
+</div>
+
+<a href="#" id="scrollTop" class="scroll-top" aria-label="Back to top">↑</a>
+
+<nav>
+    <div class="container">
+        <a href="/en/" class="nav-logo"><img src="/logo-principal.svg" alt="Logo" width="90" height="90" loading="eager"><span class="nav-wordmark">BIM<em>pact</em></span></a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="/en/#expertise">Expertise</a></li>
+            <li><a href="/en/about/">Who am I</a></li>
+            <li><a href="/en/blog/">Blog</a></li>
+            <li><a href="#contact" class="nav-cta">Contact</a></li>
+        </ul>
+        <div class="nav-lang">
+            <a href="/blog/revit-electricite-circuits-tableaux/" hreflang="fr" lang="fr">FR</a>
+            <a href="/en/blog/revit-electrical-circuits-panels/" hreflang="en" lang="en" class="active">EN</a>
+            <a href="/es/blog/revit-electricidad-circuitos-cuadros/" hreflang="es" lang="es">ES</a>
+        </div>
+        <button class="nav-hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+</nav>
+
+<main>
+    <article style="padding: calc(var(--nav-height) + var(--space-xl)) 0 var(--space-xl);">
+        <div class="container" style="max-width: 760px;">
+            <nav class="article-breadcrumb" aria-label="Breadcrumb">
+                <a href="/en/">Home</a> / <a href="/en/blog/">Blog</a> / <span>Electrical design in Revit</span>
+            </nav>
+            <p class="section-number">CFO-CFA</p>
+            <h1 class="section-title">Electrical design in Revit: circuits, panels, schedules</h1>
+            <p style="color: var(--soft-blue); margin-top: var(--space-sm);">2026-10-10 · 4 min read</p>
+
+            <figure class="article-img-center">
+                <img src="/assets/illustrations-blog/revit-electricite-circuits-tableaux.webp" alt="Wireframe electrical panel connected to a ceiling with light fixtures and a cable tray, over a grid floor plan" width="1200" height="675" loading="eager">
+            </figure>
+
+            <p style="margin-top: var(--space-md);">In Revit, a socket placed on a plan is just a symbol until it is connected to something. Linked to a circuit, itself tied to a panel, it feeds load summaries that update on their own. Here is the method I recommend for an electrical package, from the architect's model to the schedules.</p>
+
+            <h2>1. Set up a template for the local network</h2>
+            <p>The templates shipped with Revit are often set for North American networks (120/208 V, 480 V). Start with <strong>Manage &gt; MEP Settings &gt; Electrical Settings</strong> and declare the project's distribution systems: in France, 230 V single-phase and 400 V three-phase. Then save everything into your own template, with your families, tags and schedule templates. That setting saves time on every project that follows.</p>
+
+            <h2>2. Link the architect's model without copying it</h2>
+            <p>The electrical model is a separate file. The architect's model comes in as a Revit link, or an IFC link, positioned origin to origin. To place devices, there are two options:</p>
+            <ul>
+                <li><strong>Face-based families</strong>, which attach directly to the walls and ceilings of the link. This is the option to favor: nothing is duplicated.</li>
+                <li><strong>Copy/Monitor</strong> a few elements from the link (walls, ceilings, levels), when a family needs a native host or to create spaces. Keep it to the strict minimum.</li>
+            </ul>
+            <p>If you copy, start from a purged copy of the architect's model. Only the types actually used will be transferred.</p>
+
+            <h2>3. Place panels and create circuits</h2>
+            <p>Panels are electrical equipment families. Once placed, assign them the right distribution system. From then on the logic never changes: select the devices to supply, create a power circuit, pick the source panel. To add or remove a device, edit the circuit.</p>
+            <p>A device set to the wrong voltage will be refused by Revit. And while wires can be drawn on plan, it is the circuits, not the wires, that carry the information.</p>
+
+            <div class="article-cta-inline">
+                <svg class="corner-plus tl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                <svg class="corner-plus br" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                <h3>A CFO-CFA project to model?</h3>
+                <p>I work on your technical trades, from early design through the coordination model.</p>
+                <a href="/en/#contact" class="btn-primary">Get in touch</a>
+            </div>
+
+            <h2>4. Handle lighting with switch systems</h2>
+            <p>In a reflected ceiling plan view, place the fixtures, then the switches. Fixtures join a lighting circuit connected to the panel, and a switch system records what controls what. The model can then answer concrete questions: which fixtures this switch turns off, which load this circuit carries.</p>
+
+            <h2>5. Use panel schedules</h2>
+            <p>The panel schedule lists circuits, their loads and their distribution per phase. Duplicate the schedule template and adapt it to your usual documents, with loads shown per phase to check balancing. Change the power of a heater type and the schedule follows immediately. Wire and cable tray lengths can be quantified the same way.</p>
+
+            <h2>6. Model cable trays for coordination</h2>
+            <p>For the other trades, cable trays and conduits are often what matters most, because they are what crosses ductwork and pipework. Model them at their real size and mounting heights from the start of coordination. Before each exchange, check their <a href="/en/blog/revit-ifc-export-best-practices/">IFC class on export</a>.</p>
+
+            <div class="article-callout">
+                <p>What Revit does not do: regulatory sizing. Cable sizes, voltage drops and protective devices under the applicable wiring rules (NF C 15-100 in France) are calculated in dedicated electrical design software. Revit holds the information model and load summaries, the design software holds the calculation report. They complement each other; neither replaces the other. Caneco can be paired with its Caneco BIM plug-in for Revit. On one project, a subcontractor actually supplied their electrical schematics using this method. That said, it is no magic solution: the quality of the results depends on how the model is prepared, how it is configured, and on checking by a professional.</p>
+            </div>
+
+            <h2>Where to start</h2>
+            <p>With the template. A template set for the local network, with your families and schedules, pays for itself by the second project. Once it is in place, creating circuits and producing a load summary per panel becomes routine, and your time goes to coordination, where it counts.</p>
+
+            <section class="article-faq">
+                <h2 class="article-faq-title">Frequently asked questions</h2>
+                <div class="article-faq-item">
+                    <button type="button" class="article-faq-question" aria-expanded="false">
+                        Can Revit size an electrical installation to code?
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                    </button>
+                    <div class="article-faq-answer">
+                        <div class="article-faq-answer-inner">
+                            <p>No. Revit builds circuits and load summaries, but regulatory sizing (cable sizes, voltage drops, protective devices) is done in dedicated electrical design software.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="article-faq-item">
+                    <button type="button" class="article-faq-question" aria-expanded="false">
+                        Why does Revit refuse to connect a device to a circuit?
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                    </button>
+                    <div class="article-faq-answer">
+                        <div class="article-faq-answer-inner">
+                            <p>Most often, the device's voltage or number of poles does not match the panel's distribution system. Align these parameters in the device and panel properties.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="article-faq-item">
+                    <button type="button" class="article-faq-question" aria-expanded="false">
+                        Should I copy the architect's walls into the electrical model?
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                    </button>
+                    <div class="article-faq-answer">
+                        <div class="article-faq-answer-inner">
+                            <p>Not necessarily. Face-based families attach to the faces of the architect's link. Copying is only useful for some families or to create spaces.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="article-faq-item">
+                    <button type="button" class="article-faq-question" aria-expanded="false">
+                        How do I get a load summary per panel in Revit?
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                    </button>
+                    <div class="article-faq-answer">
+                        <div class="article-faq-answer-inner">
+                            <p>Create a panel schedule from the electrical panel. It lists circuits, their loads and their distribution per phase, and updates with every change to the model.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <p style="margin-top: var(--space-lg); font-size: var(--fs-sm); color: var(--soft-blue);">Sources: Revit MEP and Revit training material; Annalisa De Maestri, <em>Premiers pas en BIM</em>, Eyrolles.</p>
+        </div>
+    </article>
+
+    <section id="contact" class="reveal">
+        <div class="container">
+            <p class="section-number">Contact</p>
+            <h2 class="section-title">A <em>CFO-CFA</em> project?</h2>
+            <p class="lead">Tell me about your project and I'll get back to you quickly.<br>Marc Forner - BIMpact - Building information modeling specialist.</p>
+            <dl class="contact-info">
+                <dt>Phone</dt>
+                <dd><span class="js-phone"></span><noscript>Available via the form below.</noscript></dd>
+            </dl>
+            <div class="contact-form-wrap">
+                <form class="contact-form" id="contactForm" data-success="Message sent, thank you. I'll get back to you quickly." data-error="Something went wrong. Please try again in a moment.">
+                    <div class="form-field">
+                        <label for="cfName">Name</label>
+                        <input type="text" id="cfName" name="name" required maxlength="200" autocomplete="name">
+                    </div>
+                    <div class="form-field">
+                        <label for="cfEmail">Email</label>
+                        <input type="email" id="cfEmail" name="email" required autocomplete="email">
+                    </div>
+                    <div class="form-field">
+                        <label for="cfPhone">Phone</label>
+                        <input type="tel" id="cfPhone" name="phone" autocomplete="tel">
+                    </div>
+                    <div class="form-field">
+                        <label for="cfMessage">Message</label>
+                        <textarea id="cfMessage" name="message" required maxlength="5000"></textarea>
+                    </div>
+                    <div class="form-honeypot" aria-hidden="true">
+                        <label for="cfWebsite">Website</label>
+                        <input type="text" id="cfWebsite" name="company_website" tabindex="-1" autocomplete="off">
+                    </div>
+                    <button type="submit" class="btn-primary">Send</button>
+                    <p class="form-status" role="status" aria-live="polite"></p>
+                </form>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="container">
+        <p>© <span id="year">2026</span> BIMpact · Site built by Marc Forner with Claude Code</p>
+        <ul class="footer-links">
+            <li><a href="/en/legal/privacy/">Privacy</a></li>
+            <li><a href="/en/legal/terms/">Terms</a></li>
+            <li><a href="/en/legal/cookies/">Cookies</a></li>
+            <li><button type="button" class="footer-cookie-link" id="cookieManage">Manage cookies</button></li>
+        </ul>
+    </div>
+</footer>
+
+<script src="/assets/js/cookie-consent.js" defer></script>
+<script src="/assets/js/shared.js" defer></script>
+<script src="/assets/js/contact-form.js" defer></script>
+</body>
+</html>

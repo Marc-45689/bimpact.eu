@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electricidad en Revit: circuitos, cuadros y tablas</title>
+    <meta name="description" content="Parámetros eléctricos, cuadros, circuitos, iluminación, bandejas: modelar una instalación eléctrica en Revit, y lo que Revit no calcula.">
+    <link rel="canonical" href="https://bimpact.eu/es/blog/revit-electricidad-circuitos-cuadros/">
+    <link rel="alternate" hreflang="fr" href="https://bimpact.eu/blog/revit-electricite-circuits-tableaux/">
+    <link rel="alternate" hreflang="en" href="https://bimpact.eu/en/blog/revit-electrical-circuits-panels/">
+    <link rel="alternate" hreflang="es" href="https://bimpact.eu/es/blog/revit-electricidad-circuitos-cuadros/">
+    <link rel="alternate" hreflang="x-default" href="https://bimpact.eu/blog/revit-electricite-circuits-tableaux/">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://bimpact.eu/es/blog/revit-electricidad-circuitos-cuadros/">
+    <meta property="og:title" content="Electricidad en Revit: circuitos, cuadros y tablas">
+    <meta property="og:description" content="Parámetros eléctricos, cuadros, circuitos, iluminación, bandejas: modelar una instalación eléctrica en Revit, y lo que Revit no calcula.">
+    <meta property="og:site_name" content="BIMpact">
+    <meta property="og:locale" content="es_ES">
+    <meta property="og:image" content="https://bimpact.eu/assets/og/revit-electricite-circuits-tableaux.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="675">
+    <meta property="og:image:alt" content="Cuadro eléctrico en alámbrico conectado a un techo con luminarias y bandeja portacables, sobre un plano cuadriculado">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://bimpact.eu/assets/og/revit-electricite-circuits-tableaux.jpg">
+    <script type="application/ld+json">
+    {"@context": "https://schema.org", "@type": "Article", "headline": "Electricidad en Revit: circuitos, cuadros y tablas", "description": "Parámetros eléctricos, cuadros, circuitos, iluminación, bandejas: modelar una instalación eléctrica en Revit, y lo que Revit no calcula.", "datePublished": "2026-10-10", "inLanguage": "es", "author": {"@type": "Person", "name": "Marc Forner"}, "publisher": {"@type": "Organization", "name": "BIMpact"}, "mainEntityOfPage": "https://bimpact.eu/es/blog/revit-electricidad-circuitos-cuadros/"}
+    </script>
+    <script type="application/ld+json">
+    {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "¿Puede Revit dimensionar una instalación eléctrica según la normativa?", "acceptedAnswer": {"@type": "Answer", "text": "No. Revit crea los circuitos y los balances de cargas, pero el dimensionado reglamentario (secciones, caídas de tensión, protecciones) se realiza en un software de cálculo eléctrico específico."}}, {"@type": "Question", "name": "¿Por qué Revit se niega a conectar un aparato a un circuito?", "acceptedAnswer": {"@type": "Answer", "text": "Lo más habitual es que la tensión o el número de polos del aparato no coincida con el sistema de distribución del cuadro. Hay que alinear esos parámetros en las propiedades del aparato y del cuadro."}}, {"@type": "Question", "name": "¿Hay que copiar los muros del arquitecto en la maqueta eléctrica?", "acceptedAnswer": {"@type": "Answer", "text": "No necesariamente. Las familias basadas en cara se fijan a las caras del vínculo del arquitecto. La copia solo es útil para algunas familias o para crear espacios."}}, {"@type": "Question", "name": "¿Cómo obtener un balance de potencia por cuadro en Revit?", "acceptedAnswer": {"@type": "Answer", "text": "Creando una tabla de cuadro a partir del cuadro eléctrico. Enumera los circuitos, sus cargas y su reparto por fase, y se actualiza con cada modificación de la maqueta."}}]}
+    </script>
+    <link rel="icon" type="image/svg+xml" href="/logo-principal.svg">
+    <meta name="theme-color" content="#16283E">
+    <!-- GA_START -->
+    <script src="/assets/js/analytics.js" defer></script>
+    <!-- GA_END -->
+    <link rel="stylesheet" href="/assets/css/tokens.css">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/blog.css">
+</head>
+<body>
+<div class="cookie-banner" id="cookieBanner" hidden>
+    <div class="container cookie-banner-inner">
+        <p>Este sitio utiliza Google Analytics para medir la audiencia, con su consentimiento. <a href="/es/legal/cookies/">Más información</a>.</p>
+        <div class="cookie-banner-actions">
+            <button type="button" id="cookieRefuse" class="btn-secondary">Rechazar</button>
+            <button type="button" id="cookieAccept" class="btn-primary">Aceptar</button>
+        </div>
+    </div>
+</div>
+
+<a href="#" id="scrollTop" class="scroll-top" aria-label="Volver arriba">↑</a>
+
+<nav>
+    <div class="container">
+        <a href="/es/" class="nav-logo"><img src="/logo-principal.svg" alt="Logo" width="90" height="90" loading="eager"><span class="nav-wordmark">BIM<em>pact</em></span></a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="/es/#expertise">Experiencia</a></li>
+            <li><a href="/es/acerca/">Sobre mí</a></li>
+            <li><a href="/es/blog/">Blog</a></li>
+            <li><a href="#contact" class="nav-cta">Contacto</a></li>
+        </ul>
+        <div class="nav-lang">
+            <a href="/blog/revit-electricite-circuits-tableaux/" hreflang="fr" lang="fr">FR</a>
+            <a href="/en/blog/revit-electrical-circuits-panels/" hreflang="en" lang="en">EN</a>
+            <a href="/es/blog/revit-electricidad-circuitos-cuadros/" hreflang="es" lang="es" class="active">ES</a>
+        </div>
+        <button class="nav-hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+</nav>
+
+<main>
+    <article style="padding: calc(var(--nav-height) + var(--space-xl)) 0 var(--space-xl);">
+        <div class="container" style="max-width: 760px;">
+            <nav class="article-breadcrumb" aria-label="Breadcrumb">
+                <a href="/es/">Inicio</a> / <a href="/es/blog/">Blog</a> / <span>Electricidad en Revit</span>
+            </nav>
+            <p class="section-number">CFO-CFA</p>
+            <h1 class="section-title">Electricidad en Revit: circuitos, cuadros y tablas</h1>
+            <p style="color: var(--soft-blue); margin-top: var(--space-sm);">2026-10-10 · 4 min de lectura</p>
+
+            <figure class="article-img-center">
+                <img src="/assets/illustrations-blog/revit-electricite-circuits-tableaux.webp" alt="Cuadro eléctrico en alámbrico conectado a un techo con luminarias y bandeja portacables, sobre un plano cuadriculado" width="1200" height="675" loading="eager">
+            </figure>
+
+            <p style="margin-top: var(--space-md);">En Revit, un enchufe colocado en un plano es solo un símbolo mientras no esté conectado a nada. Vinculado a un circuito, y este a un cuadro, alimenta balances de cargas que se actualizan solos. Este es el método que recomiendo para una instalación eléctrica, desde la maqueta del arquitecto hasta las tablas.</p>
+
+            <h2>1. Configurar una plantilla para la red local</h2>
+            <p>Las plantillas que trae Revit suelen estar configuradas para redes norteamericanas (120/208 V, 480 V). Empiece por <strong>Gestionar &gt; Parámetros de MEP &gt; Parámetros eléctricos</strong> y declare los sistemas de distribución del proyecto: 230 V monofásico y 400 V trifásico. Guarde después todo en su propia plantilla, con sus familias, etiquetas y plantillas de tabla. Es el ajuste que ahorra tiempo en todos los proyectos siguientes.</p>
+
+            <h2>2. Vincular la maqueta del arquitecto sin copiarla</h2>
+            <p>La maqueta eléctrica es un archivo independiente. La maqueta del arquitecto entra como vínculo de Revit, o vínculo IFC, situada de origen a origen. Para colocar los aparatos hay dos opciones:</p>
+            <ul>
+                <li><strong>Familias basadas en cara</strong>, que se fijan directamente a los muros y techos del vínculo. Es la opción preferible: no se duplica nada.</li>
+                <li><strong>Copiar/supervisar</strong> algunos elementos del vínculo (muros, techos, niveles), cuando una familia necesita un anfitrión nativo o para crear espacios. Limítelo a lo estrictamente necesario.</li>
+            </ul>
+            <p>Si copia, parta de una copia limpiada de la maqueta del arquitecto. Solo se transferirán los tipos realmente utilizados.</p>
+
+            <h2>3. Colocar los cuadros y crear los circuitos</h2>
+            <p>Los cuadros son familias de equipos eléctricos. Una vez colocados, asígneles el sistema de distribución correcto. A partir de ahí la lógica no cambia: seleccione los aparatos que hay que alimentar, cree un circuito de potencia y elija el cuadro de origen. Para añadir o quitar un aparato, se edita el circuito.</p>
+            <p>Revit rechazará un aparato configurado con una tensión incorrecta. Y aunque los cables se dibujan en planta, son los circuitos, no los cables, los que llevan la información.</p>
+
+            <div class="article-cta-inline">
+                <svg class="corner-plus tl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                <svg class="corner-plus br" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                <h3>¿Un proyecto CFO-CFA que modelar?</h3>
+                <p>Trabajo en sus lotes técnicos, desde el anteproyecto hasta la maqueta de síntesis.</p>
+                <a href="/es/#contact" class="btn-primary">Contactarme</a>
+            </div>
+
+            <h2>4. Tratar la iluminación con sistemas de interruptores</h2>
+            <p>En una vista de plano de techo, coloque las luminarias y después los interruptores. Las luminarias se unen a un circuito de alumbrado conectado al cuadro, y un sistema de interruptores registra qué controla qué. La maqueta responde entonces a preguntas concretas: qué luminarias apaga este interruptor, qué carga lleva este circuito.</p>
+
+            <h2>5. Aprovechar las tablas de cuadro</h2>
+            <p>La tabla de cuadro enumera los circuitos, sus cargas y su reparto por fase. Duplique la plantilla de tabla y adáptela a sus documentos habituales, con las cargas por fase para comprobar el equilibrado. Cambie la potencia de un tipo de radiador y la tabla se actualiza al instante. Las longitudes de cables y bandejas se cuantifican de la misma manera.</p>
+
+            <h2>6. Modelar las bandejas para la coordinación</h2>
+            <p>Para las demás disciplinas, las bandejas portacables y los tubos suelen ser lo que más importa, porque son los que se cruzan con los conductos de ventilación y las tuberías. Modélelos con sus dimensiones reales y a la altura de montaje correcta desde el inicio de la coordinación. Antes de cada intercambio, compruebe su <a href="/es/blog/exportar-ifc-revit-buenas-practicas/">clase IFC al exportar</a>.</p>
+
+            <div class="article-callout">
+                <p>Lo que Revit no hace: el dimensionado reglamentario. Las secciones de cable, las caídas de tensión y las protecciones según la normativa aplicable (NF C 15-100 en Francia, REBT en España) se calculan en un software de cálculo eléctrico específico. Revit lleva la maqueta de información y los balances de cargas; el software de cálculo, la memoria de cálculo. Se complementan, ninguno sustituye al otro. Se puede combinar Caneco con su plug-in Caneco BIM para Revit. En un proyecto, un subcontratista nos entregó de hecho sus esquemas eléctricos con este método. Eso sí, no es una solución mágica: la calidad de los resultados depende de la preparación del modelo, de la configuración y de la verificación por parte de un profesional.</p>
+            </div>
+
+            <h2>Por dónde empezar</h2>
+            <p>Por la plantilla. Una plantilla adaptada a la red local, con sus familias y tablas, se amortiza desde el segundo proyecto. Una vez lista, crear circuitos y obtener un balance por cuadro se vuelve rutina, y su tiempo se dedica a la coordinación, donde realmente cuenta.</p>
+
+            <section class="article-faq">
+                <h2 class="article-faq-title">Preguntas frecuentes</h2>
+                <div class="article-faq-item">
+                    <button type="button" class="article-faq-question" aria-expanded="false">
+                        ¿Puede Revit dimensionar una instalación eléctrica según la normativa?
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                    </button>
+                    <div class="article-faq-answer">
+                        <div class="article-faq-answer-inner">
+                            <p>No. Revit crea los circuitos y los balances de cargas, pero el dimensionado reglamentario (secciones, caídas de tensión, protecciones) se realiza en un software de cálculo eléctrico específico.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="article-faq-item">
+                    <button type="button" class="article-faq-question" aria-expanded="false">
+                        ¿Por qué Revit se niega a conectar un aparato a un circuito?
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                    </button>
+                    <div class="article-faq-answer">
+                        <div class="article-faq-answer-inner">
+                            <p>Lo más habitual es que la tensión o el número de polos del aparato no coincida con el sistema de distribución del cuadro. Hay que alinear esos parámetros en las propiedades del aparato y del cuadro.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="article-faq-item">
+                    <button type="button" class="article-faq-question" aria-expanded="false">
+                        ¿Hay que copiar los muros del arquitecto en la maqueta eléctrica?
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                    </button>
+                    <div class="article-faq-answer">
+                        <div class="article-faq-answer-inner">
+                            <p>No necesariamente. Las familias basadas en cara se fijan a las caras del vínculo del arquitecto. La copia solo es útil para algunas familias o para crear espacios.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="article-faq-item">
+                    <button type="button" class="article-faq-question" aria-expanded="false">
+                        ¿Cómo obtener un balance de potencia por cuadro en Revit?
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                    </button>
+                    <div class="article-faq-answer">
+                        <div class="article-faq-answer-inner">
+                            <p>Creando una tabla de cuadro a partir del cuadro eléctrico. Enumera los circuitos, sus cargas y su reparto por fase, y se actualiza con cada modificación de la maqueta.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <p style="margin-top: var(--space-lg); font-size: var(--fs-sm); color: var(--soft-blue);">Fuentes: material de formación Revit MEP y Revit; Annalisa De Maestri, <em>Premiers pas en BIM</em>, Eyrolles.</p>
+        </div>
+    </article>
+
+    <section id="contact" class="reveal">
+        <div class="container">
+            <p class="section-number">Contacto</p>
+            <h2 class="section-title">¿Un proyecto <em>CFO-CFA</em>?</h2>
+            <p class="lead">Descríbame su proyecto, me pondré en contacto con usted rápidamente para hablarlo.<br>Marc Forner - BIMpact - Especialista en maqueta digital del edificio.</p>
+            <dl class="contact-info">
+                <dt>Teléfono</dt>
+                <dd><span class="js-phone"></span><noscript>Disponible mediante el formulario a continuación.</noscript></dd>
+            </dl>
+            <div class="contact-form-wrap">
+                <form class="contact-form" id="contactForm" data-success="Mensaje enviado, gracias. Me pondré en contacto con usted rápidamente." data-error="Se produjo un error. Inténtelo de nuevo en unos instantes.">
+                    <div class="form-field">
+                        <label for="cfName">Nombre</label>
+                        <input type="text" id="cfName" name="name" required maxlength="200" autocomplete="name">
+                    </div>
+                    <div class="form-field">
+                        <label for="cfEmail">Correo electrónico</label>
+                        <input type="email" id="cfEmail" name="email" required autocomplete="email">
+                    </div>
+                    <div class="form-field">
+                        <label for="cfPhone">Teléfono</label>
+                        <input type="tel" id="cfPhone" name="phone" autocomplete="tel">
+                    </div>
+                    <div class="form-field">
+                        <label for="cfMessage">Mensaje</label>
+                        <textarea id="cfMessage" name="message" required maxlength="5000"></textarea>
+                    </div>
+                    <div class="form-honeypot" aria-hidden="true">
+                        <label for="cfWebsite">Sitio web</label>
+                        <input type="text" id="cfWebsite" name="company_website" tabindex="-1" autocomplete="off">
+                    </div>
+                    <button type="submit" class="btn-primary">Enviar</button>
+                    <p class="form-status" role="status" aria-live="polite"></p>
+                </form>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="container">
+        <p>© <span id="year">2026</span> BIMpact · Sitio creado por Marc Forner con Claude Code</p>
+        <ul class="footer-links">
+            <li><a href="/es/legal/privacidad/">Privacidad</a></li>
+            <li><a href="/es/legal/terminos/">Términos</a></li>
+            <li><a href="/es/legal/cookies/">Cookies</a></li>
+            <li><button type="button" class="footer-cookie-link" id="cookieManage">Gestionar cookies</button></li>
+        </ul>
+    </div>
+</footer>
+
+<script src="/assets/js/cookie-consent.js" defer></script>
+<script src="/assets/js/shared.js" defer></script>
+<script src="/assets/js/contact-form.js" defer></script>
+</body>
+</html>

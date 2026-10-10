@@ -30,3 +30,7 @@ docs/migration/*
 # Staging artifacts generated locally
 .htpasswd
 .staging-credentials.txt
+
+# Private source material (copyrighted book scans, training PDFs) - never publish
+assets/Edocs/
+pinokio_agent/
