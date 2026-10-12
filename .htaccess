@@ -40,6 +40,16 @@ RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 RewriteCond %{HTTP_HOST} ^www\.bimpact\.eu$ [NC]
 RewriteRule ^ https://bimpact.eu%{REQUEST_URI} [R=301,L]
 
+# Retired URLs still known to Google: 301 to their current equivalent
+RewriteRule ^qui-suis-je/?$ /a-propos/ [R=301,L]
+RewriteRule ^projets/?$ / [R=301,L]
+RewriteRule ^en/projects/?$ /en/ [R=301,L]
+
+# Redirect .../index.html to its directory URL (must run before the generic
+# .html rule below, which would otherwise produce /index)
+RewriteCond %{THE_REQUEST} \s/((?:[^?\s]*/)?)index\.html[\s?] [NC]
+RewriteRule ^ /%1 [R=301,L]
+
 # Redirect .html to clean URLs
 RewriteCond %{THE_REQUEST} \s/(.+)\.html[\s?] [NC]
 RewriteRule ^ /%1 [R=301,L]
